@@ -1,21 +1,21 @@
 <?php
 get_header();
 
-$text_style = esc_attr(get_theme_mod('nylon_404_text_style', nylon_get_default('nylon_404_text_style')));
-$page_image = esc_url(get_theme_mod('nylon_404_top_image', nylon_get_default('nylon_404_top_image')));
-$page_title = esc_html(get_theme_mod('nylon_404_heading_text', nylon_get_default('nylon_404_heading_text')));
-$page_subtitle = esc_html(get_theme_mod('nylon_404_subtitle_text', nylon_get_default('nylon_404_subtitle_text')));
-$button_url = esc_url(get_theme_mod('nylon_404_button_url', nylon_get_default('nylon_404_button_url')));
-$button_text = esc_html(get_theme_mod('nylon_404_button_label', nylon_get_default('nylon_404_button_label')));
-$button_style = esc_attr(get_theme_mod('nylon_404_button_style', nylon_get_default('nylon_404_button_style')));
-$button2_url   = esc_url(get_theme_mod('nylon_404_button2_url', nylon_get_default('nylon_404_button2_url')));
-$button2_text = esc_html(get_theme_mod('nylon_404_button2_label', nylon_get_default('nylon_404_button2_label')));
-$button2_style = esc_attr(get_theme_mod('nylon_404_button2_style', nylon_get_default('nylon_404_button2_style')));
-$page_background = esc_url(get_theme_mod('nylon_404_background_image', nylon_get_default('nylon_404_background_image')));
+$text_style = esc_attr(get_theme_mod('rope_tow_404_text_style', rope_tow_get_default('rope_tow_404_text_style')));
+$page_image = esc_url(get_theme_mod('rope_tow_404_top_image', rope_tow_get_default('rope_tow_404_top_image')));
+$page_title = esc_html(get_theme_mod('rope_tow_404_heading_text', rope_tow_get_default('rope_tow_404_heading_text')));
+$page_subtitle = esc_html(get_theme_mod('rope_tow_404_subtitle_text', rope_tow_get_default('rope_tow_404_subtitle_text')));
+$button_url = esc_url(get_theme_mod('rope_tow_404_button_url', rope_tow_get_default('rope_tow_404_button_url')));
+$button_text = esc_html(get_theme_mod('rope_tow_404_button_label', rope_tow_get_default('rope_tow_404_button_label')));
+$button_style = esc_attr(get_theme_mod('rope_tow_404_button_style', rope_tow_get_default('rope_tow_404_button_style')));
+$button2_url   = esc_url(get_theme_mod('rope_tow_404_button2_url', rope_tow_get_default('rope_tow_404_button2_url')));
+$button2_text = esc_html(get_theme_mod('rope_tow_404_button2_label', rope_tow_get_default('rope_tow_404_button2_label')));
+$button2_style = esc_attr(get_theme_mod('rope_tow_404_button2_style', rope_tow_get_default('rope_tow_404_button2_style')));
+$page_background = esc_url(get_theme_mod('rope_tow_404_background_image', rope_tow_get_default('rope_tow_404_background_image')));
 ?>
 
 <main>
-	<section class="block relative pt-60 pb-40 error404-body nylon-text-<?= $text_style ?>" style="background-image:url(<?= $page_background ?>)">
+	<section class="block relative pt-60 pb-40 error404-body rope-tow-text-<?= $text_style ?>" style="background-image:url(<?= $page_background ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 text-center">

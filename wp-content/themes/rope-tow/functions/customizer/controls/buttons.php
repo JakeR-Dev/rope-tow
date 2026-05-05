@@ -1,9 +1,9 @@
 <?php
 
 // Button border radius slider
-$wp_customize->add_control('nylon_button_radius', array(
-  'label'       => __( 'Button Border Radius', 'nylon' ),
-  'section'     => 'nylon_buttons_section',
+$wp_customize->add_control('rope_tow_button_radius', array(
+  'label'       => __( 'Button Border Radius', 'rope-tow' ),
+  'section'     => 'rope_tow_buttons_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 0,
@@ -14,9 +14,9 @@ $wp_customize->add_control('nylon_button_radius', array(
 ));
 
 // Button padding X slider
-$wp_customize->add_control('nylon_button_padding_x', array(
-  'label'       => __( 'Button Padding X', 'nylon' ),
-  'section'     => 'nylon_buttons_section',
+$wp_customize->add_control('rope_tow_button_padding_x', array(
+  'label'       => __( 'Button Padding X', 'rope-tow' ),
+  'section'     => 'rope_tow_buttons_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 4,
@@ -27,9 +27,9 @@ $wp_customize->add_control('nylon_button_padding_x', array(
 ));
 
 // Button padding Y slider
-$wp_customize->add_control('nylon_button_padding_y', array(
-  'label'       => __( 'Button Padding Y', 'nylon' ),
-  'section'     => 'nylon_buttons_section',
+$wp_customize->add_control('rope_tow_button_padding_y', array(
+  'label'       => __( 'Button Padding Y', 'rope-tow' ),
+  'section'     => 'rope_tow_buttons_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 4,
@@ -40,9 +40,9 @@ $wp_customize->add_control('nylon_button_padding_y', array(
 ));
 
 // Button font size slider
-$wp_customize->add_control('nylon_button_font_size', array(
-  'label'       => __( 'Button Font Size', 'nylon' ),
-  'section'     => 'nylon_buttons_section',
+$wp_customize->add_control('rope_tow_button_font_size', array(
+  'label'       => __( 'Button Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_buttons_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 8,
@@ -53,9 +53,9 @@ $wp_customize->add_control('nylon_button_font_size', array(
 ));
 
 // Button font weight
-$wp_customize->add_control('nylon_button_font_weight', array(
-  'label'       => __('Button Font Weight', 'nylon'),
-  'section'     => 'nylon_buttons_section',
+$wp_customize->add_control('rope_tow_button_font_weight', array(
+  'label'       => __('Button Font Weight', 'rope-tow'),
+  'section'     => 'rope_tow_buttons_section',
   'type'        => 'select',
   'choices'     => array(
     '--weight-black'    => 'Black',
@@ -67,9 +67,9 @@ $wp_customize->add_control('nylon_button_font_weight', array(
 ));
 
 // Button text transform
-$wp_customize->add_control('nylon_button_text_transform', array(
-  'label'   => __('Button Text Transform', 'nylon'),
-  'section' => 'nylon_buttons_section',
+$wp_customize->add_control('rope_tow_button_text_transform', array(
+  'label'   => __('Button Text Transform', 'rope-tow'),
+  'section' => 'rope_tow_buttons_section',
   'type'    => 'select',
   'choices' => array(
     'none'       => 'None',

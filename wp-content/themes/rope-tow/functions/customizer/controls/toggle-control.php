@@ -2,11 +2,11 @@
 
 // Add custom styled toggle control
 if ( class_exists( 'WP_Customize_Control' ) ) {
-  class Nylon_Toggle_Control extends WP_Customize_Control {
+  class Rope Tow_Toggle_Control extends WP_Customize_Control {
     public $type = 'toggle';
 
     public function render_content() { ?>
-      <label class="nylon-toggle-control">
+      <label class="rope-tow-toggle-control">
         <?php if ( ! empty( $this->label ) ) : ?>
           <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
         <?php endif; ?>

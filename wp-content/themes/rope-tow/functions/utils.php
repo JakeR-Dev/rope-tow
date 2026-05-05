@@ -4,7 +4,7 @@
  *  A collection of utility functions
  *
  *  @since 1.0.0
- *  @package Nylon
+ *  @package rope-tow
  */
 
 
@@ -100,27 +100,27 @@ function print_external_scripts($location)
  * @param type $location
  */
 
-function nylon_custom_buttons($buttons)
+function rope_tow_custom_buttons($buttons)
 {
 	array_push($buttons, "custom-classes");
 	array_push($buttons, "cta-shortcode");
 	return $buttons;
 }
 
-function nylon_custom_plugins($plugins)
+function rope_tow_custom_plugins($plugins)
 {
 	$plugins['custom-classes'] = get_template_directory_uri() . '/assets/js/tinymce/tiny-mce.js';
 	$plugins['cta-shortcode'] = get_template_directory_uri() . '/assets/js/tinymce/tiny-mce.js';
 	return $plugins;
 }
 
-function nylon_custom_init()
+function rope_tow_custom_init()
 {
-	add_filter('mce_buttons', 'nylon_custom_buttons');
-	add_filter('mce_external_plugins', 'nylon_custom_plugins');
+	add_filter('mce_buttons', 'rope_tow_custom_buttons');
+	add_filter('mce_external_plugins', 'rope_tow_custom_plugins');
 }
 
-add_action('init', 'nylon_custom_init');
+add_action('init', 'rope_tow_custom_init');
 
 
 /**
@@ -217,10 +217,10 @@ function manage_single_view_redirect()
 
 /**
  * Create a mixed version of a user-chosen color
- * ex: nylon_mix_color($primary_color, '#000000', 15, .5);
- * 		 nylon_mix_color([color to be mixed], [color to mix with], [weight of mix], [transparency]);
+ * ex: rope_tow_mix_color($primary_color, '#000000', 15, .5);
+ * 		 rope_tow_mix_color([color to be mixed], [color to mix with], [weight of mix], [transparency]);
  */
-function nylon_mix_color($color1, $color2, $weight_percent = 50, $alpha = null)
+function rope_tow_mix_color($color1, $color2, $weight_percent = 50, $alpha = null)
 {
 	$color1 = ltrim($color1, '#');
 	$color2 = ltrim($color2, '#');
@@ -250,8 +250,8 @@ function nylon_mix_color($color1, $color2, $weight_percent = 50, $alpha = null)
  * Render the footer social links
  * 
 */
-function nylon_render_footer_social_links() {
-	$json  = get_theme_mod( 'nylon_footer_social_links', '[]' );
+function rope_tow_render_footer_social_links() {
+	$json  = get_theme_mod( 'rope_tow_footer_social_links', '[]' );
 	$items = json_decode( $json, true );
 	if ( ! is_array( $items ) || ! $items ) return;
 

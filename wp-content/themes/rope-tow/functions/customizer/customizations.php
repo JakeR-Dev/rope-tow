@@ -1,5 +1,5 @@
 <?php
-function nylon_customize_register($wp_customize) {
+function rope_tow_customize_register($wp_customize) {
   // *******
   // Add "Theme Options" customizer section
   // *******
@@ -25,7 +25,7 @@ function nylon_customize_register($wp_customize) {
   require_once 'controls.php';
 
 }
-add_action('customize_register', 'nylon_customize_register');
+add_action('customize_register', 'rope_tow_customize_register');
 
 // *******
 // Preload and load fonts
@@ -43,11 +43,11 @@ require_once 'default-settings.php';
 // track its default value for default-settings.php
 // *******
 
-function nylon_add_setting($wp_customize, $id, $args) {
+function rope_tow_add_setting($wp_customize, $id, $args) {
   // Use dynamic fallback from defaults.php
-  $args['default'] = nylon_get_default($id);
+  $args['default'] = rope_tow_get_default($id);
   // Register default value
-  do_action('nylon_register_customizer_default', $id, $args['default']);
+  do_action('rope_tow_register_customizer_default', $id, $args['default']);
   // Register setting
   $wp_customize->add_setting($id, $args);
 }
@@ -56,62 +56,62 @@ function nylon_add_setting($wp_customize, $id, $args) {
 // Set new values in css vars
 // *******
 
-function nylon_customize_css() {
+function rope_tow_customize_css() {
   // typography
-  $body_font = get_theme_mod('nylon_body_font', nylon_get_default('nylon_body_font'));
-  $heading_font = get_theme_mod('nylon_heading_font', nylon_get_default('nylon_heading_font'));
-  $body_weight = get_theme_mod('nylon_body_font_weight', nylon_get_default('nylon_body_font_weight'));
-  $heading_weight = get_theme_mod('nylon_heading_font_weight', nylon_get_default('nylon_heading_font_weight'));
-  $body_font_size = get_theme_mod('nylon_body_font_size', nylon_get_default('nylon_body_font_size'));
-  $h1_font_size = get_theme_mod('nylon_h1_font_size', nylon_get_default('nylon_h1_font_size'));
-  $h2_font_size = get_theme_mod('nylon_h2_font_size', nylon_get_default('nylon_h2_font_size'));
-  $h3_font_size = get_theme_mod('nylon_h3_font_size', nylon_get_default('nylon_h3_font_size'));
-  $h4_font_size = get_theme_mod('nylon_h4_font_size', nylon_get_default('nylon_h4_font_size'));
-  $h5_font_size = get_theme_mod('nylon_h5_font_size', nylon_get_default('nylon_h5_font_size'));
-  $h6_font_size = get_theme_mod('nylon_h6_font_size', nylon_get_default('nylon_h6_font_size'));
+  $body_font = get_theme_mod('rope_tow_body_font', rope_tow_get_default('rope_tow_body_font'));
+  $heading_font = get_theme_mod('rope_tow_heading_font', rope_tow_get_default('rope_tow_heading_font'));
+  $body_weight = get_theme_mod('rope_tow_body_font_weight', rope_tow_get_default('rope_tow_body_font_weight'));
+  $heading_weight = get_theme_mod('rope_tow_heading_font_weight', rope_tow_get_default('rope_tow_heading_font_weight'));
+  $body_font_size = get_theme_mod('rope_tow_body_font_size', rope_tow_get_default('rope_tow_body_font_size'));
+  $h1_font_size = get_theme_mod('rope_tow_h1_font_size', rope_tow_get_default('rope_tow_h1_font_size'));
+  $h2_font_size = get_theme_mod('rope_tow_h2_font_size', rope_tow_get_default('rope_tow_h2_font_size'));
+  $h3_font_size = get_theme_mod('rope_tow_h3_font_size', rope_tow_get_default('rope_tow_h3_font_size'));
+  $h4_font_size = get_theme_mod('rope_tow_h4_font_size', rope_tow_get_default('rope_tow_h4_font_size'));
+  $h5_font_size = get_theme_mod('rope_tow_h5_font_size', rope_tow_get_default('rope_tow_h5_font_size'));
+  $h6_font_size = get_theme_mod('rope_tow_h6_font_size', rope_tow_get_default('rope_tow_h6_font_size'));
   // colors
-  $primary_color = get_theme_mod('nylon_primary_color', nylon_get_default('nylon_primary_color'));
-  $primary_color_darkened = nylon_mix_color($primary_color, '#000000', 30);
-  $primary_color_lightened = nylon_mix_color($primary_color, '#ffffff', 30, .2);
-  $secondary_color = get_theme_mod('nylon_secondary_color', nylon_get_default('nylon_secondary_color'));
-  $secondary_color_darkened = nylon_mix_color($secondary_color, '#000000', 30);
-  $secondary_color_lightened = nylon_mix_color($secondary_color, '#ffffff', 30, .2);
-  $tertiary_color = get_theme_mod('nylon_tertiary_color', nylon_get_default('nylon_tertiary_color'));
-  $tertiary_color_darkened = nylon_mix_color($tertiary_color, '#000000', 30);
-  $tertiary_color_lightened = nylon_mix_color($tertiary_color, '#ffffff', 30, .2);
-  $tertiary_alt_color = get_theme_mod('nylon_tertiary_alt_color', nylon_get_default('nylon_tertiary_alt_color'));
-  $tertiary_alt_color_darkened = nylon_mix_color($tertiary_alt_color, '#000000', 30);
-  $tertiary_alt_color_lightened = nylon_mix_color($tertiary_alt_color, '#ffffff', 30, .2);
-  $brand_black = get_theme_mod('nylon_brand_black', nylon_get_default('nylon_brand_black'));
-  $brand_gray = get_theme_mod('nylon_brand_gray', nylon_get_default('nylon_brand_gray'));
-  $brand_light_gray = get_theme_mod('nylon_brand_light_gray', nylon_get_default('nylon_brand_light_gray'));
-  $brand_white = get_theme_mod('nylon_brand_white', nylon_get_default('nylon_brand_white'));
-  $brand_error = get_theme_mod('nylon_brand_error', nylon_get_default('nylon_brand_error'));
-  $brand_error_lightened = nylon_mix_color($brand_error, '#ffffff', 30, .1);
-  $nav_bg_color = get_theme_mod('nylon_nav_color', nylon_get_default('nylon_nav_color'));
-  $nav_font_color = get_theme_mod('nylon_nav_font_color', nylon_get_default('nylon_nav_font_color'));
-  $body_color = get_theme_mod('nylon_body_color', nylon_get_default('nylon_body_color'));
-  $heading_color = get_theme_mod('nylon_heading_color', nylon_get_default('nylon_heading_color'));
-  $primary_button_color = get_theme_mod('nylon_primary_button_color', nylon_get_default('nylon_primary_button_color'));
-  $primary_button_color_darkened = nylon_mix_color($primary_button_color, '#000000', 15);
-  $primary_button_font_color = get_theme_mod('nylon_primary_button_font_color', nylon_get_default('nylon_primary_button_font_color'));
-  $secondary_button_color = get_theme_mod('nylon_secondary_button_color', nylon_get_default('nylon_secondary_button_color'));
-  $secondary_button_color_darkened = nylon_mix_color($secondary_button_color, '#000000', 15);
-  $secondary_button_font_color = get_theme_mod('nylon_secondary_button_font_color', nylon_get_default('nylon_secondary_button_font_color'));
+  $primary_color = get_theme_mod('rope_tow_primary_color', rope_tow_get_default('rope_tow_primary_color'));
+  $primary_color_darkened = rope_tow_mix_color($primary_color, '#000000', 30);
+  $primary_color_lightened = rope_tow_mix_color($primary_color, '#ffffff', 30, .2);
+  $secondary_color = get_theme_mod('rope_tow_secondary_color', rope_tow_get_default('rope_tow_secondary_color'));
+  $secondary_color_darkened = rope_tow_mix_color($secondary_color, '#000000', 30);
+  $secondary_color_lightened = rope_tow_mix_color($secondary_color, '#ffffff', 30, .2);
+  $tertiary_color = get_theme_mod('rope_tow_tertiary_color', rope_tow_get_default('rope_tow_tertiary_color'));
+  $tertiary_color_darkened = rope_tow_mix_color($tertiary_color, '#000000', 30);
+  $tertiary_color_lightened = rope_tow_mix_color($tertiary_color, '#ffffff', 30, .2);
+  $tertiary_alt_color = get_theme_mod('rope_tow_tertiary_alt_color', rope_tow_get_default('rope_tow_tertiary_alt_color'));
+  $tertiary_alt_color_darkened = rope_tow_mix_color($tertiary_alt_color, '#000000', 30);
+  $tertiary_alt_color_lightened = rope_tow_mix_color($tertiary_alt_color, '#ffffff', 30, .2);
+  $brand_black = get_theme_mod('rope_tow_brand_black', rope_tow_get_default('rope_tow_brand_black'));
+  $brand_gray = get_theme_mod('rope_tow_brand_gray', rope_tow_get_default('rope_tow_brand_gray'));
+  $brand_light_gray = get_theme_mod('rope_tow_brand_light_gray', rope_tow_get_default('rope_tow_brand_light_gray'));
+  $brand_white = get_theme_mod('rope_tow_brand_white', rope_tow_get_default('rope_tow_brand_white'));
+  $brand_error = get_theme_mod('rope_tow_brand_error', rope_tow_get_default('rope_tow_brand_error'));
+  $brand_error_lightened = rope_tow_mix_color($brand_error, '#ffffff', 30, .1);
+  $nav_bg_color = get_theme_mod('rope_tow_nav_color', rope_tow_get_default('rope_tow_nav_color'));
+  $nav_font_color = get_theme_mod('rope_tow_nav_font_color', rope_tow_get_default('rope_tow_nav_font_color'));
+  $body_color = get_theme_mod('rope_tow_body_color', rope_tow_get_default('rope_tow_body_color'));
+  $heading_color = get_theme_mod('rope_tow_heading_color', rope_tow_get_default('rope_tow_heading_color'));
+  $primary_button_color = get_theme_mod('rope_tow_primary_button_color', rope_tow_get_default('rope_tow_primary_button_color'));
+  $primary_button_color_darkened = rope_tow_mix_color($primary_button_color, '#000000', 15);
+  $primary_button_font_color = get_theme_mod('rope_tow_primary_button_font_color', rope_tow_get_default('rope_tow_primary_button_font_color'));
+  $secondary_button_color = get_theme_mod('rope_tow_secondary_button_color', rope_tow_get_default('rope_tow_secondary_button_color'));
+  $secondary_button_color_darkened = rope_tow_mix_color($secondary_button_color, '#000000', 15);
+  $secondary_button_font_color = get_theme_mod('rope_tow_secondary_button_font_color', rope_tow_get_default('rope_tow_secondary_button_font_color'));
   // buttons
-  $button_radius = get_theme_mod('nylon_button_radius', nylon_get_default('nylon_button_radius'));
-  $button_padding_x = get_theme_mod('nylon_button_padding_x', nylon_get_default('nylon_button_padding_x'));
-  $button_padding_y = get_theme_mod('nylon_button_padding_y', nylon_get_default('nylon_button_padding_y'));
-  $button_font_size = get_theme_mod('nylon_button_font_size', nylon_get_default('nylon_button_font_size'));
-  $button_font_weight = get_theme_mod('nylon_button_font_weight', nylon_get_default('nylon_button_font_weight'));
-  $button_text_transform = get_theme_mod('nylon_button_text_transform', nylon_get_default('nylon_button_text_transform'));
+  $button_radius = get_theme_mod('rope_tow_button_radius', rope_tow_get_default('rope_tow_button_radius'));
+  $button_padding_x = get_theme_mod('rope_tow_button_padding_x', rope_tow_get_default('rope_tow_button_padding_x'));
+  $button_padding_y = get_theme_mod('rope_tow_button_padding_y', rope_tow_get_default('rope_tow_button_padding_y'));
+  $button_font_size = get_theme_mod('rope_tow_button_font_size', rope_tow_get_default('rope_tow_button_font_size'));
+  $button_font_weight = get_theme_mod('rope_tow_button_font_weight', rope_tow_get_default('rope_tow_button_font_weight'));
+  $button_text_transform = get_theme_mod('rope_tow_button_text_transform', rope_tow_get_default('rope_tow_button_text_transform'));
   // footer
-  $footer_bg_color = get_theme_mod('nylon_footer_color', nylon_get_default('nylon_footer_color'));
-  $footer_cta_bg_color = get_theme_mod('nylon_footer_cta_background_color', nylon_get_default('nylon_footer_cta_background_color'));
-  $footer_social_link_color = get_theme_mod('nylon_footer_social_color', nylon_get_default('nylon_footer_social_color'));
+  $footer_bg_color = get_theme_mod('rope_tow_footer_color', rope_tow_get_default('rope_tow_footer_color'));
+  $footer_cta_bg_color = get_theme_mod('rope_tow_footer_cta_background_color', rope_tow_get_default('rope_tow_footer_cta_background_color'));
+  $footer_social_link_color = get_theme_mod('rope_tow_footer_social_color', rope_tow_get_default('rope_tow_footer_social_color'));
   ?>
   
-  <style id="nylon-customizer-vars" type="text/css">
+  <style id="rope-tow-customizer-vars" type="text/css">
     :root {
       /* typography */
       <?php echo (!empty($body_font)) ? '--font-family-body:"'. esc_attr($body_font) .'", sans-serif;' : ''; ?>
@@ -170,53 +170,53 @@ function nylon_customize_css() {
   <?php
 }
 // add later in page for precedent over other base stylesheet-defined vars
-add_action('wp_footer', 'nylon_customize_css');
+add_action('wp_footer', 'rope_tow_customize_css');
 
 // *******
 // Enable Select2 for customizer controls
 // *******
 
-function nylon_enqueue_customizer_select2() {
+function rope_tow_enqueue_customizer_select2() {
   wp_enqueue_script('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['jquery'], null, true);
   wp_enqueue_style('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
 
   wp_add_inline_script('select2', "
     jQuery(document).ready(function($) {
-      $('#customize-control-nylon_heading_font select').select2({ width: '100%' });
-      $('#customize-control-nylon_body_font select').select2({ width: '100%' });
+      $('#customize-control-rope_tow_heading_font select').select2({ width: '100%' });
+      $('#customize-control-rope_tow_body_font select').select2({ width: '100%' });
     });
   ");
 }
-add_action('customize_controls_enqueue_scripts', 'nylon_enqueue_customizer_select2');
+add_action('customize_controls_enqueue_scripts', 'rope_tow_enqueue_customizer_select2');
 
 // *******
 // Live update customize preview JS
 // *******
 
-function nylon_customize_preview_js() {
-  if (function_exists('nylon_vite') && nylon_vite()) {
-    nylon_vite()->enqueue_entry('assets/js/utils/customizerPreview.js', array('customize-preview', 'jquery'));
+function rope_tow_customize_preview_js() {
+  if (function_exists('rope_tow_vite') && rope_tow_vite()) {
+    rope_tow_vite()->enqueue_entry('assets/js/utils/customizerPreview.js', array('customize-preview', 'jquery'));
   }
 }
-add_action('customize_preview_init', 'nylon_customize_preview_js');
+add_action('customize_preview_init', 'rope_tow_customize_preview_js');
 
 // ******
 // Modify the customizer when options change
 // ******
 
-function nylon_customize_controls_js() {
+function rope_tow_customize_controls_js() {
   wp_enqueue_media();
-  wp_enqueue_script('nylon-customizer-controls', get_template_directory_uri() . '/assets/js/utils/customizerControls.js', array('customize-controls', 'jquery'), rand(), true);
+  wp_enqueue_script('rope-tow-customizer-controls', get_template_directory_uri() . '/assets/js/utils/customizerControls.js', array('customize-controls', 'jquery'), rand(), true);
 }
-add_action('customize_controls_enqueue_scripts', 'nylon_customize_controls_js');
+add_action('customize_controls_enqueue_scripts', 'rope_tow_customize_controls_js');
 
 // *******
 // Customizer css
 // *******
 
-function nylon_customizer_styles() {
-  if (function_exists('nylon_vite') && nylon_vite()) {
-    nylon_vite()->enqueue_entry('assets/scss/admin.scss');
+function rope_tow_customizer_styles() {
+  if (function_exists('rope_tow_vite') && rope_tow_vite()) {
+    rope_tow_vite()->enqueue_entry('assets/scss/admin.scss');
   }
 }
-add_action('customize_controls_print_styles', 'nylon_customizer_styles');
+add_action('customize_controls_print_styles', 'rope_tow_customizer_styles');

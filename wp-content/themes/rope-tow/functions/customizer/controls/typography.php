@@ -1,7 +1,7 @@
 <?php
 
 // function to retrieve all fonts
-function nylon_get_google_fonts() {
+function rope_tow_get_google_fonts() {
   $json_file = get_template_directory() . '/assets/fonts/google-fonts.json';
   if (!file_exists($json_file)) return [];
 
@@ -15,23 +15,23 @@ function nylon_get_google_fonts() {
 
   return $fonts;
 }
-$fonts = nylon_get_google_fonts();
+$fonts = rope_tow_get_google_fonts();
 
 // Heading font select
-$wp_customize->add_control('nylon_heading_font', array(
-  'label'   => __('Heading Font', 'nylon'),
-  'section' => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_heading_font', array(
+  'label'   => __('Heading Font', 'rope-tow'),
+  'section' => 'rope_tow_typography_section',
   'type'    => 'select',
   'choices'  => $fonts,
   'input_attrs' => [
-    'class' => 'nylon-font-select'
+    'class' => 'rope-tow-font-select'
   ]
 ));
 
 // Heading font weight select
-$wp_customize->add_control('nylon_heading_font_weight', array(
-  'label'   => __('Heading Font Weight', 'nylon'),
-  'section' => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_heading_font_weight', array(
+  'label'   => __('Heading Font Weight', 'rope-tow'),
+  'section' => 'rope_tow_typography_section',
   'type'    => 'select',
   'choices' => array(
     'lightest' => 'Lightest',
@@ -44,20 +44,20 @@ $wp_customize->add_control('nylon_heading_font_weight', array(
 ));
 
 // Body font select
-$wp_customize->add_control('nylon_body_font', array(
-  'label'   => __('Body Font', 'nylon'),
-  'section' => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_body_font', array(
+  'label'   => __('Body Font', 'rope-tow'),
+  'section' => 'rope_tow_typography_section',
   'type'    => 'select',
   'choices'  => $fonts,
   'input_attrs' => [
-    'class' => 'nylon-font-select'
+    'class' => 'rope-tow-font-select'
   ]
 ));
 
 // Body font weight select
-$wp_customize->add_control('nylon_body_font_weight', array(
-  'label'   => __('Body Font Weight', 'nylon'),
-  'section' => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_body_font_weight', array(
+  'label'   => __('Body Font Weight', 'rope-tow'),
+  'section' => 'rope_tow_typography_section',
   'type'    => 'select',
   'choices' => array(
     'lightest' => 'Lightest',
@@ -70,9 +70,9 @@ $wp_customize->add_control('nylon_body_font_weight', array(
 ));
 
 // Body font size slider
-$wp_customize->add_control('nylon_body_font_size', array(
-  'label'       => __( 'Body Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_body_font_size', array(
+  'label'       => __( 'Body Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 12,
@@ -83,9 +83,9 @@ $wp_customize->add_control('nylon_body_font_size', array(
 ));
 
 // H1 font size slider
-$wp_customize->add_control('nylon_h1_font_size', array(
-  'label'       => __( 'H1 Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_h1_font_size', array(
+  'label'       => __( 'H1 Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 16,
@@ -96,9 +96,9 @@ $wp_customize->add_control('nylon_h1_font_size', array(
 ));
 
 // H2 font size slider
-$wp_customize->add_control('nylon_h2_font_size', array(
-  'label'       => __( 'H2 Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_h2_font_size', array(
+  'label'       => __( 'H2 Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 16,
@@ -109,9 +109,9 @@ $wp_customize->add_control('nylon_h2_font_size', array(
 ));
 
 // H3 font size slider
-$wp_customize->add_control('nylon_h3_font_size', array(
-  'label'       => __( 'H3 Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_h3_font_size', array(
+  'label'       => __( 'H3 Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 16,
@@ -122,9 +122,9 @@ $wp_customize->add_control('nylon_h3_font_size', array(
 ));
 
 // H4 font size slider
-$wp_customize->add_control('nylon_h4_font_size', array(
-  'label'       => __( 'H4 Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_h4_font_size', array(
+  'label'       => __( 'H4 Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 16,
@@ -135,9 +135,9 @@ $wp_customize->add_control('nylon_h4_font_size', array(
 ));
 
 // H5 font size slider
-$wp_customize->add_control('nylon_h5_font_size', array(
-  'label'       => __( 'H5 Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_h5_font_size', array(
+  'label'       => __( 'H5 Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 16,
@@ -148,9 +148,9 @@ $wp_customize->add_control('nylon_h5_font_size', array(
 ));
 
 // H6 font size slider
-$wp_customize->add_control('nylon_h6_font_size', array(
-  'label'       => __( 'H6 Font Size', 'nylon' ),
-  'section'     => 'nylon_typography_section',
+$wp_customize->add_control('rope_tow_h6_font_size', array(
+  'label'       => __( 'H6 Font Size', 'rope-tow' ),
+  'section'     => 'rope_tow_typography_section',
   'type'        => 'range',
   'input_attrs' => array(
     'min'  => 12,

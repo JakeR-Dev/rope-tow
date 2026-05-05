@@ -1,30 +1,30 @@
 <?php
-  $footer_copyright_text = get_theme_mod('nylon_footer_copyright_text', nylon_get_default('nylon_footer_copyright_text'));
-  $footer_layout = get_theme_mod('nylon_footer_layout', nylon_get_default('nylon_footer_layout'));
-  $footer_logo_url = get_theme_mod('nylon_footer_logo', nylon_get_default('nylon_footer_logo'));
+  $footer_copyright_text = get_theme_mod('rope_tow_footer_copyright_text', rope_tow_get_default('rope_tow_footer_copyright_text'));
+  $footer_layout = get_theme_mod('rope_tow_footer_layout', rope_tow_get_default('rope_tow_footer_layout'));
+  $footer_logo_url = get_theme_mod('rope_tow_footer_logo', rope_tow_get_default('rope_tow_footer_logo'));
   if (!$footer_logo_url) {
     $footer_logo_id = get_theme_mod('custom_logo');
     $footer_logo_url = wp_get_attachment_image_url($footer_logo_id, 'full');
   }
-  $footer_background = esc_url(get_theme_mod('nylon_footer_background_image', nylon_get_default('nylon_footer_background_image')));
-  $footer_cta_enabled = get_theme_mod('nylon_footer_cta_enabled', nylon_get_default('nylon_footer_cta_enabled'));
+  $footer_background = esc_url(get_theme_mod('rope_tow_footer_background_image', rope_tow_get_default('rope_tow_footer_background_image')));
+  $footer_cta_enabled = get_theme_mod('rope_tow_footer_cta_enabled', rope_tow_get_default('rope_tow_footer_cta_enabled'));
   if ($footer_cta_enabled) {
     $footer_cta_toggle_class = 'block';
   } else {
     $footer_cta_toggle_class = 'hidden';
   }
-  $footer_cta_layout = get_theme_mod('nylon_footer_cta_layout', nylon_get_default('nylon_footer_cta_layout')) ?? '';
-  $footer_cta_title = get_theme_mod('nylon_footer_cta_title', nylon_get_default('nylon_footer_cta_title'));
-  $footer_cta_subtitle = get_theme_mod('nylon_footer_cta_subtitle', nylon_get_default('nylon_footer_cta_subtitle'));
-  $footer_cta_background = esc_url(get_theme_mod('nylon_footer_cta_background_image', nylon_get_default('nylon_footer_cta_background_image')));
-  $footer_cta_button_title = get_theme_mod('nylon_footer_cta_button_title', nylon_get_default('nylon_footer_cta_button_title'));
-  $footer_cta_button_url = get_theme_mod('nylon_footer_cta_button_url', nylon_get_default('nylon_footer_cta_button_url'));
-  $footer_cta_button_size = get_theme_mod('nylon_footer_cta_button_size', nylon_get_default('nylon_footer_cta_button_size'));
-  $footer_cta_button_style = get_theme_mod('nylon_footer_cta_button_style', nylon_get_default('nylon_footer_cta_button_style'));
-  $footer_cta_secondary_button_title = get_theme_mod('nylon_footer_cta_secondary_button_title', nylon_get_default('nylon_footer_cta_secondary_button_title'));
-  $footer_cta_secondary_button_url = get_theme_mod('nylon_footer_cta_secondary_button_url', nylon_get_default('nylon_footer_cta_secondary_button_url'));
-  $footer_cta_secondary_button_size = get_theme_mod('nylon_footer_cta_secondary_button_size', nylon_get_default('nylon_footer_cta_secondary_button_size'));
-  $footer_cta_secondary_button_style = get_theme_mod('nylon_footer_cta_secondary_button_style', nylon_get_default('nylon_footer_cta_secondary_button_style'));
+  $footer_cta_layout = get_theme_mod('rope_tow_footer_cta_layout', rope_tow_get_default('rope_tow_footer_cta_layout')) ?? '';
+  $footer_cta_title = get_theme_mod('rope_tow_footer_cta_title', rope_tow_get_default('rope_tow_footer_cta_title'));
+  $footer_cta_subtitle = get_theme_mod('rope_tow_footer_cta_subtitle', rope_tow_get_default('rope_tow_footer_cta_subtitle'));
+  $footer_cta_background = esc_url(get_theme_mod('rope_tow_footer_cta_background_image', rope_tow_get_default('rope_tow_footer_cta_background_image')));
+  $footer_cta_button_title = get_theme_mod('rope_tow_footer_cta_button_title', rope_tow_get_default('rope_tow_footer_cta_button_title'));
+  $footer_cta_button_url = get_theme_mod('rope_tow_footer_cta_button_url', rope_tow_get_default('rope_tow_footer_cta_button_url'));
+  $footer_cta_button_size = get_theme_mod('rope_tow_footer_cta_button_size', rope_tow_get_default('rope_tow_footer_cta_button_size'));
+  $footer_cta_button_style = get_theme_mod('rope_tow_footer_cta_button_style', rope_tow_get_default('rope_tow_footer_cta_button_style'));
+  $footer_cta_secondary_button_title = get_theme_mod('rope_tow_footer_cta_secondary_button_title', rope_tow_get_default('rope_tow_footer_cta_secondary_button_title'));
+  $footer_cta_secondary_button_url = get_theme_mod('rope_tow_footer_cta_secondary_button_url', rope_tow_get_default('rope_tow_footer_cta_secondary_button_url'));
+  $footer_cta_secondary_button_size = get_theme_mod('rope_tow_footer_cta_secondary_button_size', rope_tow_get_default('rope_tow_footer_cta_secondary_button_size'));
+  $footer_cta_secondary_button_style = get_theme_mod('rope_tow_footer_cta_secondary_button_style', rope_tow_get_default('rope_tow_footer_cta_secondary_button_style'));
 ?>
 
     <footer class="global-footer block relative pb-16 footer-<?= esc_attr($footer_layout); ?>" style="background-image:url(<?= $footer_background ?>)">
@@ -95,8 +95,8 @@
           </div>
           <!-- socials -->
           <div class="col-xs-12 col-sm-4 mt-12 md:mt-16 footer-col footer-col-socials">
-            <ul class="footer-social justify-center md:justify-end" data-nylon-footer-social>
-              <?php nylon_render_footer_social_links(); ?>
+            <ul class="footer-social justify-center md:justify-end" data-rope-tow-footer-social>
+              <?php rope_tow_render_footer_social_links(); ?>
             </ul>
             <link rel='stylesheet' id='font-awesome-css' href='https://use.fontawesome.com/releases/v6.7.2/css/all.css' type='text/css' media='all' />
           </div>

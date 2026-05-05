@@ -187,12 +187,12 @@ function my_acf_include_term_checkboxes($version) {
     new acf_field_term_checkboxes();
 }
 
-// Save JSON to Nylon (parent) theme folder
+// Save JSON to Rope Tow (parent) theme folder
 add_filter('acf/settings/save_json', function () {
     return get_template_directory() . '/acf-json';
 });
 
-// Load only Nylon (parent) theme fields
+// Load only Rope Tow (parent) theme fields
 add_filter('acf/settings/load_json', function ($paths) {
     return [ get_template_directory() . '/acf-json' ];
 });

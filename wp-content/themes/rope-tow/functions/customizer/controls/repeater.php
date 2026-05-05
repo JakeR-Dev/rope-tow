@@ -3,9 +3,9 @@
  * Repeater Control Class (supports icon/image choice)
  */
 
-if ( ! class_exists( 'Nylon_Repeater_Control' ) ) {
-	class Nylon_Repeater_Control extends WP_Customize_Control {
-		public $type = 'nylon_repeater';
+if ( ! class_exists( 'Rope_Tow_Repeater_Control' ) ) {
+	class Rope_Tow_Repeater_Control extends WP_Customize_Control {
+		public $type = 'rope_tow_repeater';
 		public $button_label = '+ Add link';
 
 		public function render_content() {
@@ -31,9 +31,9 @@ if ( ! class_exists( 'Nylon_Repeater_Control' ) ) {
 				<?php endif; ?>
 			</label>
 
-			<div class="nylon-repeater" data-control="<?php echo esc_attr( $this->id ); ?>">
-				<div class="nylon-repeater__items"></div>
-				<button type="button" class="nylon-btn nylon-repeater__add">
+			<div class="rope-tow-repeater" data-control="<?php echo esc_attr( $this->id ); ?>">
+				<div class="rope-tow-repeater__items"></div>
+				<button type="button" class="rope-tow-btn rope-tow-repeater__add">
 					<?php echo esc_html( $this->button_label ); ?>
 				</button>
 			</div>
@@ -48,7 +48,7 @@ if ( ! class_exists( 'Nylon_Repeater_Control' ) ) {
  * Footer socials sanitizer
  * Accepts either FA icon or image (attachment id + url).
  */
-function nylon_sanitize_footer_social_links( $value ) {
+function rope_tow_sanitize_footer_social_links( $value ) {
 	if ( is_array( $value ) ) {
 		$value = wp_json_encode( $value );
 	}

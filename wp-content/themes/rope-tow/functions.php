@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Nylon functions and definitions
+ * Rope Tow functions and definitions
  *
- * @package Nylon
+ * @package RopeTow
  */
 
-if (!defined("NYLON_VERSION")) {
+if (!defined("ROPE_TOW_VERSION")) {
 	// Replace the version number of the theme on each release.
-	define("NYLON_VERSION", "3.0");
+	define("ROPE_TOW_VERSION", "1.0");
 }
 
-if (!defined('NYLON_ICON')) {
-	define('NYLON_ICON', '<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+if (!defined('ROPE_TOW_ICON')) {
+	define('ROPE_TOW_ICON', '<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<rect width="500" height="500" fill="#00E0BF"/>
 	<path fill-rule="evenodd" clip-rule="evenodd" d="M156.254 172.395L400 172.395L400 156.325L156.254 156.325L156.254 172.395Z" fill="white"/>
 	<path fill-rule="evenodd" clip-rule="evenodd" d="M232.986 124.585L400 124.585L400 108.516L232.986 108.516L232.986 124.585Z" fill="white"/>
@@ -26,19 +26,19 @@ if (!defined('NYLON_ICON')) {
 /**
  * Includes
  *
- * The $nylon_includes array determines the code library included in your theme.
+ * The $rope_tow_includes array determines the code library included in your theme.
  * Add or remove files to the array as needed.
  * Supports child theme overrides.
  * Please note that missing files will produce a fatal error.
  *
- * @package Nylon
+ * @package RopeTow
  */
-function nylon_include()
+function rope_tow_include()
 {
 	$includes = [
-		"classes/class-vite.php",
-		"classes/class-nylon-block.php", // Nylon Block Class
-		"classes/class-nylon-primitive.php", // Nylon Primitive Class
+		// "classes/class-vite.php",
+		// "classes/class-rope-tow-block.php", // Rope Tow Block Class
+		// "classes/class-rope-tow-primitive.php", // Rope Tow Primitive Class
 		"functions/utils.php", // Utility functions
 		"functions/init.php", // Initial theme setup and constants
 		"functions/menus.php", // Removing unneeded WP defaults
@@ -54,9 +54,9 @@ function nylon_include()
 	];
 	foreach ($includes as $file) {
 		if (!($filepath = locate_template($file))) {
-			trigger_error(sprintf(__("Error locating %s for inclusion", "nylon"), $file), E_USER_ERROR);
+			trigger_error(sprintf(__("Error locating %s for inclusion", "rope-tow"), $file), E_USER_ERROR);
 		}
 		require_once $filepath;
 	}
 }
-nylon_include();
+rope_tow_include();

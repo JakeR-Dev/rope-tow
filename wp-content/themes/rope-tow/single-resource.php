@@ -2,9 +2,9 @@
 manage_single_view_redirect();
 get_header(); 
 $postID = get_the_ID();
-$sidebar_content = esc_html(get_theme_mod('nylon_resource_sidebar_content', nylon_get_default('nylon_resource_sidebar_content')));
-$sidebar_button_text = esc_html(get_theme_mod('nylon_resource_sidebar_cta_text', nylon_get_default('nylon_resource_sidebar_cta_text')));
-$sidebar_button_url = esc_url(get_theme_mod('nylon_resource_sidebar_cta_url', nylon_get_default('nylon_resource_sidebar_cta_url')));
+$sidebar_content = esc_html(get_theme_mod('rope_tow_resource_sidebar_content', rope_tow_get_default('rope_tow_resource_sidebar_content')));
+$sidebar_button_text = esc_html(get_theme_mod('rope_tow_resource_sidebar_cta_text', rope_tow_get_default('rope_tow_resource_sidebar_cta_text')));
+$sidebar_button_url = esc_url(get_theme_mod('rope_tow_resource_sidebar_cta_url', rope_tow_get_default('rope_tow_resource_sidebar_cta_url')));
 ?>
 <main>
   <article class="resource-article">
@@ -97,7 +97,7 @@ $sidebar_button_url = esc_url(get_theme_mod('nylon_resource_sidebar_cta_url', ny
         $terms = wp_get_post_terms($postID, 'resource_topic', ['fields' => 'ids']);
         if (!empty($terms)) {
       ?>
-        <section class="related-resources carousel-block husl-block nylon-block" data-block="carousel">
+        <section class="related-resources carousel-block husl-block rope-tow-block" data-block="carousel">
           <div class="container relative z-10 block-content-styled">
             <div class="row mb-6 md:mb-8 lg:mb-12">
               <div class="col-xs-12 col-sm-8 carousel-title">

@@ -1,13 +1,13 @@
 <?php
 
-add_filter('block_categories_all', 'nylon_category_block');
+add_filter('block_categories_all', 'rope_tow_category_block');
 
-function nylon_category_block($cats)
+function rope_tow_category_block($cats)
 {
 	$new = array(
 		'category' => array(
-			'slug'  => 'nylon-blocks',
-			'title' => 'Nylon Blocks',
+			'slug'  => 'rope-tow-blocks',
+			'title' => 'Rope Tow Blocks',
 		)
 	);
 	$position = 0;
@@ -19,7 +19,7 @@ function nylon_category_block($cats)
 /**
  * Only allow HUSL custom blocks for "Pages" post type
  */
-function nylon_allow_only_acf_blocks_on_pages($allowed_blocks, $block_editor_context)
+function rope_tow_allow_only_acf_blocks_on_pages($allowed_blocks, $block_editor_context)
 {
 	if (isset($block_editor_context->post) && $block_editor_context->post->post_type === 'page') {
 		$acf_blocks = [];
@@ -38,12 +38,12 @@ function nylon_allow_only_acf_blocks_on_pages($allowed_blocks, $block_editor_con
 
 	return $allowed_blocks;
 }
-add_filter('allowed_block_types_all', 'nylon_allow_only_acf_blocks_on_pages', 10, 2);
+add_filter('allowed_block_types_all', 'rope_tow_allow_only_acf_blocks_on_pages', 10, 2);
 
 /**
  * Gutenberg Blocks
  *
- * @package Nylon Block
+ * @package rope-tow Block
  */
 if (function_exists("acf_register_block_type")) {
 	function register_acf_block_types()
@@ -137,10 +137,10 @@ if (function_exists("acf_register_block_type")) {
 				"title" => __($block["title"]),
 				"description" => __($block["description"]),
 				"render_template" => "blocks/{$block["name"]}/{$block["name"]}.php",
-				"category" => "nylon-blocks",
-				"icon" => NYLON_ICON,
+				"category" => "rope-tow-blocks",
+				"icon" => ROPE_TOW_ICON,
 				"mode" => "auto",
-				"keywords" => ["nylon", $block["name"]],
+				"keywords" => ["rope-tow", $block["name"]],
 				"example" => [
 					"attributes" => [
 						"mode" => "preview",

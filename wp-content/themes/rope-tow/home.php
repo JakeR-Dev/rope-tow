@@ -19,7 +19,7 @@ $title = is_category() ? get_queried_object()->name : "Blog";
                             <?php if (has_post_thumbnail()) {
                                 the_post_thumbnail("full", ["class" => "object-cover w-full h-full"]);
                             } else {
-                                $default_image_url = get_theme_mod('nylon_post_post_image', nylon_get_default('nylon_post_post_image'));
+                                $default_image_url = get_theme_mod('rope_tow_post_post_image', rope_tow_get_default('rope_tow_post_post_image'));
                                 if ($default_image_url) {
                                     // Get the attachment ID from the image URL
                                     $attachment_id = attachment_url_to_postid($default_image_url);

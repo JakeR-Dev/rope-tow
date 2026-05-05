@@ -1,39 +1,39 @@
 <?php
 // Track post view count for "most popular" filter
-function nylon_prevent_view_spam($post_id) {
-  $key = 'nylon_viewed_' . $post_id;
+function rope_tow_prevent_view_spam($post_id) {
+  $key = 'rope_tow_viewed_' . $post_id;
   if (!isset($_COOKIE[$key])) {
     setcookie($key, '1', time() + 3600, '/');
     return true;
   }
   return false;
 }
-function nylon_track_post_views() {
+function rope_tow_track_post_views() {
   if (is_singular()) {
     global $post;
     $post_id = $post->ID;
     if (current_user_can('edit_posts') || get_post_type($post_id) === 'page') {
       return;
     }
-    if (nylon_prevent_view_spam($post_id)) {
-      $views = (int) get_post_meta($post_id, 'nylon_post_views', true);
+    if (rope_tow_prevent_view_spam($post_id)) {
+      $views = (int) get_post_meta($post_id, 'rope_tow_post_views', true);
       $views++;
-      update_post_meta($post_id, 'nylon_post_views', $views);
+      update_post_meta($post_id, 'rope_tow_post_views', $views);
     }
   }
 }
-add_action('wp_head', 'nylon_track_post_views');
-function nylon_set_default_post_views($post_id, $post, $update) {
+add_action('wp_head', 'rope_tow_track_post_views');
+function rope_tow_set_default_post_views($post_id, $post, $update) {
     if ($update) return;
     $all_post_types = get_post_types(['public' => true], 'names');
     $excluded = ['page', 'attachment'];
     $allowed_post_types = array_diff($all_post_types, $excluded);
     if (!in_array($post->post_type, $allowed_post_types)) return;
-    if (!metadata_exists('post', $post_id, 'nylon_post_views')) {
-        update_post_meta($post_id, 'nylon_post_views', 0);
+    if (!metadata_exists('post', $post_id, 'rope_tow_post_views')) {
+        update_post_meta($post_id, 'rope_tow_post_views', 0);
     }
 }
-add_action('save_post', 'nylon_set_default_post_views', 10, 3);
+add_action('save_post', 'rope_tow_set_default_post_views', 10, 3);
 
 
 // Register post types

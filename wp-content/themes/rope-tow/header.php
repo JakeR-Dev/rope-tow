@@ -11,6 +11,6 @@
   ?>
 </head>
 
-<body <?php body_class(get_theme_mod('nylon_dark_mode', nylon_get_default('nylon_dark_mode')) . '-mode'); ?>>
+<body <?php body_class(get_theme_mod('rope_tow_dark_mode', rope_tow_get_default('rope_tow_dark_mode')) . '-mode'); ?>>
   <?php print_external_scripts("body"); ?>
   <?php get_template_part("partials/global", "navigation"); ?>

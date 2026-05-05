@@ -11,7 +11,7 @@ function form_submit_button($button, $form) {
 	$onkeypress = $input->getAttribute("onkeypress");
 	$text = !empty($form["button"]["text"])
 		? $form["button"]["text"]
-		: __("Submit", "nylon");
+		: __("Submit", "rope-tow");
 	return "<button class='btn btn-primary btn-lg gform_button button' id='" .
 		$id .
 		"' onclick='" .
