@@ -1,0 +1,202 @@
+/* dark mode toggle */
+#customize-control-rope_tow_dark_mode {
+  display: flex;
+  gap: 0;
+}
+
+#customize-control-rope_tow_dark_mode .customize-control-title {
+  margin-right: 24px;
+}
+
+#customize-control-rope_tow_dark_mode .customize-inside-control-row {
+  margin-left: 0;
+}
+
+#customize-control-rope_tow_dark_mode .customize-inside-control-row input[type="radio"] {
+  display: none;
+}
+
+#customize-control-rope_tow_dark_mode .customize-inside-control-row input[type="radio"]:checked + label {
+  background: #007cba;
+  color: #fff;
+}
+
+#customize-control-rope_tow_dark_mode .customize-inside-control-row label {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  user-select: none;
+  background: #f0f0f0;
+  border-radius: 20px 0 0 20px;
+}
+
+#customize-control-rope_tow_dark_mode .customize-inside-control-row:last-of-type label {
+  border-radius: 0 20px 20px 0;
+}
+
+/* basic divider lines for better separation of sections in the customizer */
+#customize-control-rope_tow_typography_presets,
+#customize-control-rope_tow_color_presets,
+#customize-control-rope_tow_dark_mode,
+#customize-control-rope_tow_body_font_weight,
+#customize-control-rope_tow_404_background_image,
+#customize-control-rope_tow_404_subtitle_text,
+#customize-control-rope_tow_404_button_style,
+#customize-control-rope_tow_footer_background_image,
+#customize-control-rope_tow_footer_cta_background_image,
+#customize-control-rope_tow_footer_cta_button_size,
+#customize-control-rope_tow_footer_social_color {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* select fields */
+.customize-control-select .ts-wrapper.single .ts-control,
+.customize-control-select .ts-wrapper.single.input-active .ts-control {
+  border: 1px solid #8c8f94;
+  min-height: 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 2;
+  color: #2c3338;
+  box-shadow: none;
+  padding: 1px 32px 1px 8px;
+  background: #fff url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E") no-repeat right 5px top 55%;
+  background-size: 16px 16px;
+}
+
+.customize-control-select .ts-wrapper.single .ts-control input {
+  font-size: 14px;
+}
+
+.customize-control-select .ts-wrapper.single .ts-control::after {
+  display: none;
+}
+
+.customize-control-select .ts-dropdown,
+.customize-control-select .ts-dropdown .active {
+  border-color: #8c8f94;
+}
+
+/* toggle fields */
+.customizer-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.customizer-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.customizer-toggle-switch input:checked + .toggler {
+  background-color: #007cba;
+}
+
+.customizer-toggle-switch input:checked + .toggler::before {
+  transform: translateX(22px);
+}
+
+.customizer-toggle-switch .toggler {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.customizer-toggle-switch .toggler::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* repeater field */
+.rope-tow-repeater {
+  margin: 12px 0;
+}
+
+.rope-tow-repeater__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rope-tow-repeater__item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.rope-tow-repeater__row {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.rope-tow-repeater__row input[type="text"] {
+  flex: 0 0 100%;
+}
+
+.rope-tow-repeater__row input[type="radio"] {
+  margin-right: 0;
+}
+
+.rope-tow-repeater__actions {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.rope-tow-repeater__actions input[type="checkbox"] {
+  margin-right: 0;
+}
+
+.rope-tow-repeater__drag {
+  cursor: grab;
+  opacity: 0.8;
+}
+
+.rope-tow-repeater__image-preview {
+  flex: 0 0 100%;
+}
+
+/* customizer buttons */
+.rope-tow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.rope-tow-btn--danger {
+  border-color: #ffdad6;
+  background: #ffeceb;
+}
+
+.rope-tow-btn--ghost {
+  background: transparent;
+}

@@ -177,13 +177,15 @@ add_action('wp_footer', 'rope_tow_customize_css');
 // *******
 
 function rope_tow_enqueue_customizer_select2() {
-  wp_enqueue_script('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['jquery'], null, true);
-  wp_enqueue_style('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+  wp_enqueue_script('tom-select', 'https://cdn.jsdelivr.net/npm/tom-select@2/dist/js/tom-select.complete.min.js', [], '2', true);
+  wp_enqueue_style('tom-select', 'https://cdn.jsdelivr.net/npm/tom-select@2/dist/css/tom-select.default.min.css');
 
-  wp_add_inline_script('select2', "
-    jQuery(document).ready(function($) {
-      $('#customize-control-rope_tow_heading_font select').select2({ width: '100%' });
-      $('#customize-control-rope_tow_body_font select').select2({ width: '100%' });
+  wp_add_inline_script('tom-select', "
+    document.addEventListener('DOMContentLoaded', function() {
+      var headingSelect = document.querySelector('#customize-control-rope_tow_heading_font select');
+      var bodySelect = document.querySelector('#customize-control-rope_tow_body_font select');
+      if (headingSelect) new TomSelect(headingSelect, { width: '100%' });
+      if (bodySelect) new TomSelect(bodySelect, { width: '100%' });
     });
   ");
 }
@@ -194,9 +196,7 @@ add_action('customize_controls_enqueue_scripts', 'rope_tow_enqueue_customizer_se
 // *******
 
 function rope_tow_customize_preview_js() {
-  if (function_exists('rope_tow_vite') && rope_tow_vite()) {
-    rope_tow_vite()->enqueue_entry('assets/js/utils/customizerPreview.js', array('customize-preview', 'jquery'));
-  }
+  wp_enqueue_script('rope-tow-customizer-preview', get_template_directory_uri() . '/assets/admin/js/customizerPreview.js', array('customize-preview'), ROPE_TOW_VERSION, true);
 }
 add_action('customize_preview_init', 'rope_tow_customize_preview_js');
 
@@ -206,7 +206,7 @@ add_action('customize_preview_init', 'rope_tow_customize_preview_js');
 
 function rope_tow_customize_controls_js() {
   wp_enqueue_media();
-  wp_enqueue_script('rope-tow-customizer-controls', get_template_directory_uri() . '/assets/js/utils/customizerControls.js', array('customize-controls', 'jquery'), rand(), true);
+  wp_enqueue_script('rope-tow-customizer-controls', get_template_directory_uri() . '/assets/admin/js/customizerControls.js', array('customize-controls'), ROPE_TOW_VERSION, true);
 }
 add_action('customize_controls_enqueue_scripts', 'rope_tow_customize_controls_js');
 
@@ -215,8 +215,6 @@ add_action('customize_controls_enqueue_scripts', 'rope_tow_customize_controls_js
 // *******
 
 function rope_tow_customizer_styles() {
-  if (function_exists('rope_tow_vite') && rope_tow_vite()) {
-    rope_tow_vite()->enqueue_entry('assets/scss/admin.scss');
-  }
+  wp_enqueue_style('rope-tow-customizer-styles', get_template_directory_uri() . '/assets/admin/css/admin.css', array(), ROPE_TOW_VERSION);
 }
 add_action('customize_controls_print_styles', 'rope_tow_customizer_styles');

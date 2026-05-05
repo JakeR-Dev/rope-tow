@@ -44,13 +44,7 @@ function rope_tow_enqueue_vite_manifest() {
 	$entry = $manifest['assets/js/main.ts'];
 
 	if ( ! empty( $entry['file'] ) ) {
-		wp_enqueue_script(
-			'rope-tow-main',
-			get_template_directory_uri() . '/dist/' . ltrim( $entry['file'], '/' ),
-			array(),
-			ROPE_TOW_VERSION,
-			true
-		);
+		wp_enqueue_script( 'rope-tow-main', get_template_directory_uri() . '/dist/' . ltrim( $entry['file'], '/' ), array(), ROPE_TOW_VERSION, true );
 
 		// Vite output is ES modules — add type="module" to the script tag.
 		add_filter( 'script_loader_tag', function ( $tag, $handle ) {
@@ -63,12 +57,7 @@ function rope_tow_enqueue_vite_manifest() {
 
 	if ( ! empty( $entry['css'] ) && is_array( $entry['css'] ) ) {
 		foreach ( $entry['css'] as $index => $css_file ) {
-			wp_enqueue_style(
-				'rope-tow-main-' . $index,
-				get_template_directory_uri() . '/dist/' . ltrim( $css_file, '/' ),
-				array(),
-				ROPE_TOW_VERSION
-			);
+			wp_enqueue_style( 'rope-tow-main-' . $index, get_template_directory_uri() . '/dist/' . ltrim( $css_file, '/' ), array(), ROPE_TOW_VERSION );
 		}
 	}
 }
