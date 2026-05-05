@@ -63,24 +63,6 @@ add_action("admin_menu", "rope_tow_remove_menus");
 // Remove <link rel='dns-prefetch' href='//s.w.org' />
 add_filter("emoji_svg_url", "__return_false");
 
-// Hide WordPress Version Info
-function rope_tow_hide_wordpress_version() {
-	return "";
-}
-add_filter("the_generator", "rope_tow_hide_wordpress_version");
-// Remove WordPress Version Number In URL Parameters From JS/CSS
-function rope_tow_hide_wordpress_version_in_script($src, $handle) {
-	$src = remove_query_arg("ver", $src);
-	return $src;
-}
-add_filter("style_loader_src", "rope_tow_hide_wordpress_version_in_script", 10, 2);
-add_filter(
-	"script_loader_src",
-	"rope_tow_hide_wordpress_version_in_script",
-	10,
-	2
-);
-
 // Remove Recent Comments style
 add_action("widgets_init", "rope_tow_remove_recent_comments_style");
 function rope_tow_remove_recent_comments_style() {
@@ -91,7 +73,7 @@ function rope_tow_remove_recent_comments_style() {
 	]);
 }
 
-// Bonus, remove Yoast comments
+// Remove Yoast comments
 if (defined("WPSEO_VERSION")) {
 	add_action(
 		"wp_head",

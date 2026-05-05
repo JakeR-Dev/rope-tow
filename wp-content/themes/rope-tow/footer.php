@@ -103,46 +103,7 @@
         </div>
       </div>
     </footer>
-    <?php
-      $args = array(
-        'post_type'      => 'popup',
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-      );
-      $included = get_field('included');  // globally | include_list | exclude_list
-      $list     = get_field('list');      // array of popup IDs (returned as IDs)
-      $list_ids = is_array($list) ? $list : [];
-      if ($included === 'include_list' && !empty($list_ids)) {
-        $args['post__in'] = $list_ids;
-      } elseif ($included === 'exclude_list' && !empty($list_ids)) {
-        $args['post__not_in'] = $list_ids;
-      }
-      $popup_query = new WP_Query($args);
-      if ($popup_query->have_posts()) {
-    ?>
-      <?php while ($popup_query->have_posts()) { $popup_query->the_post(); ?>
-        <div class="husl-primitive modal-primitive" data-primitive="modal" data-modal="<?php the_field('popup_id'); ?>">
-          <div class="modal-primitive__inner">
-            <!-- close button -->
-            <div class="row mb-2 md:mb-4">
-              <div class="col-xs-12 text-right">
-                <button class="close" aria-label="close modal"><span class="sr-only">close</span></button>
-              </div>
-            </div>
-            <div class="row">
-              <!-- content -->
-              <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="block-content-styled">
-                  <?php the_content(); ?>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php } wp_reset_postdata(); ?>
-    <?php } ?>
+    
     <?php wp_footer(); ?>
     <?php print_external_scripts("footer"); ?>
   </body>

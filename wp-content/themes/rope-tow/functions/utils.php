@@ -1,42 +1,10 @@
 <?php
-
 /**
  *  A collection of utility functions
  *
  *  @since 1.0.0
  *  @package rope-tow
  */
-
-
-/**
- * Checks if an element is empty
- *
- * @param string $element The element to check
- * @return bool True if the element is empty, false otherwise
- */
-function is_element_empty($element)
-{
-	$element = trim($element);
-	return empty($element);
-}
-
-/**
- * Generates a random string
- *
- * @param int $length The length of the random string
- * @return string The random string
- */
-function generate_random_str($length = 10)
-{
-	$characters =
-		"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	$charactersLength = strlen($characters);
-	$randomString = "";
-	for ($i = 0; $i < $length; $i++) {
-		$randomString .= $characters[rand(0, $charactersLength - 1)];
-	}
-	return $randomString;
-}
 
 /**
  * Add page slug to body_class() classes if it doesn't exist
@@ -95,35 +63,6 @@ function print_external_scripts($location)
 }
 
 /**
- * Add Extra buttons for shortcodes in TinyMCE Editor
- * @global type $external_scripts
- * @param type $location
- */
-
-function rope_tow_custom_buttons($buttons)
-{
-	array_push($buttons, "custom-classes");
-	array_push($buttons, "cta-shortcode");
-	return $buttons;
-}
-
-function rope_tow_custom_plugins($plugins)
-{
-	$plugins['custom-classes'] = get_template_directory_uri() . '/assets/js/tinymce/tiny-mce.js';
-	$plugins['cta-shortcode'] = get_template_directory_uri() . '/assets/js/tinymce/tiny-mce.js';
-	return $plugins;
-}
-
-function rope_tow_custom_init()
-{
-	add_filter('mce_buttons', 'rope_tow_custom_buttons');
-	add_filter('mce_external_plugins', 'rope_tow_custom_plugins');
-}
-
-add_action('init', 'rope_tow_custom_init');
-
-
-/**
  * Retrieves site main favicon
  * 
  * @return string The site favicon URL
@@ -135,26 +74,6 @@ function get_site_favicon()
 		return get_site_icon_url();
 	} else {
 		return get_template_directory_uri() . '/assets/img/favicon.svg';
-	}
-}
-
-/**
- *  Add a single primitive element
- * 
- * @param string $acf_group_field_name The ACF group field name
- * @param string $primitive_name The name of the primitive
- *
- */
-function add_single_primitive($acf_group_field_name, $primitive_name = null)
-{
-	if (empty($acf_group_field_name)) {
-		return;
-	}
-	if (have_rows($acf_group_field_name)) {
-		while (have_rows($acf_group_field_name)) {
-			the_row();
-			get_template_part('primitives/' . ($primitive_name ? $primitive_name : $acf_group_field_name));
-		}
 	}
 }
 
@@ -179,41 +98,6 @@ function custom_excerpt_more()
 	return '...';
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
-
-/**
- * Display a preview message for the block
- * 
- * @param string $block_name
- * @param string $message
- */
-function display_preview_message($block_name, $message = null)
-{
-	if (!$message) {
-		$message = 'Click to display block fields';
-	}
-	$block_name = str_replace("-", " ", $block_name);
-	$block_name = ucfirst($block_name);
-	echo '<p style="padding:1.25rem;border-radius:4px;border:1px solid #1e1e1e;font-weight:bold;line-height:1.5;">' . $block_name . '<br><span style="font-size: 13px;font-weight:400;">' . $message . '</span></p>';
-}
-
-
-/**
- * Redirect to the external URL if it exists
- * 
- * @return void
- */
-function manage_single_view_redirect()
-{
-
-	if (is_single()) {
-		$external_url = get_field('external_url', get_the_ID()) ?: false;
-
-		if ($external_url) {
-			wp_redirect($external_url);
-			exit;
-		}
-	}
-}
 
 /**
  * Create a mixed version of a user-chosen color

@@ -41,10 +41,10 @@ function rope_tow_include()
 		// "classes/class-rope-tow-primitive.php", // Rope Tow Primitive Class
 		"functions/utils.php", // Utility functions
 		"functions/init.php", // Initial theme setup and constants
+		"functions/assets.php", // Asset enqueueing (Vite dev / prod)
 		"functions/menus.php", // Removing unneeded WP defaults
 		"functions/config.php", // Configuration
 		"functions/security.php", // Security focused settings
-		"functions/forms.php", // Gravity Forms settings
 		"functions/cpt.php", // Custom Post Types
 		"functions/options.php", // ACF Theme Options
 		"functions/shortcodes.php", // Custom Wordpress Shortcodes for WYSIWYGs

@@ -1,7 +1,7 @@
 <?php
 
 // Navigation hide toggle
-$wp_customize->add_control( new Rope Tow_Toggle_Control( $wp_customize, 'rope_tow_nav_hide', array(
+$wp_customize->add_control( new Rope_Tow_Toggle_Control( $wp_customize, 'rope_tow_nav_hide', array(
   'label'    => __('Hide Navigation', 'rope-tow'),
   'section'  => 'rope_tow_navigation_section',
   'settings' => 'rope_tow_nav_hide',
@@ -44,7 +44,7 @@ $wp_customize->add_control('rope_tow_hamburger_animation', array(
 ));
 
 // Navigation cta toggle
-$wp_customize->add_control( new Rope Tow_Toggle_Control( $wp_customize, 'rope_tow_nav_cta_enabled', array(
+$wp_customize->add_control( new Rope_Tow_Toggle_Control( $wp_customize, 'rope_tow_nav_cta_enabled', array(
   'label'    => __('Enable Navigation CTA', 'rope-tow'),
   'section'  => 'rope_tow_navigation_section',
   'settings' => 'rope_tow_nav_cta_enabled',

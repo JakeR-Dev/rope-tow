@@ -46,7 +46,7 @@ $wp_customize->add_control(new WP_Customize_Image_Control(
 ));
 
 // Footer socials
-$wp_customize->add_control(new Rope Tow_Repeater_Control($wp_customize, 'rope_tow_footer_social_links', array(
+$wp_customize->add_control(new Rope_Tow_Repeater_Control($wp_customize, 'rope_tow_footer_social_links', array(
   'label'       => __( 'Footer Social Links', 'rope-tow' ),
   'description' => sprintf(
     __( 'Add, remove, and reorder social links. Need icons? See the %1$sFont Awesome 6 Brands library%2$s.', 'rope-tow' ),
@@ -65,7 +65,7 @@ $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'rope_t
 )));
 
 // Footer cta toggle
-$wp_customize->add_control( new Rope Tow_Toggle_Control( $wp_customize, 'rope_tow_footer_cta_enabled', array(
+$wp_customize->add_control( new Rope_Tow_Toggle_Control( $wp_customize, 'rope_tow_footer_cta_enabled', array(
   'label'    => __('Enable Footer CTA', 'rope-tow'),
   'section'  => 'rope_tow_footer_section',
   'settings' => 'rope_tow_footer_cta_enabled',

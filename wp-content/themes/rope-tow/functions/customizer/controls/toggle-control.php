@@ -2,7 +2,7 @@
 
 // Add custom styled toggle control
 if ( class_exists( 'WP_Customize_Control' ) ) {
-  class Rope Tow_Toggle_Control extends WP_Customize_Control {
+  class Rope_Tow_Toggle_Control extends WP_Customize_Control {
     public $type = 'toggle';
 
     public function render_content() { ?>
