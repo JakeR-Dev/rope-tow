@@ -233,9 +233,17 @@ add_action('customize_controls_enqueue_scripts', 'rope_tow_enqueue_customizer_to
 
 // *******
 // Live update customize preview JS
+// Enqueue all customizer preview scripts
 // *******
 
 function rope_tow_customize_preview_js() {
+  wp_enqueue_script('rope-tow-customizer-preview-colors', get_template_directory_uri() . '/assets/admin/js/customizerPreview/colors.js', array('customize-preview'), ROPE_TOW_VERSION, true);
+  wp_enqueue_script('rope-tow-customizer-preview-typography', get_template_directory_uri() . '/assets/admin/js/customizerPreview/typography.js', array('customize-preview'), ROPE_TOW_VERSION, true);
+  wp_enqueue_script('rope-tow-customizer-preview-navigation', get_template_directory_uri() . '/assets/admin/js/customizerPreview/navigation.js', array('customize-preview'), ROPE_TOW_VERSION, true);
+  wp_enqueue_script('rope-tow-customizer-preview-buttons', get_template_directory_uri() . '/assets/admin/js/customizerPreview/buttons.js', array('customize-preview'), ROPE_TOW_VERSION, true);
+  wp_enqueue_script('rope-tow-customizer-preview-footer', get_template_directory_uri() . '/assets/admin/js/customizerPreview/footer.js', array('customize-preview'), ROPE_TOW_VERSION, true);
+  wp_enqueue_script('rope-tow-customizer-preview-404', get_template_directory_uri() . '/assets/admin/js/customizerPreview/404Page.js', array('customize-preview'), ROPE_TOW_VERSION, true);
+  wp_enqueue_script('rope-tow-customizer-preview-resources', get_template_directory_uri() . '/assets/admin/js/customizerPreview/resources.js', array('customize-preview'), ROPE_TOW_VERSION, true);
   wp_enqueue_script('rope-tow-customizer-preview', get_template_directory_uri() . '/assets/admin/js/customizerPreview.js', array('customize-preview'), ROPE_TOW_VERSION, true);
 }
 add_action('customize_preview_init', 'rope_tow_customize_preview_js');

@@ -1,11 +1,4 @@
-import './customizerPreview/colors.js';
-import './customizerPreview/typography.js';
-import './customizerPreview/navigation.js';
-import './customizerPreview/buttons.js';
-import './customizerPreview/footer.js';
-import './customizerPreview/404Page.js';
-import './customizerPreview/resources.js';
-
+// init all enqueued customizer preview scripts
 if (window.RopeTowPreviewColors) {
   window.RopeTowPreviewColors.init();
 }

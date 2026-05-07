@@ -1,7 +1,3 @@
-const setCSSVar = (name, value) => {
-  document.body.style.setProperty(name, value);
-};
-
 const RopeTowPreviewColors = {
   init: function() {
     // Dark mode toggle
@@ -37,7 +33,7 @@ const RopeTowPreviewColors = {
     Object.entries(colorBindings).forEach(([settingId, cssVar]) => {
       wp.customize(settingId, value => {
         value.bind(newval => {
-          setCSSVar(cssVar, newval);
+          document.body.style.setProperty(cssVar, newval);
         });
       });
     });

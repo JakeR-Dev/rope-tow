@@ -1,7 +1,7 @@
 @use "../utilities/responsive" as *;
 
 // base button style
-.btn, .wp-element-button {
+.btn {
 	position: relative;
 	display: inline-block;
 	max-width: 100%;
@@ -69,14 +69,14 @@
 		&:hover {
 			background: var(--primary-button-color-darkened);
 			border-color: var(--primary-button-color-darkened);
-			color: var(--body-color);
+			color: var(--color-white);
 		}
 		&:active,
 		&:focus,
 		&.active {
 			background: var(--primary-button-color);
 			border-color: var(--primary-button-color);
-			color: var(--body-color);
+			color: var(--color-white);
 		}
 	}
 
@@ -205,6 +205,19 @@
 					left: -2px;
 				}
 			}
+		}
+	}
+}
+
+.wp-block-button {
+	&:not(.is-style-outline) {
+		.wp-element-button {
+			@extend .btn, .btn-primary;
+		}
+	}
+	&.is-style-outline {
+		.wp-element-button {
+			@extend .btn, .btn-primary-outline;
 		}
 	}
 }

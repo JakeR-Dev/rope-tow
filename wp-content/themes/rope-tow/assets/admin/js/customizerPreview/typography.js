@@ -1,7 +1,3 @@
-const setCSSVar = (name, value) => {
-  document.body.style.setProperty(name, value);
-};
-
 const loadGoogleFont = (font, id) => {
   const fontName = font.replace(/ /g, '+');
   const fontUrl = `https://fonts.googleapis.com/css2?family=${fontName}:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap`;
@@ -23,14 +19,14 @@ const RopeTowPreviewTypography = {
     wp.customize('rope_tow_heading_font', value => {
       value.bind(to => {
         loadGoogleFont(to, 'heading-font-preview');
-        setCSSVar('--font-family-headline', `'${to}', sans-serif`);
+        document.body.style.setProperty('--font-family-headline', `'${to}', sans-serif`);
       });
     });
 
     // Heading font weight
     wp.customize('rope_tow_heading_font_weight', value => {
       value.bind(val => {
-        setCSSVar('--font-weight-heading', `var(--weight-${val})`);
+        document.body.style.setProperty('--font-weight-heading', `var(--weight-${val})`);
       });
     });
 
@@ -38,21 +34,21 @@ const RopeTowPreviewTypography = {
     wp.customize('rope_tow_body_font', value => {
       value.bind(to => {
         loadGoogleFont(to, 'body-font-preview');
-        setCSSVar('--font-family-body', `'${to}', sans-serif`);
+        document.body.style.setProperty('--font-family-body', `'${to}', sans-serif`);
       });
     });
 
     // Body font weight
     wp.customize('rope_tow_body_font_weight', value => {
       value.bind(val => {
-        setCSSVar('--font-weight-body', `var(--weight-${val})`);
+        document.body.style.setProperty('--font-weight-body', `var(--weight-${val})`);
       });
     });
 
     // Body font size
     wp.customize('rope_tow_body_font_size', value => {
       value.bind(val => {
-        setCSSVar('--font-size-body', `${val}px`);
+        document.body.style.setProperty('--font-size-body', `${val}px`);
       });
     });
 
@@ -69,7 +65,7 @@ const RopeTowPreviewTypography = {
     Object.entries(headingSizes).forEach(([settingId, cssVar]) => {
       wp.customize(settingId, value => {
         value.bind(val => {
-          setCSSVar(cssVar, `${val}px`);
+          document.body.style.setProperty(cssVar, `${val}px`);
         });
       });
     });

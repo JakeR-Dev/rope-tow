@@ -1,5 +1,3 @@
-@use "responsive";
-
 @mixin make-lead {
 	font-weight: var(--font-weight-body, 400);
 	font-size: calc(var(--font-size-body) + 8px);

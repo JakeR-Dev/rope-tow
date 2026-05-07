@@ -1,10 +1,11 @@
-$mobile_width: 640px;
-$tablet_width: 768px;
-$desktop_width: 1024px;
-$wide_width: 1280px;
-$full_width: 1536px;
+$mobile_width: 40rem; // 640px
+$tablet_width: 48rem; // 768px
+$desktop_width: 64rem; // 1024px
+$wide_width: 80rem; // 1280px
+$full_width: 96rem; // 1536px
 
 :root {
+  /* Breakpoints */
   --mobile-width: $mobile_width;
   --tablet-width: $tablet_width;
   --desktop-width: $desktop_width;

@@ -1,8 +1,19 @@
-// Use WordPress-provided global jQuery in the Customizer preview
-const $ = window.jQuery || window.$;
+// Footer bg image helper
+const setBackgroundImage = (selector, imageUrl) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.style.backgroundImage = imageUrl ? `url(${imageUrl})` : '';
+  });
+};
 
-const setCSSVar = (name, value) => {
-  document.body.style.setProperty(name, value);
+// Element class toggle helper
+const updateElementClasses = (selector, removeClasses, newClasses) => {
+  const classesToAdd = (newClasses || '').split(/\s+/).filter(Boolean);
+  document.querySelectorAll(selector).forEach(el => {
+    el.classList.remove(...removeClasses);
+    if (classesToAdd.length) {
+      el.classList.add(...classesToAdd);
+    }
+  });
 };
 
 const RopeTowPreviewFooter = {
@@ -31,21 +42,21 @@ const RopeTowPreviewFooter = {
     // Footer background color
     wp.customize('rope_tow_footer_color', function(value) {
       value.bind(function(newval) {
-        setCSSVar('--footer-bg-color', newval);
+        document.body.style.setProperty('--footer-bg-color', newval);
       });
     });
 
     // Footer background image
     wp.customize('rope_tow_footer_background_image', function(value) {
       value.bind(function(newVal) {
-        $('.global-footer').css('background-image', newVal ? 'url(' + newVal + ')' : '');
+        setBackgroundImage('.global-footer', newVal);
       });
     });
 
     // Footer social icon color
     wp.customize('rope_tow_footer_social_color', function(value) {
       value.bind(function(newval) {
-        setCSSVar('--footer-social-link-color', newval);
+        document.body.style.setProperty('--footer-social-link-color', newval);
       });
     });
 
@@ -79,14 +90,14 @@ const RopeTowPreviewFooter = {
     // Footer cta background color
     wp.customize('rope_tow_footer_cta_background_color', function(value) {
       value.bind(function(newval) {
-        setCSSVar('--footer-cta-bg-color', newval);
+        document.body.style.setProperty('--footer-cta-bg-color', newval);
       });
     });
 
     // Footer cta background image
     wp.customize('rope_tow_footer_cta_background_image', function(value) {
       value.bind(function(newVal) {
-        $('.global-footer__cta').css('background-image', newVal ? 'url(' + newVal + ')' : '');
+        setBackgroundImage('.global-footer__cta', newVal);
       });
     });
 
@@ -109,7 +120,6 @@ const RopeTowPreviewFooter = {
     // Footer cta button style
     wp.customize('rope_tow_footer_cta_button_style', function(value) {
       value.bind(function(newVal) {
-        const $button = $('.footer-cta-button');
         const allClasses = [
           'btn-primary',
           'btn-primary-outline',
@@ -118,22 +128,19 @@ const RopeTowPreviewFooter = {
           'btn-white',
           'btn-white-outline'
         ];
-
-        $button.removeClass(allClasses.join(' ')).addClass(newVal);
+        updateElementClasses('.footer-cta-button', allClasses, newVal);
       });
     });
 
     // Footer cta button size
     wp.customize('rope_tow_footer_cta_button_size', function(value) {
       value.bind(function(newVal) {
-        const $button = $('.footer-cta-button');
         const allClasses = [
-          'btn btn-sm',
           'btn',
-          'btn btn-lg'
+          'btn-sm',
+          'btn-lg'
         ];
-
-        $button.removeClass(allClasses.join(' ')).addClass(newVal);
+        updateElementClasses('.footer-cta-button', allClasses, newVal);
       });
     });
 
@@ -175,7 +182,6 @@ const RopeTowPreviewFooter = {
     // Footer cta 2 button style
     wp.customize('rope_tow_footer_cta_secondary_button_style', function(value) {
       value.bind(function(newVal) {
-        const $button = $('.footer-cta-secondary-button');
         const allClasses = [
           'btn-primary',
           'btn-primary-outline',
@@ -184,34 +190,29 @@ const RopeTowPreviewFooter = {
           'btn-white',
           'btn-white-outline'
         ];
-
-        $button.removeClass(allClasses.join(' ')).addClass(newVal);
+        updateElementClasses('.footer-cta-secondary-button', allClasses, newVal);
       });
     });
 
     // Footer cta 2 button size
     wp.customize('rope_tow_footer_cta_secondary_button_size', function(value) {
       value.bind(function(newVal) {
-        const $button = $('.footer-cta-secondary-button');
         const allClasses = [
-          'btn btn-sm',
           'btn',
-          'btn btn-lg'
+          'btn-sm',
+          'btn-lg'
         ];
-
-        $button.removeClass(allClasses.join(' ')).addClass(newVal);
+        updateElementClasses('.footer-cta-secondary-button', allClasses, newVal);
       });
     });
 
     // Footer cta 2 button size
     wp.customize('rope_tow_footer_cta_layout', function(value) {
       value.bind(function(newVal) {
-        const $footer_cta = $('.global-footer__cta');
         const allClasses = [
           'layout-split'
         ];
-
-        $footer_cta.removeClass(allClasses.join(' ')).addClass(newVal);
+        updateElementClasses('.global-footer__cta', allClasses, newVal);
       });
     });
 

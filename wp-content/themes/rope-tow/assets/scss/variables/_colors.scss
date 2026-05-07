@@ -1,6 +1,5 @@
-// Color variables
 :root {
-  // base color palette
+  /* Base color palette */
   --color-white: #fff;
   --color-black: #060D18;
   --color-orange: #D94040;
@@ -11,7 +10,7 @@
   --color-gray: #4A5568;
   --color-gray-light: #CBD5E0;
   
-  // color palette map to brand variables
+  /* Color palette map to brand variables */
   --brand-primary: var(--color-dark-blue);
   --brand-secondary: var(--color-gold);
   --brand-tertiary: var(--color-blue);
@@ -23,7 +22,7 @@
   --brand-inverse: var(--color-black);
   --color-error: var(--color-orange);
   
-  // elements
+  /* Elements */
   --body-color: var(--color-dark-blue);
   --heading-color: var(--color-dark-blue);
   --primary-button-color: var(--brand-primary);

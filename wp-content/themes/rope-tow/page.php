@@ -3,6 +3,8 @@
 get_header(); 
 ?>
 <main>
-    <?php the_content(); ?>
+    <div class="container">
+        <?php the_content(); ?>
+    </div>
 </main>
 <?php get_footer(); ?>
