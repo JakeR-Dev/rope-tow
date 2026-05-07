@@ -73,7 +73,7 @@ function get_site_favicon()
 	if (function_exists('has_site_icon') && has_site_icon()) {
 		return get_site_icon_url();
 	} else {
-		return get_template_directory_uri() . '/assets/img/favicon.svg';
+		return get_template_directory_uri() . '/assets/img/favicon.png';
 	}
 }
 
