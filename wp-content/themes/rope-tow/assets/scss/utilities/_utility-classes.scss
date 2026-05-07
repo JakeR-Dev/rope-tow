@@ -1,0 +1,51 @@
+.bg {
+  &-primary1,
+  &-brand-primary {
+    background-color: var(--brand-primary);
+  }
+  &-primary2,
+  &-brand-secondary {
+    background-color: var(--brand-secondary);
+  }
+  &-primary3,
+  &-brand-tertiary {
+    background-color: var(--brand-tertiary);
+  }
+  &-primary4,
+  &-brand-tertiary-alt {
+    background-color: var(--brand-tertiary-alt);
+  }
+  &-neutral1,
+  &-color-black {
+    background-color: var(--color-black);
+    h1, h2, h3, h4, h5, h6,
+    .btn.btn-primary-outline,
+    .btn.btn-secondary-outline,
+    p a:not(.btn),
+    p a:not(.btn):active,
+    span {
+      color: var(--color-white);
+    }
+  }
+  &-neutral2,
+  &-color-gray {
+    background-color: var(--color-gray);
+  }
+  &-neutral3,
+  &-color-gray-light {
+    background-color: var(--color-gray-light);
+  }
+  &-color-white {
+    background-color: var(--color-white);
+  }
+}
+
+.justify-right {
+  justify-content: flex-end;
+}
+.justify-left {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}

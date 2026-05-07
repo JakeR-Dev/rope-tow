@@ -9,7 +9,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_nav_hide', array(
 
 // Nav style
 rope_tow_add_setting($wp_customize, 'rope_tow_navigation_style', array(
-  'default'           => 'transparent-full-width',
+  'default'           => 'solid-contained',
   'sanitize_callback' => 'sanitize_text_field',
   'transport'         => 'postMessage',
 ));
@@ -23,7 +23,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_navigation_layout', array(
 
 // Mobile nav hamburger animation style
 rope_tow_add_setting($wp_customize, 'rope_tow_hamburger_animation', array(
-  'default'           => 'criss-cross',
+  'default'           => 'collapse',
   'sanitize_callback' => 'sanitize_text_field',
   'transport'         => 'postMessage',
 ));

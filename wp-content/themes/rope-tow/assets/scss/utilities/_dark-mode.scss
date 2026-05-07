@@ -1,0 +1,19 @@
+body.dark-mode {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  .rope-tow-block--no-bg.rope-tow-block--no-bg-color {
+    &, h1, h2, h3, h4, h5, h6, .btn.btn-primary-outline, .btn.btn-secondary-outline {
+      color: var(--color-white);
+    }
+  }
+  .bg-white,
+  .bg-color-white {
+    color: var(--body-color);
+  }
+  .block-content-styled,
+  .content-styled {
+    a:not(.btn) {
+      color: var(--brand-primary-lighten);
+    }
+  }
+}

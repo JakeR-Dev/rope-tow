@@ -1,0 +1,13 @@
+$mobile_width: 640px;
+$tablet_width: 768px;
+$desktop_width: 1024px;
+$wide_width: 1280px;
+$full_width: 1536px;
+
+:root {
+  --mobile-width: $mobile_width;
+  --tablet-width: $tablet_width;
+  --desktop-width: $desktop_width;
+  --wide-width: $wide_width;
+  --full-width: $full_width;
+}

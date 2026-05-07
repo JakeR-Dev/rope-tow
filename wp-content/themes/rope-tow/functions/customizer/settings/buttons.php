@@ -2,35 +2,35 @@
 
 // Button border radius
 rope_tow_add_setting($wp_customize, 'rope_tow_button_radius', array(
-  'default'           => '50',
+  'default'           => 10,
   'sanitize_callback' => 'absint',
   'transport'         => 'postMessage',
 ));
 
 // Button padding X
 rope_tow_add_setting($wp_customize, 'rope_tow_button_padding_x', array(
-  'default'           => '24',
+  'default'           => 30,
   'sanitize_callback' => 'absint',
   'transport'         => 'postMessage',
 ));
 
 // Button padding Y
 rope_tow_add_setting($wp_customize, 'rope_tow_button_padding_y', array(
-  'default'           => '12',
+  'default'           => 10,
   'sanitize_callback' => 'absint',
   'transport'         => 'postMessage',
 ));
 
 // Button font size
 rope_tow_add_setting($wp_customize, 'rope_tow_button_font_size', array(
-  'default'           => '16',
+  'default'           => 14,
   'sanitize_callback' => 'absint',
   'transport'         => 'postMessage',
 ));
 
 // Button font weight
 rope_tow_add_setting($wp_customize, 'rope_tow_button_font_weight', array(
-  'default'           => '--weight-bold',
+  'default'           => '--weight-semibold',
   'transport'         => 'postMessage',
   'sanitize_callback' => function($input) {
     $valid = array(
@@ -46,7 +46,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_button_font_weight', array(
 
 // Button text transform
 rope_tow_add_setting($wp_customize, 'rope_tow_button_text_transform', array(
-  'default'           => 'none',
+  'default'           => 'uppercase',
   'transport'         => 'postMessage',
   'sanitize_callback' => function($input) {
     $valid = array(

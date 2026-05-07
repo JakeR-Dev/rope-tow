@@ -1,0 +1,33 @@
+@use "../variables/breakpoints";
+
+@mixin media($res) {
+	@if mobile==$res {
+		@media (min-width: breakpoints.$mobile_width) {
+			@content;
+		}
+	}
+
+	@if tablet==$res {
+		@media (min-width: breakpoints.$tablet_width) {
+			@content;
+		}
+	}
+
+	@if desktop==$res {
+		@media (min-width: breakpoints.$desktop_width) {
+			@content;
+		}
+	}
+
+	@if wide==$res {
+		@media (min-width: breakpoints.$wide_width) {
+			@content;
+		}
+	}
+
+	@if full_width==$res {
+		@media (min-width: breakpoints.$full_width) {
+			@content;
+		}
+	}
+}

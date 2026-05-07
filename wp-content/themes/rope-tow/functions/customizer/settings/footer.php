@@ -2,13 +2,13 @@
 
 // Footer logo
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_logo', array(
-  'default'           => get_theme_mod('custom_logo'),
+  'default'           => '',
   'sanitize_callback' => 'esc_url_raw',
 ));
 
 // Footer copyright text
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_copyright_text', array(
-  'default'           => '',
+  'default'           => 'Rope Tow © 2025',
   'sanitize_callback' => 'sanitize_text_field',
   'transport'         => 'postMessage',
 ));
@@ -24,7 +24,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_footer_layout', array(
 
 // Footer background color
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_color', array(
-  'default'           => '#5000EA',
+  'default'           => rope_tow_get_default('rope_tow_footer_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
@@ -45,7 +45,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_footer_social_links', array(
 
 // Footer social link color
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_social_color', array(
-  'default'           => '#ffffff',
+  'default'           => rope_tow_get_default('rope_tow_footer_social_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
@@ -72,14 +72,14 @@ rope_tow_add_setting($wp_customize, 'rope_tow_footer_cta_layout', array(
 
 // Footer cta title
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_cta_title', array(
-  'default'           => '',
+  'default'           => 'Ready to get started?',
   'sanitize_callback' => 'sanitize_text_field',
   'transport'         => 'postMessage',
 ));
 
 // Footer cta subtitle
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_cta_subtitle', array(
-  'default'           => '',
+  'default'           => 'Contact our team or schedule a demo today.',
   'sanitize_callback' => 'sanitize_text_field',
   'transport'         => 'postMessage',
 ));
@@ -100,14 +100,14 @@ rope_tow_add_setting($wp_customize, 'rope_tow_footer_cta_background_image', arra
 
 // Footer cta button title
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_cta_button_title', array(
-  'default'           => '',
+  'default'           => 'Schedule a Demo',
   'sanitize_callback' => 'sanitize_text_field',
   'transport'         => 'postMessage',
 ));
 
 // Footer cta button url
 rope_tow_add_setting($wp_customize, 'rope_tow_footer_cta_button_url', array(
-  'default'           => '',
+  'default'           => home_url('/contact'),
   'sanitize_callback' => 'esc_url_raw',
   'transport'         => 'postMessage',
 ));

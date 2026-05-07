@@ -2,7 +2,7 @@
 
 // 404 page text color
 rope_tow_add_setting($wp_customize, 'rope_tow_404_text_style', array(
-  'default'           => 'default',
+  'default'           => 'dark',
   'sanitize_callback' => function($val) {
     return in_array($val, ['default', 'dark', 'light'], true) ? $val : 'default';
   },
@@ -23,7 +23,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_404_top_image', array(
 
 // 404 page heading
 rope_tow_add_setting($wp_customize, 'rope_tow_404_heading_text', array(
-  'default'           => '404. Page not found',
+  'default'           => 'Oops! Nothing here.',
   'transport'         => 'postMessage',
   'sanitize_callback' => 'sanitize_text_field',
 ));
@@ -37,7 +37,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_404_subtitle_text', array(
 
 // 404 page button text
 rope_tow_add_setting($wp_customize, 'rope_tow_404_button_label', array(
-  'default'           => 'Back to Homepage',
+  'default'           => 'Go Back',
   'transport'         => 'postMessage',
   'sanitize_callback' => 'sanitize_text_field',
 ));
@@ -80,7 +80,7 @@ rope_tow_add_setting($wp_customize, 'rope_tow_404_button2_url', array(
 
 // 404 page secondary button style
 rope_tow_add_setting($wp_customize, 'rope_tow_404_button2_style', array(
-  'default'           => 'btn-secondary',
+  'default'           => 'btn-primary-outline',
   'sanitize_callback' => function($val) {
     $valid = [
       'btn-primary',

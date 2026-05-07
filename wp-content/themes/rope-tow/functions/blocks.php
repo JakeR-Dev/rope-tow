@@ -38,7 +38,7 @@ function rope_tow_allow_only_acf_blocks_on_pages($allowed_blocks, $block_editor_
 
 	return $allowed_blocks;
 }
-add_filter('allowed_block_types_all', 'rope_tow_allow_only_acf_blocks_on_pages', 10, 2);
+// add_filter('allowed_block_types_all', 'rope_tow_allow_only_acf_blocks_on_pages', 10, 2);
 
 /**
  * Gutenberg Blocks

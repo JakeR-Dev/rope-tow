@@ -1,0 +1,19 @@
+:root {
+  --font-family-body: 'Inter var', sans-serif;
+  --font-family-headline: 'Inter var', sans-serif;
+  --weight-black: 900;
+  --weight-bold: 700;
+  --weight-semibold: 600;
+  --weight-normal: 400;
+  --weight-light: 300;
+  --weight-lightest: 200;
+  --font-weight-body: var(--weight-normal);
+  --font-weight-heading: var(--weight-semibold);
+  --font-size-body: 16px;
+  --h1-font-size-desktop: 48px;
+  --h2-font-size-desktop: 36px;
+  --h3-font-size-desktop: 28px;
+  --h4-font-size-desktop: 22px;
+  --h5-font-size-desktop: 20px;
+  --h6-font-size-desktop: 16px;
+}

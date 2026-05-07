@@ -11,119 +11,119 @@ rope_tow_add_setting($wp_customize, 'rope_tow_dark_mode', array(
 
 // Primary color
 rope_tow_add_setting($wp_customize, 'rope_tow_primary_color', array(
-  'default'           => '#5000EA',
+  'default'           => rope_tow_get_default('rope_tow_primary_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Secondary color
 rope_tow_add_setting($wp_customize, 'rope_tow_secondary_color', array(
-  'default'           => '#00E0BF',
+  'default'           => rope_tow_get_default('rope_tow_secondary_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Tertiary color
 rope_tow_add_setting($wp_customize, 'rope_tow_tertiary_color', array(
-  'default'           => '#5000EA',
+  'default'           => rope_tow_get_default('rope_tow_tertiary_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Tertiary Alt color
 rope_tow_add_setting($wp_customize, 'rope_tow_tertiary_alt_color', array(
-  'default'           => '#EBDE00',
+  'default'           => rope_tow_get_default('rope_tow_tertiary_alt_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Brand black
 rope_tow_add_setting($wp_customize, 'rope_tow_brand_black', array(
-  'default'           => '#0D0521',
+  'default'           => rope_tow_get_default('rope_tow_brand_black'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Brand gray
 rope_tow_add_setting($wp_customize, 'rope_tow_brand_gray', array(
-  'default'           => '#666666',
+  'default'           => rope_tow_get_default('rope_tow_brand_gray'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Brand light gray
 rope_tow_add_setting($wp_customize, 'rope_tow_brand_light_gray', array(
-  'default'           => '#9a9a9a',
+  'default'           => rope_tow_get_default('rope_tow_brand_light_gray'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Brand white
 rope_tow_add_setting($wp_customize, 'rope_tow_brand_white', array(
-  'default'           => '#ffffff',
+  'default'           => rope_tow_get_default('rope_tow_brand_white'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Brand error color
 rope_tow_add_setting($wp_customize, 'rope_tow_brand_error', array(
-  'default'           => '#E7391E',
+  'default'           => rope_tow_get_default('rope_tow_brand_error'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Nav background color
 rope_tow_add_setting($wp_customize, 'rope_tow_nav_color', array(
-  'default'           => '#5000EA',
+  'default'           => rope_tow_get_default('rope_tow_nav_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Nav font color
 rope_tow_add_setting($wp_customize, 'rope_tow_nav_font_color', array(
-  'default'           => '#ffffff',
+  'default'           => rope_tow_get_default('rope_tow_nav_font_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Body font color
 rope_tow_add_setting($wp_customize, 'rope_tow_body_color', array(
-  'default'           => '#29262e',
+  'default'           => rope_tow_get_default('rope_tow_body_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Heading font color
 rope_tow_add_setting($wp_customize, 'rope_tow_heading_color', array(
-  'default'           => '#29262e',
+  'default'           => rope_tow_get_default('rope_tow_heading_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Primary button color
 rope_tow_add_setting($wp_customize, 'rope_tow_primary_button_color', array(
-  'default'           => '#5000EA',
+  'default'           => rope_tow_get_default('rope_tow_primary_button_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Primary button font color
 rope_tow_add_setting($wp_customize, 'rope_tow_primary_button_font_color', array(
-  'default'           => '#ffffff',
+  'default'           => rope_tow_get_default('rope_tow_primary_button_font_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Secondary button color
 rope_tow_add_setting($wp_customize, 'rope_tow_secondary_button_color', array(
-  'default'           => '#FF595E',
+  'default'           => rope_tow_get_default('rope_tow_secondary_button_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));
 
 // Secondary button font color
 rope_tow_add_setting($wp_customize, 'rope_tow_secondary_button_font_color', array(
-  'default'           => '#ffffff',
+  'default'           => rope_tow_get_default('rope_tow_secondary_button_font_color'),
   'sanitize_callback' => 'sanitize_hex_color',
   'transport'         => 'postMessage',
 ));

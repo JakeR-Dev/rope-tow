@@ -1,0 +1,40 @@
+// Color variables
+:root {
+  // base color palette
+  --color-white: #fff;
+  --color-black: #060D18;
+  --color-orange: #D94040;
+  --color-dark-blue: #0F1E33;
+  --color-blue: #1A3050;
+  --color-light-blue: #2E5080;
+  --color-gold: #F0A020;
+  --color-gray: #4A5568;
+  --color-gray-light: #CBD5E0;
+  
+  // color palette map to brand variables
+  --brand-primary: var(--color-dark-blue);
+  --brand-secondary: var(--color-gold);
+  --brand-tertiary: var(--color-blue);
+  --brand-tertiary-alt: var(--color-light-blue);
+  --brand-success: var(--color-light-blue);
+  --brand-info: var(--color-light-blue);
+  --brand-warning: var(--color-error);
+  --brand-danger: var(--color-error);
+  --brand-inverse: var(--color-black);
+  --color-error: var(--color-orange);
+  
+  // elements
+  --body-color: var(--color-dark-blue);
+  --heading-color: var(--color-dark-blue);
+  --primary-button-color: var(--brand-primary);
+  --primary-button-font-color: var(--color-white);
+  --secondary-button-color: var(--brand-secondary);
+  --secondary-button-font-color: var(--color-black);
+  --nav-bg-color: var(--color-gray-light);
+  --nav-font-color: var(--color-black);
+  --footer-bg-color: var(--color-blue);
+  --footer-cta-bg-color: transparent;
+  --footer-social-link-color: var(--color-white);
+  --twitter: #1ca1f2;
+  --linkedin: #0077b5;
+}

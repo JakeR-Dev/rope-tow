@@ -1,0 +1,155 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/responsive" as *;
+
+body {
+	font-family: var(--font-family-body);
+	font-weight: var(--font-weight-body);
+	color: var(--body-color);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: var(--font-size-body);
+	line-height: 1.25;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size-adjust: 0.5;
+}
+
+p.lead,
+.lead,
+lead {
+	@include make-lead;
+}
+
+p.small,
+.small,
+small {
+	@include make-small;
+}
+
+p {
+	a:not(.btn) {
+		color: var(--body-color);
+		border-bottom: 2px solid var(--brand-primary);
+		transition: color .15s linear, background-color .15s linear;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+			border-bottom: none;
+			color: var(--brand-primary-darkened);
+			background: var(--brand-primary-lightened);
+		}
+		&:active {
+			text-decoration: none;
+			border-bottom: none;
+			color: var(--body-color);
+			background: var(--brand-primary-lightened);
+		}
+	}
+}
+
+b,
+strong {
+	font-weight: var(--weight-bold);
+}
+
+i,
+em {
+	font-style: italic;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	font-family: var(--font-family-headline);
+	font-weight: var(--font-weight-heading);
+	color: var(--heading-color);
+	&.underlined {
+		padding-bottom: .5rem;
+		border-bottom: 4px solid var(--color-gray-light);
+	}
+}
+
+h1,
+.h1 {
+	line-height: 1;
+	font-size: calc(var(--h1-font-size-desktop) - 30px);
+	@include media(tablet) {
+		font-size: calc(var(--h1-font-size-desktop) - 10px);
+	}
+	@include media(desktop) {
+		font-size: var(--h1-font-size-desktop);
+	}
+}
+
+h2,
+.h2 {
+	line-height: 1.2;
+	font-size: calc(var(--h2-font-size-desktop) - 14px);
+	@include media(tablet) {
+		font-size: calc(var(--h2-font-size-desktop) - 10px);
+	}
+	@include media(desktop) {
+		font-size: var(--h2-font-size-desktop);
+	}
+}
+
+h3,
+.h3 {
+	line-height: 1.2;
+	font-size: calc(var(--h3-font-size-desktop) - 10px);
+	@include media(tablet) {
+		font-size: calc(var(--h3-font-size-desktop) - 10px);
+	}
+	@include media(desktop) {
+		font-size: var(--h3-font-size-desktop);
+	}
+}
+
+h4,
+.h4 {
+	line-height: 1.2;
+	font-size: calc(var(--h4-font-size-desktop) - 0px);
+	@include media(tablet) {
+		font-size: var(--h4-font-size-desktop);
+	}
+}
+
+h5,
+.h5 {
+	line-height: 1.4;
+	font-size: calc(var(--h5-font-size-desktop) - 0px);
+	@include media(tablet) {
+		font-size: var(--h5-font-size-desktop);
+	}
+}
+
+h6,
+.h6 {
+	line-height: 1.5;
+	font-weight: var(--weight-black);
+	font-size: var(--h6-font-size-desktop);
+}
+
+.wp-caption {
+	margin-top: 50px;
+}
+.wp-caption-text {
+	margin-top: 20px;
+	font-size: 14px;
+}

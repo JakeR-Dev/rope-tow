@@ -1,3 +1,11 @@
-body {
-  background: red;
-}
+// Variables - global variables
+@use "variables/all" as variables;
+
+// Utilities - utility classes and mixins
+@use "utilities/all" as utilities;
+
+// Base - global base styles
+@use "base/all" as base;
+
+// Elements - styles for specific elements
+@use "elements/all" as elements;

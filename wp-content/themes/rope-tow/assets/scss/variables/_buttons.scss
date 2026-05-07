@@ -1,0 +1,14 @@
+:root {
+  --button-radius: 30px;
+  --button-font-weight: var(--weight-bold);
+  --button-text-transform: none;
+  --button-font-size: 16px;
+  --button-lg-font-size: calc(var(--button-font-size) + 2px);
+  --button-sm-font-size: var(--button-font-size);
+  --button-padding-x: 30px;
+  --button-padding-y: 10px;
+  --button-lg-padding-x: calc(var(--button-padding-x) + 10px);
+  --button-lg-padding-y: calc(var(--button-padding-y) + 4px);
+  --button-sm-padding-x: calc(var(--button-padding-x) - 8px);
+  --button-sm-padding-y: calc(var(--button-padding-y) - 3px);
+}

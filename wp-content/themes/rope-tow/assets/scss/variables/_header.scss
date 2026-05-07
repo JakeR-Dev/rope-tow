@@ -1,0 +1,15 @@
+$hamburger-padding-x: 0;
+$hamburger-padding-y: 0;
+$hamburger-layer-width: 24px;
+$hamburger-layer-height: 2px;
+$hamburger-layer-spacing: 4px;
+$hamburger-hover-opacity: 1;
+$hamburger-layer-color: var(--color-white);
+$hamburger-types: (elastic);
+
+:root {
+  --navbar-min-height: 3.5rem;
+  --navbar-z-index: 999;
+  --navbar-offset: 48px;
+  --navbar-offset-md: 32px;
+}

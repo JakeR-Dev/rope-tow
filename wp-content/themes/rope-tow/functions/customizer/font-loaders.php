@@ -32,22 +32,3 @@ function rope_tow_enqueue_selected_fonts() {
   }
 }
 add_action('wp_enqueue_scripts', 'rope_tow_enqueue_selected_fonts');
-
-// *******
-// Fetch all google fonts
-// NOTE: only run this once when you want to pull a fresh list of google fonts
-// *******
-
-function rope_tow_fetch_and_save_google_fonts() {
-  $api_key = 'AIzaSyD7DlLKOnNPIYXgK9-asFWEdn-kmpGZ1Bw';
-  $api_url = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=alpha&key=' . $api_key;
-  $response = wp_remote_get($api_url);
-
-  if (is_wp_error($response)) return;
-
-  $body = wp_remote_retrieve_body($response);
-  $file_path = get_template_directory() . '/assets/fonts/google-fonts.json';
-
-  file_put_contents($file_path, $body);
-}
-// rope_tow_fetch_and_save_google_fonts();

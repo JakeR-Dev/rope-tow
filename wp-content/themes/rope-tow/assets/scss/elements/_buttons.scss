@@ -1,0 +1,242 @@
+@use "../utilities/responsive" as *;
+
+// base button style
+.btn, .wp-element-button {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	line-height: 1;
+	text-align: center;
+	border: 2px solid transparent;
+	transition: all .1s linear;
+	border-radius: var(--button-radius);
+	font-size: var(--button-font-size);
+	font-weight: var(--button-font-weight);
+	padding: var(--button-padding-y) var(--button-padding-x);
+	text-transform: var(--button-text-transform);
+	text-decoration: none;
+	cursor: pointer;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+	&:focus {
+		outline: none;
+		box-shadow: none;
+	}
+
+	// sibling buttons
+	+.btn {
+		@include media(tablet) {
+			margin-left: 20px;
+		}
+	}
+
+	// large variant
+	&.btn-lg {
+		padding: var(--button-lg-padding-y) var(--button-lg-padding-x);
+		font-size: var(--button-lg-font-size);
+	}
+
+	// small variant
+	&.btn-sm {
+		padding: var(--button-sm-padding-y) var(--button-sm-padding-x);
+		font-size: var(--button-sm-font-size);
+	}
+
+	// primary variant
+	&.btn-primary {
+		background: var(--primary-button-color);
+		border-color: var(--primary-button-color);
+		color: var(--primary-button-font-color);
+		&:hover {
+			background: var(--primary-button-color-darkened);
+			border-color: var(--primary-button-color-darkened);
+			color: var(--primary-button-font-color);
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: var(--primary-button-color);
+			border-color: var(--primary-button-color);
+		}
+	}
+
+	// primary outline variant
+	&.btn-primary-outline {
+		background: transparent;
+		border-color: var(--primary-button-color);
+		color: var(--body-color);
+		&:hover {
+			background: var(--primary-button-color-darkened);
+			border-color: var(--primary-button-color-darkened);
+			color: var(--body-color);
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: var(--primary-button-color);
+			border-color: var(--primary-button-color);
+			color: var(--body-color);
+		}
+	}
+
+	// secondary variant
+	&.btn-secondary {
+		background: var(--secondary-button-color);
+		border-color: var(--secondary-button-color);
+		color: var(--secondary-button-font-color);
+		&:hover {
+			background: transparent;
+			border-color: var(--secondary-button-color);
+			color: var(--secondary-button-color);
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: var(--secondary-button-color);
+			border-color: var(--secondary-button-color);
+		}
+	}
+
+	// secondary outline variant
+	&.btn-secondary-outline {
+		background: transparent;
+		border-color: var(--secondary-button-color);
+		color: var(--color-black);
+		&:hover {
+			background: var(--secondary-button-color-darken);
+			border-color: var(--secondary-button-color-darken);
+			color: var(--color-black);
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: var(--secondary-button-color);
+			border-color: var(--secondary-button-color);
+			color: var(--color-white);
+		}
+	}
+
+	// white variant
+	&.btn-white {
+		background: var(--color-white);
+		border-color: var(--color-white);
+		color: var(--body-color);
+		&:hover {
+			background: transparent;
+			border-color: var(--color-white);
+			color: var(--color-white);
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: transparent;
+			border-color: var(--color-white);
+			color: var(--color-white);
+		}
+	}
+
+	// white outline variant
+	&.btn-white-outline {
+		background: transparent;
+		border-color: var(--color-white);
+		color: var(--color-white);
+		&:hover {
+			background: var(--color-white);
+			border-color: var(--color-white);
+			color: var(--body-color);
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: var(--color-white);
+			border-color: var(--color-white);
+			color: var(--body-color);
+		}
+	}
+
+	// simple with icon variant
+	&.clean-w-icon {
+		background: transparent;
+		border-color: transparent;
+		position: relative;
+		padding: 0 16px 0 0;
+		color: var(--primary-button-color);
+		&::after {
+			content: '';
+			position: absolute;
+			display: block;
+			right: 0;
+			top: 1px;
+			width: 10px;
+			height: 10px;
+			border: 1px solid var(--primary-button-color);
+			border-bottom-color: transparent;
+			border-left-color: transparent;
+			padding-left: 4px;
+			transform: rotate(45deg);
+			transition: right .15s ease;
+		}
+		&:hover {
+			background: transparent;
+			border-color: transparent;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+			&::after {
+				right: -2px;
+			}
+		}
+		&:active,
+		&:focus,
+		&.active {
+			background: transparent;
+			border-color: transparent;
+		}
+		&.reverse {
+			padding: 0 0 0 16px;
+			&::after {
+				right: auto;
+				left: 0;
+				transform: rotate(225deg);
+				transition: left .15s ease;
+			}
+			&:hover {
+				&::after {
+					left: -2px;
+				}
+			}
+		}
+	}
+}
+
+// close button
+button.close {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	@include media(desktop) {
+		width: 28px;
+		height: 28px;
+	}
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 2px;
+		background: var(--body-color);
+		height: 100%;
+		top: 0;
+		right: 50%;
+		left: 50%;
+		transform-origin: center;
+	}
+	&::before {
+		transform: rotate(-45deg);
+	}
+	&::after {
+		transform: rotate(45deg)
+	}
+}
