@@ -10,9 +10,13 @@
 		position: center;
 	}
 	.footer-logo {
+		width: auto;
 		img, svg {
 			display: inline-block;
 			max-width: 100%;
+			max-height: 80px;
+			width: auto;
+			height: auto;
 		}
 	}
 
@@ -224,18 +228,21 @@
 					}
 				}
 			}
-			&-legal,
-			&-socials {
+			&_legal,
+			&_socials {
 				text-align: center;
 				margin-top: 0;
 			}
-			.footer-social {
-				justify-content: center;
-			}
-			&-legal {
+			&_legal {
 				order: 99;
 				margin-top: 42px;
 				margin-bottom: 0 !important;
+			}
+			&_socials {
+				order: 100;
+				&__list {
+					justify-content: center;
+				}
 			}
 		}
 		.global-footer__legal-menu {

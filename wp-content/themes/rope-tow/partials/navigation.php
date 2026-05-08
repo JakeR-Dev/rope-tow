@@ -14,7 +14,7 @@
     $nav_inline_style = 'display: flex;';
   }
   if ($nav_cta_enabled) {
-    $nav_cta_toggle_class = 'inline-flex show-nav-cta';
+    $nav_cta_toggle_class = 'd-inline-flex show-nav-cta';
   } else {
     $nav_cta_toggle_class = 'hidden hide-nav-cta';
   }
@@ -22,6 +22,7 @@
 
 <nav class="navbar" id="navbar" role="navigation" data-style="<?= $nav_style ?>" data-layout="<?= $nav_layout ?>" style="<?= $nav_inline_style ?>">
   <div class="container-fluid navbar-container">
+    <!-- site logo -->
     <div class="navbar-brand">
       <a class="menu-item" href="<?php echo home_url(); ?>">
         <?php
@@ -30,11 +31,12 @@
         if ($custom_logo_url) {
           echo '<img src="'.esc_url($custom_logo_url).'" alt="'.get_bloginfo("name").' - Header Logo">';
         } else {
-          echo "<h1>" . get_bloginfo("name") . "</h1>";
+          echo '<img src="'.esc_url(get_template_directory_uri() . '/assets/img/logos/rope-tow-lettermark.webp').'" alt="'.get_bloginfo("name").' - Header Logo">';
         }
         ?>
       </a>
     </div>
+
     <!-- desktop nav -->
     <?php if (has_nav_menu('primary_navigation')) {
       wp_nav_menu([
@@ -44,12 +46,12 @@
         "menu_class" => "menu-primary",
       ]);
     } ?>
-    <div class="inline-flex items-center gap-6">
+    <div class="inline-flex items-center">
       <!-- hamburger -->
       <button id="menu-toggle" class="hamburger hamburger__<?php echo $hamburger_animation ?> lg:hidden" type="button" aria-label="Toggle menu">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
+        <span class="line" aria-hidden></span>
+        <span class="line" aria-hidden></span>
+        <span class="line" aria-hidden></span>
       </button>
       <!-- optional nav cta -->
       <div class="<?= $nav_cta_toggle_class ?> items-center navbar-cta_desktop navbar-cta">

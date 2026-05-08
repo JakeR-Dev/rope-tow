@@ -1,14 +1,5 @@
-$mobile_width: 40rem; // 640px
-$tablet_width: 48rem; // 768px
-$desktop_width: 64rem; // 1024px
-$wide_width: 80rem; // 1280px
-$full_width: 96rem; // 1536px
-
-:root {
-  /* Breakpoints */
-  --mobile-width: $mobile_width;
-  --tablet-width: $tablet_width;
-  --desktop-width: $desktop_width;
-  --wide-width: $wide_width;
-  --full-width: $full_width;
-}
+$bp-sm: 40rem; // 640px
+$bp-md: 48rem; // 768px
+$bp-lg: 64rem; // 1024px
+$bp-xl: 80rem; // 1280px
+$bp-xxl: 96rem; // 1536px

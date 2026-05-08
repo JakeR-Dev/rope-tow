@@ -27,20 +27,20 @@
   $footer_cta_secondary_button_style = get_theme_mod('rope_tow_footer_cta_secondary_button_style', rope_tow_get_default('rope_tow_footer_cta_secondary_button_style'));
 ?>
 
-    <footer class="global-footer block relative pb-16 footer-<?= esc_attr($footer_layout); ?>" style="background-image:url(<?= $footer_background ?>)">
+    <footer class="global-footer d-block relative footer-<?= esc_attr($footer_layout); ?>" style="background-image:url(<?= $footer_background ?>)">
       <!-- optional footer cta -->
-      <section class="global-footer__cta <?= $footer_cta_layout ?> pt-20 pb-20 <?= $footer_cta_toggle_class; ?>" style="background-image:url(<?= $footer_cta_background ?>)">
+      <section class="global-footer__cta pt-6 pb-6 <?= $footer_cta_layout ?> <?= $footer_cta_toggle_class; ?>" style="background-image:url(<?= $footer_cta_background ?>)">
         <div class="container">
-          <div class="row center-xs">
-            <div class="col-xs-12 col-sm-10">
+          <div class="grid items-center">
+            <div class="span-12 sm:span-10">
               <div class="footer-cta-titles">
                 <!-- footer cta title -->
                 <?php if ($footer_cta_title) { ?>
-                  <h2 class="footer-cta-title mb-4"><?= esc_html($footer_cta_title); ?></h2>
+                  <h2 class="footer-cta-title"><?= esc_html($footer_cta_title); ?></h2>
                 <?php } ?>
                 <!-- footer cta subtitle -->
                 <?php if ($footer_cta_subtitle) { ?>
-                  <p class="footer-cta-subtitle mb-8"><?= esc_html($footer_cta_subtitle); ?></p>
+                  <p class="footer-cta-subtitle"><?= esc_html($footer_cta_subtitle); ?></p>
                 <?php } ?>
               </div>
               <div class="footer-cta-buttons">
@@ -59,21 +59,21 @@
       </section>
 
       <!-- main footer -->
-      <div class="container pt-20">
-        <div class="row">
+      <div class="container pt-6">
+        <div class="grid items-center">
           <!-- logo -->
-          <div class="col-xs-12 col-sm-2 footer-col footer-col-logo">
-            <a class="block pb-8 lg:pb-0 text-center md:text-left footer-logo" href="<?= home_url() ?>">
+          <div class="footer-col footer-col_logo span-12 sm:span-2">
+            <a class="footer-logo d-block pb-4 lg:pb-0 text-center md:text-left" href="<?= home_url() ?>">
               <?php if ($footer_logo_url) {
                 echo '<img loading="lazy" fetchpriority="low" src="'.esc_url($footer_logo_url).'" alt="'.get_bloginfo("name").' - Footer Logo" />';
               } else {
-                echo "<h1>" . get_bloginfo("name") . "</h1>";
+                echo '<img src="'.esc_url(get_template_directory_uri() . '/assets/img/logos/rope-tow-lettermark.webp').'" alt="'.get_bloginfo("name").' - Header Logo">';
               }
               ?>
             </a>
           </div>
           <!-- footer menu -->
-          <div class="col-xs-12 col-sm-10 footer-col footer-col-menu">
+          <div class="footer-col footer-col_menu span-12 sm:span-10">
             <?php if (has_nav_menu('footer_navigation')) {
               wp_nav_menu([
                 "theme_location" => "footer_navigation",
@@ -83,7 +83,7 @@
             } ?>
           </div>
           <!-- copyright text -->
-          <div class="col-xs-12 col-sm-8 text-center md:text-left mt-12 md:mt-16 footer-col footer-col-legal">
+          <div class="footer-col footer-col_legal span-12 sm:span-8 mt-6 md:mt-7 text-center md:text-left">
             <?php if (has_nav_menu('legal_navigation')) {
               wp_nav_menu([
                 "theme_location" => "legal_navigation",
@@ -94,8 +94,8 @@
             <p class="small" id="footer-copyright-text"><?= ($footer_copyright_text) ? esc_html($footer_copyright_text) : ''; ?></p>
           </div>
           <!-- socials -->
-          <div class="col-xs-12 col-sm-4 mt-12 md:mt-16 footer-col footer-col-socials">
-            <ul class="footer-social justify-center md:justify-end" data-rope-tow-footer-social>
+          <div class="footer-col footer-col_socials span-12 sm:span-4 mt-6 md:mt-7">
+            <ul class="footer-social_socials__list justify-center md:justify-end" data-rope-tow-footer-social>
               <?php rope_tow_render_footer_social_links(); ?>
             </ul>
             <link rel='stylesheet' id='font-awesome-css' href='https://use.fontawesome.com/releases/v6.7.2/css/all.css' type='text/css' media='all' />

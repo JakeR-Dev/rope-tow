@@ -1,8 +1,129 @@
+@use "../utilities/responsive" as *;
+
+/* Body reset */
 body {
   margin: 0;
   box-sizing: border-box;
 }
 
-main {
-  margin-top: 8rem;
+/* Display utilities */
+$display-utils: (
+  d-flex: flex,
+  d-block: block,
+  d-inline-block: inline-block,
+  d-grid: grid,
+  d-inline-flex: inline-flex,
+  hidden: none
+);
+
+/* Breakpoint map for utility classes */
+$utility-breakpoints: (
+  sm: mobile,
+  md: tablet,
+  lg: desktop,
+  xl: wide,
+  xxl: full_width
+);
+
+/* Alignment utilities */
+$justify-utils: (
+  justify-left: flex-start,
+  justify-center: center,
+  justify-right: flex-end,
+  justify-between: space-between,
+  justify-around: space-around,
+  justify-evenly: space-evenly
+);
+
+$text-align-utils: (
+  text-left: left,
+  text-center: center,
+  text-right: right
+);
+
+$align-items-utils: (
+  items-start: flex-start,
+  items-center: center,
+  items-end: flex-end,
+  items-stretch: stretch,
+  items-baseline: baseline
+);
+
+/* Position utilities */
+$position-utils: (
+  static: static,
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky
+);
+
+/* Spacing scale (from CSS variables in _grid.scss) */
+$spacing-scale: (
+  0: 0,
+  1: var(--space-1),
+  2: var(--space-2),
+  3: var(--space-3),
+  4: var(--space-4),
+  5: var(--space-5),
+  6: var(--space-6),
+  7: var(--space-7),
+  8: var(--space-8),
+  9: var(--space-9),
+  10: var(--space-10)
+);
+
+@mixin generate-utils($utils, $property) {
+  @each $name, $value in $utils {
+    .#{$name} {
+      #{$property}: #{$value};
+    }
+  }
+
+  @each $prefix, $bp in $utility-breakpoints {
+    @include media($bp) {
+      @each $name, $value in $utils {
+        .#{$prefix}\:#{$name} {
+          #{$property}: #{$value};
+        }
+      }
+    }
+  }
 }
+
+@mixin generate-spacing-utils($class-prefix, $property) {
+  @each $step, $value in $spacing-scale {
+    .#{$class-prefix}-#{$step} {
+      #{$property}: #{$value};
+    }
+  }
+
+  @each $prefix, $bp in $utility-breakpoints {
+    @include media($bp) {
+      @each $step, $value in $spacing-scale {
+        .#{$prefix}\:#{$class-prefix}-#{$step} {
+          #{$property}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+// Generate display utility classes
+@include generate-utils($display-utils, display);
+// Generate justify-content utility classes
+@include generate-utils($justify-utils, justify-content);
+// Generate text align utility classes
+@include generate-utils($text-align-utils, text-align);
+// Generate align-items utility classes
+@include generate-utils($align-items-utils, align-items);
+// Generate position utility classes
+@include generate-utils($position-utils, position);
+// Generate padding utility classes
+@include generate-spacing-utils(p, padding);
+@include generate-spacing-utils(px, padding-inline);
+@include generate-spacing-utils(py, padding-block);
+@include generate-spacing-utils(pt, padding-top);
+@include generate-spacing-utils(pr, padding-right);
+@include generate-spacing-utils(pb, padding-bottom);
+@include generate-spacing-utils(pl, padding-left);

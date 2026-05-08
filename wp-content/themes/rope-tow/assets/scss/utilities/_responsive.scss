@@ -3,31 +3,31 @@
 // @media queries
 @mixin media($res) {
 	@if mobile==$res {
-		@media (min-width: breakpoints.$mobile_width) {
+		@media (min-width: breakpoints.$bp-sm) {
 			@content;
 		}
 	}
 
 	@if tablet==$res {
-		@media (min-width: breakpoints.$tablet_width) {
+		@media (min-width: breakpoints.$bp-md) {
 			@content;
 		}
 	}
 
 	@if desktop==$res {
-		@media (min-width: breakpoints.$desktop_width) {
+		@media (min-width: breakpoints.$bp-lg) {
 			@content;
 		}
 	}
 
 	@if wide==$res {
-		@media (min-width: breakpoints.$wide_width) {
+		@media (min-width: breakpoints.$bp-xl) {
 			@content;
 		}
 	}
 
 	@if full_width==$res {
-		@media (min-width: breakpoints.$full_width) {
+		@media (min-width: breakpoints.$bp-xxl) {
 			@content;
 		}
 	}
@@ -36,31 +36,31 @@
 // @container queries
 @mixin container($res) {
 	@if mobile==$res {
-		@container (min-width: breakpoints.$mobile_width) {
+		@container (min-width: breakpoints.$bp-sm) {
 			@content;
 		}
 	}
 
 	@if tablet==$res {
-		@container (min-width: breakpoints.$tablet_width) {
+		@container (min-width: breakpoints.$bp-md) {
 			@content;
 		}
 	}
 
 	@if desktop==$res {
-		@container (min-width: breakpoints.$desktop_width) {
+		@container (min-width: breakpoints.$bp-lg) {
 			@content;
 		}
 	}
 
 	@if wide==$res {
-		@container (min-width: breakpoints.$wide_width) {
+		@container (min-width: breakpoints.$bp-xl) {
 			@content;
 		}
 	}
 
 	@if full_width==$res {
-		@container (min-width: breakpoints.$full_width) {
+		@container (min-width: breakpoints.$bp-xxl) {
 			@content;
 		}
 	}
