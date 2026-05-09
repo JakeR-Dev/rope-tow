@@ -3,12 +3,15 @@
 
 /* Containers */
 .container {
-  width: min(100% - 2rem, var(--content-width));
+  width: min(100% - (var(--container-padding) * 2), var(--content-width));
   margin-inline: auto;
 }
 .container-fluid {
-  width: calc(100% - 2rem);
+  width: calc(100% - (var(--container-padding) * 2));
   margin-inline: auto;
+}
+section {
+  padding-block: var(--section-padding);
 }
 
 /* Simple grid system */
@@ -22,10 +25,10 @@ $span-breakpoints: (
   sm: mobile,
   md: tablet,
   lg: desktop,
-  xl: wide,
-  xxl: full_width
+  xl: wide
 );
 
+/* Utility span class generator */
 @mixin generate-span-classes($columns: 12) {
   // base span classes
   // ex: .span-6 { grid-column: span 6; }
@@ -48,4 +51,5 @@ $span-breakpoints: (
   }
 }
 
+// Generate span utility classes
 @include generate-span-classes();

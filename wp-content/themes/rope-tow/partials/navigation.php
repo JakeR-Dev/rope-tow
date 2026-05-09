@@ -14,7 +14,7 @@
     $nav_inline_style = 'display: flex;';
   }
   if ($nav_cta_enabled) {
-    $nav_cta_toggle_class = 'd-inline-flex show-nav-cta';
+    $nav_cta_toggle_class = 'inline-flex show-nav-cta';
   } else {
     $nav_cta_toggle_class = 'hidden hide-nav-cta';
   }

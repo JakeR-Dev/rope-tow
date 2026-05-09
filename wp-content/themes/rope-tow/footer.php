@@ -27,7 +27,7 @@
   $footer_cta_secondary_button_style = get_theme_mod('rope_tow_footer_cta_secondary_button_style', rope_tow_get_default('rope_tow_footer_cta_secondary_button_style'));
 ?>
 
-    <footer class="global-footer d-block relative footer-<?= esc_attr($footer_layout); ?>" style="background-image:url(<?= $footer_background ?>)">
+    <footer class="global-footer footer-<?= esc_attr($footer_layout); ?>" style="background-image:url(<?= $footer_background ?>)">
       <!-- optional footer cta -->
       <section class="global-footer__cta pt-6 pb-6 <?= $footer_cta_layout ?> <?= $footer_cta_toggle_class; ?>" style="background-image:url(<?= $footer_cta_background ?>)">
         <div class="container">
@@ -63,7 +63,7 @@
         <div class="grid items-center">
           <!-- logo -->
           <div class="footer-col footer-col_logo span-12 sm:span-2">
-            <a class="footer-logo d-block pb-4 lg:pb-0 text-center md:text-left" href="<?= home_url() ?>">
+            <a class="footer-logo block pb-4 lg:pb-0 text-center md:text-left" href="<?= home_url() ?>">
               <?php if ($footer_logo_url) {
                 echo '<img loading="lazy" fetchpriority="low" src="'.esc_url($footer_logo_url).'" alt="'.get_bloginfo("name").' - Footer Logo" />';
               } else {
@@ -98,7 +98,7 @@
             <ul class="footer-social_socials__list justify-center md:justify-end" data-rope-tow-footer-social>
               <?php rope_tow_render_footer_social_links(); ?>
             </ul>
-            <link rel='stylesheet' id='font-awesome-css' href='https://use.fontawesome.com/releases/v6.7.2/css/all.css' type='text/css' media='all' />
+            <link rel="stylesheet" id="font-awesome-css" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css" type="text/css" media="all" />
           </div>
         </div>
       </div>
