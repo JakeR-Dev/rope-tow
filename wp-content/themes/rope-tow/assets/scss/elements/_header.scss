@@ -25,15 +25,21 @@
 			background-color: var(--nav-bg-color);
 		}
 	}
+
+	// Solid full width style
 	&[data-style="solid-full-width"] {
 		background-color: var(--nav-bg-color);
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 	}
+
+	// Solid rounded style
 	&[data-style="solid-rounded"] {
 		background-color: var(--nav-bg-color);
-		left: 8px;
-		top: 8px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 		padding: 10px 0;
 		border-radius: 30px;
+		left: 8px;
+		top: 8px;
 		max-width: calc(100% - 16px);
 		@include media(tablet) {
 			left: 16px;
@@ -49,9 +55,6 @@
 			transform: translateX(-50%);
 			max-width: 1450px;
 		}
-		.navbar-brand {
-			padding-left: 8px;
-		}
 		&.mobile-menu-open {
 			border-bottom-left-radius: 0;
 			border-bottom-right-radius: 0;
@@ -61,6 +64,7 @@
 			min-height: calc(100dvh - 75px);
 			border-bottom-left-radius: 30px;
 			border-bottom-right-radius: 30px;
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 			padding: 1rem 2rem;
 			top: 66px;
 			left: 8px;
@@ -74,6 +78,8 @@
 			}
 		}
 	}
+
+	// Solid contained style
 	&[data-style="solid-contained"] {
 		background-color: var(--nav-bg-color);
 		left: 8px;
@@ -99,6 +105,7 @@
 			top: 55px;
 			bottom: 8px;
 			height: calc(100dvh - 75px);
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 			min-height: calc(100dvh - 75px);
 			border-bottom-left-radius: 8px;
 			border-bottom-right-radius: 8px;
@@ -111,6 +118,8 @@
 			}
 		}
 	}
+
+	// Spaced out style
 	&[data-layout="spaced-out"] {
 		.navbar-menu {
 			margin-left: auto;
@@ -143,6 +152,7 @@
 	}
 }
 
+// Navbar menu
 .navbar-menu {
 	> ul.menu-primary {
 		display: flex;
@@ -150,6 +160,9 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		a {
+			text-decoration: none;
+		}
 		> li {
 			align-items: center;
 			display: inline-flex;
@@ -190,16 +203,20 @@
 					padding: 1.75rem 1rem;
 				}
 			}
+
+			// Second level
 			> ul.sub-menu {
+				position: absolute;
 				background-color: var(--nav-bg-color);
+				left: 1rem;
+				top: 4rem;
+				opacity: 0;
+				min-width: 180px;
 				border-radius: .75rem;
 				box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-				left: 1rem;
-				opacity: 0;
 				padding: 1rem 2rem;
 				pointer-events: none;
-				position: absolute;
-				top: 4rem;
+				list-style: none;
 				transition: all 0.256s ease-in-out;
 				> li {
 					margin-block: 1rem;
@@ -211,6 +228,27 @@
 						white-space: nowrap;
 						&:hover {
 							opacity: 0.8;
+						}
+					}
+
+					// Third level
+					> ul.sub-menu {
+						list-style: none;
+						margin-top: 1rem;
+						padding-left: .5rem;
+						border-left: 2px solid var(--color-gray-light);
+						> li {
+							margin-block: .5rem;
+							> a {
+								color: var(--nav-font-color);
+								font-size: 1rem;
+								font-weight: 500;
+								transition: color 0.3s ease-in-out;
+								white-space: nowrap;
+								&:hover {
+									opacity: 0.8;
+								}
+							}
 						}
 					}
 				}
@@ -226,7 +264,13 @@
 	}
 }
 
-// navbar cta
+// Navbar extras wrapper
+.navbar-extras {
+	display: inline-flex;
+	align-items: center;
+}
+
+// Navbar cta
 .show-nav-cta {
 	&.navbar-cta {
 		&_desktop {
@@ -244,7 +288,7 @@
 	}
 }
 
-// Mobile menu wrapper
+// mobile menu wrapper
 .navbar-menu-mobile {
 	background-color: var(--nav-bg-color);
 	bottom: 0;
@@ -271,10 +315,10 @@
 	}
 }
 
-// Mobile menu
+// mobile menu
 .menu-primary-mobile {
-	padding-top: 1.25rem;
-	margin-bottom: 1rem;
+	padding: 1.25rem 0;
+	margin: 0 0 1rem;
 	li,
 	a {
 		align-items: flex-start;
@@ -288,11 +332,12 @@
 	}
 	a {
 		color: var(--nav-font-color);
+		text-decoration: none;
 	}
 	> li {
 		padding-top: 1.25rem;
 		padding-bottom: 1.25rem;
-		border-bottom: 1px solid var(--color-gray-lightest);
+		border-bottom: 1px solid var(--color-gray-light);
 		> a {
 			font-size: 16px;
 			letter-spacing: .5px;
@@ -308,7 +353,7 @@
 				display: inline-block;
 				height: 14px;
 				width: 14px;
-				top: 0;
+				top: 1px;
 				right: 4px;
 				transform: rotate(45deg);
 				border-right: 2px solid var(--nav-font-color);
@@ -333,6 +378,18 @@
 				letter-spacing: .3px;
 				font-weight: 500;
 			}
+			li.menu-item-has-children {
+				> a {
+					&::after {
+						width: 8px;
+						height: 8px;
+						top: 2px;
+					}
+				}
+				> ul.sub-menu {
+					padding-top: .5rem;
+				}
+			}
 		}
 		&.is-active {
 			> a {
@@ -346,7 +403,7 @@
 	}
 }
 
-// Admin bar offset
+// admin bar offset
 body.admin-bar .navbar {
 	top: var(--navbar-offset);
 	@include media(desktop) {

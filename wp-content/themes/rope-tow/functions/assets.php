@@ -61,3 +61,4 @@ function rope_tow_enqueue_vite_manifest() {
 		}
 	}
 }
+

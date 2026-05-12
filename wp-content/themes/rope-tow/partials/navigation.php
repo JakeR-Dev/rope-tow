@@ -14,9 +14,9 @@
     $nav_inline_style = 'display: flex;';
   }
   if ($nav_cta_enabled) {
-    $nav_cta_toggle_class = 'inline-flex show-nav-cta';
+    $nav_cta_toggle_class = 'show-nav-cta';
   } else {
-    $nav_cta_toggle_class = 'hidden hide-nav-cta';
+    $nav_cta_toggle_class = 'hide-nav-cta';
   }
 ?>
 
@@ -31,7 +31,7 @@
         if ($custom_logo_url) {
           echo '<img src="'.esc_url($custom_logo_url).'" alt="'.get_bloginfo("name").' - Header Logo">';
         } else {
-          echo '<img src="'.esc_url(get_template_directory_uri() . '/assets/img/logos/rope-tow-lettermark.webp').'" alt="'.get_bloginfo("name").' - Header Logo">';
+          echo '<img src="'.esc_url(get_template_directory_uri() . '/assets/img/logos/rope-tow-lettermark-dark.webp').'" alt="'.get_bloginfo("name").' - Header Logo">';
         }
         ?>
       </a>
@@ -44,9 +44,12 @@
         "container" => "div",
         "container_class" => "navbar-menu hidden lg:flex",
         "menu_class" => "menu-primary",
+        "depth" => 3,
       ]);
     } ?>
-    <div class="inline-flex items-center">
+
+    <!-- mobile hamburger and optional cta -->
+    <div class="navbar-extras">
       <!-- hamburger -->
       <button id="menu-toggle" class="hamburger hamburger__<?php echo $hamburger_animation ?> lg:hidden" type="button" aria-label="Toggle menu">
         <span class="line" aria-hidden></span>
@@ -74,6 +77,7 @@
       "container" => "div",
       "container_class" => "navbar-menu-mobile_inner",
       "menu_class" => "menu-primary-mobile",
+      "depth" => 3,
     ]);
   } ?>
   <!-- optional nav cta -->

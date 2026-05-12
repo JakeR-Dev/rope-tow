@@ -26,18 +26,17 @@ small {
 p {
 	a:not(.btn) {
 		color: var(--body-color);
-		border-bottom: 2px solid var(--brand-primary);
-		transition: color .15s linear, background-color .15s linear;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: all .15s linear;
 		&:hover,
 		&:focus {
 			text-decoration: none;
-			border-bottom: none;
 			color: var(--brand-primary-darkened);
 			background: var(--brand-primary-lightened);
 		}
 		&:active {
 			text-decoration: none;
-			border-bottom: none;
 			color: var(--body-color);
 			background: var(--brand-primary-lightened);
 		}

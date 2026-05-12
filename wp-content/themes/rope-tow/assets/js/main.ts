@@ -9,9 +9,10 @@
 
 // Import main SCSS file
 import "../scss/main.scss";
+import Navigation from "./utils/navigation";
 
 // Init main JS
 document.addEventListener("DOMContentLoaded", () => {
   console.log("main.ts loaded");
-  // Your custom JavaScript can go here
+  Navigation.init();
 });

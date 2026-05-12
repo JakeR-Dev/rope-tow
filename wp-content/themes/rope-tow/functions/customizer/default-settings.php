@@ -109,8 +109,8 @@ function rope_tow_get_default($setting_key) {
 
     // navigation
     'rope_tow_nav_hide'                          => false,
-    'rope_tow_navigation_style'                  => 'solid-contained',
-    'rope_tow_navigation_layout'                 => 'spaced-out',
+    'rope_tow_navigation_style'                  => 'solid-rounded',
+    'rope_tow_navigation_layout'                 => 'centered',
     'rope_tow_hamburger_animation'               => 'collapse',
     'rope_tow_nav_cta_enabled'                   => true,
     'rope_tow_nav_cta_button_title'              => 'Get A Demo',

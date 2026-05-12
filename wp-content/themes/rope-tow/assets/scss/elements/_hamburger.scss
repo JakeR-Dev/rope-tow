@@ -1,4 +1,8 @@
 .hamburger {
+  appearance: none;
+  border: none;
+  margin-right: .5rem;
+  background: transparent;
   &:hover{
     cursor: pointer;
   }
