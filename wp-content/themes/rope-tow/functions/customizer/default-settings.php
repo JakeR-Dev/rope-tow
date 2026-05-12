@@ -137,7 +137,7 @@ function rope_tow_get_default($setting_key) {
     'rope_tow_footer_cta_layout'                 => 'layout-stacked',
     'rope_tow_footer_cta_title'                  => 'Ready to get started?',
     'rope_tow_footer_cta_subtitle'               => 'Contact our team or schedule a demo today.',
-    'rope_tow_footer_cta_background_color'       => '',
+    'rope_tow_footer_cta_background_color'       => '--color-brand-tertiary',
     'rope_tow_footer_cta_background_image'       => '',
     'rope_tow_footer_cta_button_title'           => 'Schedule a Demo',
     'rope_tow_footer_cta_button_url'             => home_url('/contact'),

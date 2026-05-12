@@ -72,11 +72,15 @@ h6,
 		padding-bottom: .5rem;
 		border-bottom: 4px solid var(--color-gray-light);
 	}
+	&:first-child {
+		margin-top: 0;
+	}
 }
 
 h1,
 .h1 {
 	line-height: 1;
+	margin-block: 2rem;
 	font-size: calc(var(--h1-font-size-desktop) - 30px);
 	@include media(tablet) {
 		font-size: calc(var(--h1-font-size-desktop) - 10px);
@@ -89,6 +93,7 @@ h1,
 h2,
 .h2 {
 	line-height: 1.2;
+	margin-block: 1.5rem;
 	font-size: calc(var(--h2-font-size-desktop) - 14px);
 	@include media(tablet) {
 		font-size: calc(var(--h2-font-size-desktop) - 10px);
@@ -101,6 +106,7 @@ h2,
 h3,
 .h3 {
 	line-height: 1.2;
+	margin-block: 1.25rem;
 	font-size: calc(var(--h3-font-size-desktop) - 10px);
 	@include media(tablet) {
 		font-size: calc(var(--h3-font-size-desktop) - 10px);
@@ -113,6 +119,7 @@ h3,
 h4,
 .h4 {
 	line-height: 1.2;
+	margin-block: 1.25rem;
 	font-size: calc(var(--h4-font-size-desktop) - 0px);
 	@include media(tablet) {
 		font-size: var(--h4-font-size-desktop);
@@ -122,6 +129,7 @@ h4,
 h5,
 .h5 {
 	line-height: 1.4;
+	margin-block: 1rem;
 	font-size: calc(var(--h5-font-size-desktop) - 0px);
 	@include media(tablet) {
 		font-size: var(--h5-font-size-desktop);
@@ -131,6 +139,7 @@ h5,
 h6,
 .h6 {
 	line-height: 1.5;
+	margin-block: 1rem;
 	font-weight: var(--weight-black);
 	font-size: var(--h6-font-size-desktop);
 }

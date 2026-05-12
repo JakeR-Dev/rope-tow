@@ -49,7 +49,7 @@
 			}
 		}
 		&.layout-split {
-			.col-xs-12 {
+			.global-footer__cta-inner {
 				display: grid;
 				gap: 16px;
 				width: 100%;
@@ -60,6 +60,7 @@
 				}
 			}
 			.footer-cta-titles {
+				text-align: center;
 				@include media(desktop) {
 					text-align: left;
 				}
@@ -68,6 +69,16 @@
 				@include media(desktop) {
 					justify-content: flex-end;
 				}
+			}
+		}
+		&.layout-stacked {
+			.global-footer__cta-inner {
+				display: block;
+				margin-inline: auto;
+				max-width: clamp(0px, 100%, 960px);
+			}
+			.footer-cta-buttons {
+				margin-top: var(--space-4);
 			}
 		}
 	}

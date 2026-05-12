@@ -71,6 +71,17 @@ const RopeTowPreviewFooter = {
       });
     });
 
+    // Footer layout style (centered, space-between, etc.)
+    wp.customize('rope_tow_footer_cta_layout', value => {
+      value.bind(newVal => {
+        const ctaSection = document.querySelector('.global-footer__cta');
+        if (!ctaSection) return;
+
+        ctaSection.classList.remove('layout-stacked', 'layout-split');
+        ctaSection.classList.add(`layout-${newVal}`);
+      });
+    });
+
     // Footer cta title text
     wp.customize('rope_tow_footer_cta_title', value => {
       value.bind(title => {

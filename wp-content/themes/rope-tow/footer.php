@@ -31,28 +31,26 @@
       <!-- optional footer cta -->
       <section class="global-footer__cta pt-6 pb-6 <?= $footer_cta_layout ?> <?= $footer_cta_toggle_class; ?>" style="background-image:url(<?= $footer_cta_background ?>)">
         <div class="container">
-          <div class="grid items-center">
-            <div class="span-12 sm:span-10">
-              <div class="footer-cta-titles">
-                <!-- footer cta title -->
-                <?php if ($footer_cta_title) { ?>
-                  <h2 class="footer-cta-title"><?= esc_html($footer_cta_title); ?></h2>
-                <?php } ?>
-                <!-- footer cta subtitle -->
-                <?php if ($footer_cta_subtitle) { ?>
-                  <p class="footer-cta-subtitle"><?= esc_html($footer_cta_subtitle); ?></p>
-                <?php } ?>
-              </div>
-              <div class="footer-cta-buttons">
-                <!-- primary button -->
-                <?php if ($footer_cta_button_url) { ?>
-                  <a class="footer-cta-button <?= ($footer_cta_button_size) ? $footer_cta_button_size : 'btn'; ?> <?= $footer_cta_button_style ?>" href="<?= esc_url($footer_cta_button_url); ?>"><?= esc_html($footer_cta_button_title); ?></a>
-                <?php } ?>
-                <!-- secondary button -->
-                <?php if ($footer_cta_secondary_button_url) { ?>
-                  <a class="footer-cta-secondary-button <?= ($footer_cta_secondary_button_size) ? $footer_cta_secondary_button_size : 'btn'; ?> <?= $footer_cta_secondary_button_style ?>" href="<?= esc_url($footer_cta_secondary_button_url); ?>"><?= esc_html($footer_cta_secondary_button_title); ?></a>
-                <?php } ?>
-              </div>
+          <div class="global-footer__cta-inner">
+            <div class="footer-cta-titles <?= ($footer_cta_layout === 'layout-stacked') ? 'text-center' : ''; ?>">
+              <!-- footer cta title -->
+              <?php if ($footer_cta_title) { ?>
+                <h2 class="footer-cta-title mb-2"><?= esc_html($footer_cta_title); ?></h2>
+              <?php } ?>
+              <!-- footer cta subtitle -->
+              <?php if ($footer_cta_subtitle) { ?>
+                <p class="footer-cta-subtitle"><?= esc_html($footer_cta_subtitle); ?></p>
+              <?php } ?>
+            </div>
+            <div class="footer-cta-buttons">
+              <!-- primary button -->
+              <?php if ($footer_cta_button_url) { ?>
+                <a class="footer-cta-button <?= ($footer_cta_button_size) ? $footer_cta_button_size : 'btn'; ?> <?= $footer_cta_button_style ?>" href="<?= esc_url($footer_cta_button_url); ?>"><?= esc_html($footer_cta_button_title); ?></a>
+              <?php } ?>
+              <!-- secondary button -->
+              <?php if ($footer_cta_secondary_button_url) { ?>
+                <a class="footer-cta-secondary-button <?= ($footer_cta_secondary_button_size) ? $footer_cta_secondary_button_size : 'btn'; ?> <?= $footer_cta_secondary_button_style ?>" href="<?= esc_url($footer_cta_secondary_button_url); ?>"><?= esc_html($footer_cta_secondary_button_title); ?></a>
+              <?php } ?>
             </div>
           </div>
         </div>
