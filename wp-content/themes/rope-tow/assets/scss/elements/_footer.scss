@@ -9,6 +9,7 @@
 		repeat: no-repeat;
 		position: center;
 	}
+	// Footer logo
 	.footer-logo {
 		width: auto;
 		img, svg {
@@ -20,6 +21,7 @@
 		}
 	}
 
+	// Footer CTA
 	&__cta {
 		position: relative;
 		background: {
@@ -48,6 +50,7 @@
 				margin-left: 0;
 			}
 		}
+		// Split layout variant
 		&.layout-split {
 			.global-footer__cta-inner {
 				display: grid;
@@ -71,6 +74,7 @@
 				}
 			}
 		}
+		// Stacked layout variant
 		&.layout-stacked {
 			.global-footer__cta-inner {
 				display: block;
@@ -83,6 +87,7 @@
 		}
 	}
 
+	// Footer socials
 	.footer-social_socials__list {
 		display: flex;
 		flex-flow: row wrap;

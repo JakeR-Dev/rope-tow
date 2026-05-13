@@ -10,7 +10,8 @@ export default defineConfig({
     manifest: "manifest.json",
     rollupOptions: {
       input: {
-        main: "assets/js/main.ts"
+        main: "assets/js/main.ts",
+        editor: "assets/js/editor.js"
       }
     }
   }

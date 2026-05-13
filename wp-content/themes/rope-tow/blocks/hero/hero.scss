@@ -1,0 +1,64 @@
+.block-hero {
+	position: relative;
+	padding: clamp(3rem, 6vw, 6rem) 0;
+	background-size: cover;
+	background-position: center;
+	border-radius: 1rem;
+	overflow: hidden;
+}
+
+.block-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(120deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.25));
+}
+
+.block-hero .container,
+.block-hero__content {
+	position: relative;
+	z-index: 1;
+}
+
+.block-hero__content {
+	max-width: 42rem;
+	color: #fff;
+}
+
+.block-hero__title {
+	margin: 0 0 0.75rem;
+}
+
+.block-hero__subtitle {
+	margin: 0;
+	opacity: 0.95;
+}
+
+.block-hero__actions {
+	margin-top: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+.block-hero__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.75rem 1.25rem;
+	border-radius: 0.5rem;
+	text-decoration: none;
+	font-weight: 600;
+	border: 1px solid transparent;
+}
+
+.block-hero__button--primary {
+	background: #fff;
+	color: #0b1015;
+}
+
+.block-hero__button--secondary {
+	background: transparent;
+	border-color: #fff;
+	color: #fff;
+}

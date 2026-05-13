@@ -28,6 +28,7 @@
 ?>
 
     <footer class="global-footer footer-<?= esc_attr($footer_layout); ?> pb-6" style="background-image:url(<?= $footer_background ?>)">
+      
       <!-- optional footer cta -->
       <section class="global-footer__cta pt-6 pb-6 <?= $footer_cta_layout ?> <?= $footer_cta_toggle_class; ?>" style="background-image:url(<?= $footer_cta_background ?>)">
         <div class="container">

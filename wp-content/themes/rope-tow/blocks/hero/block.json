@@ -1,0 +1,49 @@
+{
+	"apiVersion": 3,
+	"name": "rope-tow/hero",
+	"version": "1.0.0",
+	"title": "Hero",
+	"category": "rope-tow-blocks",
+	"icon": "cover-image",
+	"description": "Hero block with title, subtitle, CTA buttons, and background image.",
+	"keywords": ["hero", "banner", "rope-tow"],
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"subtitle": {
+			"type": "string",
+			"default": ""
+		},
+		"primaryCta": {
+			"type": "object",
+			"default": {
+				"text": "",
+				"url": "",
+				"target": ""
+			}
+		},
+		"secondaryCta": {
+			"type": "object",
+			"default": {
+				"text": "",
+				"url": "",
+				"target": ""
+			}
+		},
+		"backgroundImage": {
+			"type": "object",
+			"default": {
+				"id": 0,
+				"url": "",
+				"alt": ""
+			}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"render": "file:./hero.php"
+}
