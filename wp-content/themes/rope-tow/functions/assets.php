@@ -6,6 +6,10 @@
  */
 
 function rope_tow_enqueue_theme_assets() {
+	// Font awesome for social icons in footer
+	wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v6.7.2/css/all.css', array(), '6.7.2');
+
+	// Dev assets vs Prod assets
 	if ( defined( 'VITE_DEV_SERVER' ) && VITE_DEV_SERVER ) {
 		rope_tow_enqueue_vite_dev();
 	} else {

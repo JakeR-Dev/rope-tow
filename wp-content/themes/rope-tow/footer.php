@@ -101,7 +101,6 @@
             <ul class="footer-social_socials__list text-center <?= ($footer_layout === 'space-between') ? 'md:text-right' : ''; ?>" data-rope-tow-footer-social>
               <?php rope_tow_render_footer_social_links(); ?>
             </ul>
-            <link rel="stylesheet" id="font-awesome-css" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css" type="text/css" media="all" />
           </div>
         </div>
       </div>
