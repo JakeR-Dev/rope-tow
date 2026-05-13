@@ -83,11 +83,17 @@
 		}
 	}
 
-	.footer-social {
+	.footer-social_socials__list {
 		display: flex;
 		flex-flow: row wrap;
 		align-items: stretch;
 		gap: 8px;
+		padding-left: 0;
+		margin: 0;
+		justify-content: center;
+		@include media(tablet) {
+			justify-content: flex-end;
+		}
 		li {
 			display: inline-block;
 			width: 26px;
@@ -105,6 +111,7 @@
 				flex-flow: row nowrap;
 				justify-content: center;
 				align-items: center;
+				text-decoration: none;
 				width: 100%;
 				height: 100%;
 				color: var(--body-color);
@@ -113,21 +120,27 @@
 		}
 	}
 
+	// Footer menu
 	.global-footer__menu {
 		display: flex;
 		flex-flow: row wrap;
 		list-style: none;
 		margin: 0;
 		gap: 0 2rem;
+		padding-left: 0;
 		justify-content: center;
 		@include media(tablet) {
 			justify-content: flex-end;
 		}
+		// Top level
 		> li {
 			margin: 0;
 			display: flex;
 			flex-direction: column;
 			text-align: left;
+			a {
+				text-decoration: none;
+			}
 			> a {
 				color: var(--color-white);
 				font-size: var(--font-size-body);
@@ -137,56 +150,63 @@
 					opacity: .7;
 				}
 			}
-		}
-		ul.sub-menu {
-			margin-left: 0;
-			list-style: none;
-			display: flex;
-			flex-direction: column;
-			gap: 1rem;
-			@include media(desktop) {
-				text-align: center;
-				display: inline-flex;
-			}
-			> li {
-				display: block;
-				text-align: left;
-				margin: 0;
+			// Second level
+			> ul.sub-menu {
+				display: flex;
+				flex-direction: column;
+				list-style: none;
+				margin-left: 0;
+				padding-left: 0;
+				gap: 1rem;
 				@include media(desktop) {
-					display: inline-block;
+					text-align: center;
+					display: inline-flex;
 				}
-				a {
-					font-size: var(--font-size-body);
-					color: var(--color-white);
-					font-weight: var(--weight-bold);
-					&:hover,
-					&:focus {
-						color: rgba(255, 255, 255, 0.7);
-						text-decoration: underline;
-					}
-				}
-				ul.sub-menu {
-					margin-top: 20px;
+				> li {
 					display: block;
-					list-style: none;
+					text-align: left;
+					margin: 0;
+					@include media(desktop) {
+						display: inline-block;
+					}
+					a {
+						font-size: var(--font-size-body);
+						color: var(--color-white);
+						font-weight: var(--weight-bold);
+						&:hover,
+						&:focus {
+							color: rgba(255, 255, 255, 0.7);
+							text-decoration: underline;
+						}
+					}
+					// Third level
+					ul.sub-menu {
+						display: block;
+						margin-top: 20px;
+						list-style: none;
+						padding-left: 0;
+					}
 				}
 			}
 		}
 	}
 
-	.footer-col-legal {
+	// Legal column
+	.footer-col_legal {
 		.global-footer__legal-menu {
 			display: flex;
 			flex-wrap: wrap;
 			align-items: flex-start;
 			justify-content: center;
-			margin-bottom: 1rem;
+			margin: 0;
+			list-style: none;
+			padding-left: 0;
 			li {
 				text-align: center;
 				padding: .5rem;
 				a {
 					color: white;
-					text-decoration: underline;
+					text-decoration: none;
 					font-size: 14px;
 					&:hover,
 					&:focus {
@@ -195,6 +215,9 @@
 					}
 				}
 			}
+		}
+		#footer-copyright-text {
+			font-weight: bold;
 		}
 		@include media(tablet) {
 			display: flex;
@@ -208,30 +231,27 @@
 			#footer-copyright-text {
 				order: 1;
 				margin-right: 1rem;
-				margin-bottom: -2px;
 			}
 		}
 	}
 
+	// Centered variation
 	&.footer-centered {
+		// Logo
 		.footer-logo {
 			text-align: center;
 			margin-left: auto;
 			margin-right: auto;
 		}
+		// Base column styles
 		.footer-col {
 			display: block;
 			text-align: center;
-			flex: 0 0 100%;
-			max-width: 100%;
-			&:not(:last-child) {
-				margin-bottom: 3rem;
-			}
+			// Footer menu
 			.global-footer__menu {
 				justify-content: center;
 				> li {
 					text-align: center;
-					padding: .5rem;
 				}
 				ul.sub-menu {
 					> li {
@@ -239,28 +259,31 @@
 					}
 				}
 			}
+			
+			// Legal & socials
 			&_legal,
 			&_socials {
 				text-align: center;
 				margin-top: 0;
 			}
+			// Legal
 			&_legal {
 				order: 99;
-				margin-top: 42px;
 				margin-bottom: 0 !important;
+				.global-footer__legal-menu {
+					margin-bottom: 1rem;
+				}
+				#footer-copyright-text {
+					margin-right: 0;
+				}
 			}
+			// Socials
 			&_socials {
 				order: 100;
-				&__list {
+				.footer-social_socials__list {
 					justify-content: center;
 				}
 			}
-		}
-		.global-footer__legal-menu {
-			margin-bottom: 1rem;
-		}
-		#footer-copyright-text {
-			margin-right: 0;
 		}
 	}
 }
