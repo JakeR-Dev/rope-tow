@@ -1,3 +1,4 @@
+// BG colors mapped to theme's color palette
 .bg {
   &-primary1,
   &-brand-primary {
@@ -40,6 +41,46 @@
   }
 }
 
+// BG Attachment utility classes
+.bg-attachment {
+  &-fixed {
+    background-attachment: fixed;
+  }
+  &-scroll {
+    background-attachment: scroll;
+  }
+  &-image-fixed {
+    clip-path: inset(0);
+    img {
+      object-fit: cover; 
+      position: fixed;
+      left:0;
+      top:0;
+      width: 100%; 
+      height: 100%;
+    }
+  }
+}
+
+// Text colors mapped to theme's color palette
+.text {
+  &-light {
+    &, h1, h2, h3, h4, h5, h6,
+    .btn.btn-primary-outline,
+    .btn.btn-secondary-outline,
+    p a:not(.btn),
+    p a:not(.btn):active,
+    span {
+      color: var(--color-white);
+    }
+  }
+  &-dark {
+    color: var(--body-color);
+  }
+}
+
+
+// Screen reader only utility class
 .sr-only {
   position: absolute;
   width: 1px;

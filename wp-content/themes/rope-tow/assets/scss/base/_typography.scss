@@ -2,13 +2,7 @@
 @use "../utilities/responsive" as *;
 
 body {
-	font-family: var(--font-family-body);
-	font-weight: var(--font-weight-body);
-	color: var(--body-color);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-size: var(--font-size-body);
-	line-height: 1.25;
+	@include base-typography;
 }
 
 p.lead,
@@ -23,7 +17,9 @@ small {
 	@include make-small;
 }
 
-p {
+p, li {
+	@include base-typography;
+	margin: 0 0 var(--space-3);
 	a:not(.btn) {
 		color: var(--body-color);
 		text-decoration: underline;
@@ -44,12 +40,14 @@ p {
 }
 
 b,
-strong {
+strong,
+.bold {
 	font-weight: var(--weight-bold);
 }
 
 i,
-em {
+em,
+.italic {
 	font-style: italic;
 }
 
@@ -142,6 +140,7 @@ h6,
 	margin-block: 1rem;
 	font-weight: var(--weight-black);
 	font-size: var(--h6-font-size-desktop);
+	text-transform: uppercase;
 }
 
 .wp-caption {

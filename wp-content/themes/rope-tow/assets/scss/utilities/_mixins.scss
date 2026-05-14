@@ -1,3 +1,13 @@
+@mixin base-typography {
+	font-family: var(--font-family-body);
+	font-weight: var(--font-weight-body);
+	font-size: var(--font-size-body);
+	color: var(--body-color);
+	line-height: var(--line-height-body);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 @mixin make-lead {
 	font-weight: var(--font-weight-body, 400);
 	font-size: calc(var(--font-size-body) + 8px);

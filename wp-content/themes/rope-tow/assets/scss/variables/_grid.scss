@@ -6,7 +6,9 @@
   --content-narrow: #{breakpoints.$bp-sm}; // 720px
   --container-padding: clamp(1rem, 2vw + 0.5rem, 3rem); // min = 16px, fluid value in .5rem increments, max = 48px
   --grid-gap: clamp(1rem, 2vw + 0.5rem, 2rem); // min = 16px, fluid value in .5rem increments, max = 32px
-  --section-padding: clamp(4rem, 5vw + 1rem, 8rem); // min = 64px, fluid value in .5rem increments, max = 128px
+  --section-padding-small: clamp(2rem, 3vw + 0.5rem, 3rem); // min = 32px, fluid value in 0.5rem increments, max = 48px
+  --section-padding: clamp(4rem, 5vw + 1rem, 8rem); // min = 64px, fluid value in 1rem increments, max = 128px
+  --section-padding-large: clamp(7rem, 12vw + 1.5rem, 12rem); // min = 112px, fluid value in 1.5rem increments, max = 192px
 
   /* Radius */
   --radius-sm: 0.5rem;

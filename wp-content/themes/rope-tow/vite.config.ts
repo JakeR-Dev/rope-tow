@@ -11,7 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "assets/js/main.ts",
-        editor: "assets/js/editor.js"
+        editor: "assets/js/editor.js",
       }
     }
   }

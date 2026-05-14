@@ -9,53 +9,73 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-$attributes = isset($attributes) && is_array($attributes) ? $attributes : [];
+$title = $attributes['title'] ?? '';
+$subtitle = $attributes['subtitle'] ?? '';
+$cta1_label = $attributes['cta1Label'] ?? '';
+$cta1_url = $attributes['cta1Url'] ?? '';
+$cta2_label = $attributes['cta2Label'] ?? '';
+$cta2_url = $attributes['cta2Url'] ?? '';
+$bg_image = $attributes['backgroundImage'] ?? [];
+$bg_id = $bg_image['id'] ?? null;
+$p_top = $attributes['paddingTop'] ?? 'medium';
+$p_bottom = $attributes['paddingBottom'] ?? 'medium';
+$title_tag = strtolower( $attributes['titleTag'] ?? 'h1' );
+$subtitle_tag = strtolower( $attributes['subtitleTag'] ?? 'p' );
+$textColor = $attributes['textColor'] ?? 'light';
+$bg_color = $attributes['backgroundColor'] ?? 'brand-primary';
+$bg_attachment = $attributes['backgroundAttachment'] ?? 'scroll';
+$bg_attachment_class = $bg_attachment === 'fixed' ? 'bg-attachment-image-fixed' : '';
 
-$title = isset($attributes['title']) ? (string) $attributes['title'] : '';
-$subtitle = isset($attributes['subtitle']) ? (string) $attributes['subtitle'] : '';
-$primary_cta = isset($attributes['primaryCta']) && is_array($attributes['primaryCta']) ? $attributes['primaryCta'] : [];
-$secondary_cta = isset($attributes['secondaryCta']) && is_array($attributes['secondaryCta']) ? $attributes['secondaryCta'] : [];
-$background_image = isset($attributes['backgroundImage']) && is_array($attributes['backgroundImage']) ? $attributes['backgroundImage'] : [];
-$background_url = !empty($background_image['url']) ? esc_url($background_image['url']) : '';
-$background_alt = !empty($background_image['alt']) ? (string) $background_image['alt'] : '';
+$allowed_tags = [ 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
+$title_tag = in_array( $title_tag, $allowed_tags, true ) ? $title_tag : 'h1';
+$subtitle_tag = in_array( $subtitle_tag, $allowed_tags, true ) ? $subtitle_tag : 'p';
+
+$wrapper_attributes = get_block_wrapper_attributes( [
+  'class' => 'rt-hero rt-block section pt-' . esc_attr( $p_top ) . ' pb-' . esc_attr( $p_bottom ) . ' bg-' . esc_attr( $bg_color ) . ' text-' . esc_attr( $textColor ),
+] );
 ?>
 
-<section class="block-hero"<?php echo $background_url ? ' style="background-image:url(' . $background_url . ');"' : ''; ?>>
-	<div class="container">
-		<div class="block-hero__content">
-			<?php if ($title) : ?>
-				<h1 class="block-hero__title"><?php echo esc_html($title); ?></h1>
-			<?php endif; ?>
+<div <?php echo $wrapper_attributes; ?>>
+	<!-- background image -->
+  <?php if ( $bg_id ) { ?>
+    <div class="rt-hero__bg <?php echo esc_attr( $bg_attachment_class ); ?>" aria-hidden="true">
+      <?php echo wp_get_attachment_image( $bg_id, 'full', false, [
+        'class'   => 'rt-hero__bg-img',
+        'loading' => 'eager',
+        'decoding' => 'async',
+      ] ); ?>
+    </div>
+  <?php } ?>
 
-			<?php if ($subtitle) : ?>
-				<p class="block-hero__subtitle"><?php echo esc_html($subtitle); ?></p>
-			<?php endif; ?>
+  <div class="rt-hero__content container">
+		<div class="flex">
+			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
+				<!-- title -->
+				<?php if ( $title ) { ?>
+					<<?php echo esc_attr( $title_tag ); ?> class="rt-hero__title"><?php echo wp_kses_post( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
+				<?php } ?>
 
-			<div class="block-hero__actions">
-				<?php if (!empty($primary_cta['url'])) : ?>
-					<a
-						class="block-hero__button block-hero__button--primary"
-						href="<?php echo esc_url($primary_cta['url']); ?>"
-						<?php echo !empty($primary_cta['target']) ? ' target="' . esc_attr($primary_cta['target']) . '" rel="noopener"' : ''; ?>
-					>
-						<?php echo !empty($primary_cta['text']) ? esc_html($primary_cta['text']) : esc_html__('Primary CTA', 'rope-tow'); ?>
-					</a>
-				<?php endif; ?>
+				<!-- subtitle -->
+				<?php if ( $subtitle ) { ?>
+					<<?php echo esc_attr( $subtitle_tag ); ?> class="rt-hero__subtitle"><?php echo wp_kses_post( $subtitle ); ?></<?php echo esc_attr( $subtitle_tag ); ?>>
+				<?php } ?>
 
-				<?php if (!empty($secondary_cta['url'])) : ?>
-					<a
-						class="block-hero__button block-hero__button--secondary"
-						href="<?php echo esc_url($secondary_cta['url']); ?>"
-						<?php echo !empty($secondary_cta['target']) ? ' target="' . esc_attr($secondary_cta['target']) . '" rel="noopener"' : ''; ?>
-					>
-						<?php echo !empty($secondary_cta['text']) ? esc_html($secondary_cta['text']) : esc_html__('Secondary CTA', 'rope-tow'); ?>
-					</a>
-				<?php endif; ?>
+				<!-- ctas -->
+				<?php if ( $cta1_url || $cta2_url ) { ?>
+					<div class="rt-hero__ctas">
+						<?php if ( $cta1_url ) { ?>
+							<a href="<?php echo esc_url( $cta1_url ); ?>" class="rt-hero__cta rt-hero__cta--primary btn btn-primary">
+								<?php echo esc_html( $cta1_label ); ?>
+							</a>
+						<?php } ?>
+						<?php if ( $cta2_url ) { ?>
+							<a href="<?php echo esc_url( $cta2_url ); ?>" class="rt-hero__cta rt-hero__cta--secondary btn btn-secondary">
+								<?php echo esc_html( $cta2_label ); ?>
+							</a>
+						<?php } ?>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
-	</div>
-
-	<?php if ($background_url && $background_alt) : ?>
-		<span class="screen-reader-text"><?php echo esc_html($background_alt); ?></span>
-	<?php endif; ?>
-</section>
+  </div>
+</div>

@@ -1,49 +1,71 @@
 {
-	"apiVersion": 3,
-	"name": "rope-tow/hero",
-	"version": "1.0.0",
-	"title": "Hero",
-	"category": "rope-tow-blocks",
-	"icon": "cover-image",
-	"description": "Hero block with title, subtitle, CTA buttons, and background image.",
-	"keywords": ["hero", "banner", "rope-tow"],
-	"attributes": {
-		"title": {
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "rope-tow/hero",
+  "title": "Hero",
+  "category": "theme",
+  "description": "Hero block with style and pinache",
+  "supports": {
+    "html": false,
+    "align": ["full", "wide"]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h1"
+    },
+    "subtitleTag": {
+      "type": "string",
+      "default": "p"
+    },
+    "cta1Label": {
+			"type": "string",
+			"default": "Learn More"
+		},
+    "cta1Url": {
 			"type": "string",
 			"default": ""
 		},
-		"subtitle": {
+    "cta2Label": {
+			"type": "string",
+			"default": "Get Started"
+		},
+    "cta2Url": {
 			"type": "string",
 			"default": ""
 		},
-		"primaryCta": {
-			"type": "object",
-			"default": {
-				"text": "",
-				"url": "",
-				"target": ""
-			}
+    "backgroundImage": {
+      "type": "object",
+      "default": {}
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "medium"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "medium"
+    },
+		"textColor": {
+			"type": "string",
+			"default": "light"
 		},
-		"secondaryCta": {
-			"type": "object",
-			"default": {
-				"text": "",
-				"url": "",
-				"target": ""
-			}
+		"backgroundColor": {
+			"type": "string",
+			"default": "brand-primary"
 		},
-		"backgroundImage": {
-			"type": "object",
-			"default": {
-				"id": 0,
-				"url": "",
-				"alt": ""
-			}
+		"backgroundAttachment": {
+			"type": "string",
+			"default": "scroll"
 		}
-	},
-	"supports": {
-		"html": false,
-		"anchor": true
-	},
-	"render": "file:./hero.php"
+  },
+  "render": "file:./hero.php"
 }

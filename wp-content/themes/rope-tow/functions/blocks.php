@@ -19,9 +19,9 @@ function rope_tow_category_block($cats)
 add_filter('block_categories_all', 'rope_tow_category_block');
 
 /**
- * Register native Gutenberg blocks from block.json files.
+ * Register custom Gutenberg blocks.
  */
-function rope_tow_register_native_blocks()
+function rope_tow_register_blocks()
 {
 	$block_json_files = glob(get_template_directory() . '/blocks/*/block.json');
 
@@ -34,4 +34,4 @@ function rope_tow_register_native_blocks()
 		register_block_type($block_dir);
 	}
 }
-add_action('init', 'rope_tow_register_native_blocks');
+add_action('init', 'rope_tow_register_blocks');

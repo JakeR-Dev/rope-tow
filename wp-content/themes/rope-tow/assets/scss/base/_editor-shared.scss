@@ -1,0 +1,28 @@
+@use 'sass:meta';
+@use '../utilities/mixins' as *;
+
+// CSS custom properties — safe globally, no visual side effects to editor
+@forward '../variables/all';
+
+// Scope global styles to the editor canvas wrapper
+// so they don't bleed into the wp-admin sidebar UI
+.editor-styles-wrapper {
+  // Apply the body-equivalent styles
+  @include base-typography;
+
+  // Include the properly-scoped global styles
+  @include meta.load-css('./grid');
+  @include meta.load-css('./global');
+  @include meta.load-css('./typography');
+  @include meta.load-css('../elements/buttons');
+  @include meta.load-css('../utilities/utility-classes');
+}
+
+// Editor-specific overrides
+.components-popover {
+  .components-button {
+    &.is-active {
+      background-color: #e3e3e3;
+    }
+  }
+}

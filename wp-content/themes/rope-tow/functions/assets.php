@@ -92,8 +92,9 @@ function rope_tow_get_vite_manifest_entry( $entry_key ) {
  * @param string $entry_key           Manifest key.
  * @param string $script_handle       Script handle.
  * @param string $style_handle_prefix Style handle prefix.
+ * @param array  $script_deps         Script dependencies.
  */
-function rope_tow_enqueue_vite_manifest_entry( $entry_key, $script_handle, $style_handle_prefix ) {
+function rope_tow_enqueue_vite_manifest_entry( $entry_key, $script_handle, $style_handle_prefix, $script_deps = array() ) {
 	$entry = rope_tow_get_vite_manifest_entry( $entry_key );
 
 	if ( ! $entry ) {
@@ -103,7 +104,8 @@ function rope_tow_enqueue_vite_manifest_entry( $entry_key, $script_handle, $styl
 	if ( ! empty( $entry['file'] ) ) {
 		rope_tow_enqueue_module_script(
 			$script_handle,
-			get_template_directory_uri() . '/dist/' . ltrim( $entry['file'], '/' )
+			get_template_directory_uri() . '/dist/' . ltrim( $entry['file'], '/' ),
+			$script_deps
 		);
 	}
 
@@ -112,6 +114,15 @@ function rope_tow_enqueue_vite_manifest_entry( $entry_key, $script_handle, $styl
 			wp_enqueue_style( $style_handle_prefix . '-' . $index, get_template_directory_uri() . '/dist/' . ltrim( $css_file, '/' ), array(), ROPE_TOW_VERSION );
 		}
 	}
+}
+
+/**
+ * Core Gutenberg dependencies required by custom editor scripts.
+ *
+ * @return array
+ */
+function rope_tow_get_editor_script_deps() {
+	return array( 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-element', 'wp-i18n' );
 }
 
 function rope_tow_enqueue_theme_assets() {
@@ -137,7 +148,21 @@ function rope_tow_enqueue_editor_assets() {
 		rope_tow_enqueue_vite_editor_manifest();
 	}
 }
+// Loads assets for the editor UI shell (inspector, inserter, top toolbar).
 add_action( 'enqueue_block_editor_assets', 'rope_tow_enqueue_editor_assets' );
+
+/**
+ * Enqueue editor assets for the block canvas iframe so block styles match frontend styling.
+ */
+function rope_tow_enqueue_block_canvas_assets() {
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	rope_tow_enqueue_editor_assets();
+}
+// Loads assets in the block content canvas iframe so blocks match frontend styling.
+add_action( 'enqueue_block_assets', 'rope_tow_enqueue_block_canvas_assets' );
 
 /**
  * Inject Vite dev-server client + entry point for HMR.
@@ -156,9 +181,10 @@ function rope_tow_enqueue_vite_dev() {
  */
 function rope_tow_enqueue_vite_editor_dev() {
 	$server = rtrim( VITE_DEV_SERVER, '/' );
+	$editor_deps = rope_tow_get_editor_script_deps();
 
-	rope_tow_enqueue_module_script( 'rope-tow-vite-client-editor', esc_url( $server . '/@vite/client' ) );
-	rope_tow_enqueue_module_script( 'rope-tow-editor', esc_url( $server . '/assets/js/editor.js' ) );
+	rope_tow_enqueue_module_script( 'rope-tow-vite-client-editor', esc_url( $server . '/@vite/client' ), $editor_deps );
+	rope_tow_enqueue_module_script( 'rope-tow-editor', esc_url( $server . '/assets/js/editor.js' ), $editor_deps );
 }
 
 /**
@@ -172,6 +198,8 @@ function rope_tow_enqueue_vite_manifest() {
  * Enqueue block editor assets from the Vite production manifest.
  */
 function rope_tow_enqueue_vite_editor_manifest() {
-	rope_tow_enqueue_vite_manifest_entry( 'assets/js/editor.js', 'rope-tow-editor', 'rope-tow-editor' );
+	rope_tow_enqueue_vite_manifest_entry( 'assets/js/editor.js', 'rope-tow-editor', 'rope-tow-editor', rope_tow_get_editor_script_deps() );
 }
+
+
 

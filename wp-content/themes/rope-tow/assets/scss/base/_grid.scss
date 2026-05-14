@@ -10,8 +10,25 @@
   width: calc(100% - (var(--container-padding) * 2));
   margin-inline: auto;
 }
-section {
+
+/* Sections */
+$padding-sizes: (
+  small: var(--section-padding-small),
+  medium: var(--section-padding),
+  large: var(--section-padding-large),
+);
+
+section,
+.section {
   padding-block: var(--section-padding);
+  @each $size, $value in $padding-sizes {
+    &.pt-#{$size} {
+      padding-top: $value;
+    }
+    &.pb-#{$size} {
+      padding-bottom: $value;
+    }
+  }
 }
 
 /* Simple grid system */
@@ -19,6 +36,11 @@ section {
   display: grid;
   gap: var(--grid-gap);
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.flex {
+  display: flex;
+  gap: var(--grid-gap);
+  flex-flow: row wrap;
 }
 
 $span-breakpoints: (
@@ -51,5 +73,32 @@ $span-breakpoints: (
   }
 }
 
+/* Utility flex class generator */
+@mixin generate-flex-classes($columns: 12) {
+  // base flex classes
+  // ex: .flex-6 { flex: 0 0 50%; }
+  @for $i from 1 through $columns {
+    .flex-#{$i} {
+      flex: 0 0 calc(#{$i} / #{$columns} * 100%);
+      max-width: calc(#{$i} / #{$columns} * 100%);
+    }
+  }
+
+  // responsive flex classes
+  // ex: .sm:flex-6 { @media (min-width: $bp-sm) { flex: 0 0 50%; } }
+  @each $prefix, $bp in $span-breakpoints {
+    @include media($bp) {
+      @for $i from 1 through $columns {
+        .#{$prefix}\:flex-#{$i} {
+          flex: 0 0 calc(#{$i} / #{$columns} * 100%);
+          max-width: calc(#{$i} / #{$columns} * 100%);
+        }
+      }
+    }
+  }
+}
+
 // Generate span utility classes
 @include generate-span-classes();
+// Generate flex utility classes
+@include generate-flex-classes();
