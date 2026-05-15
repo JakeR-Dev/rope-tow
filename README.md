@@ -44,10 +44,10 @@ Output goes to `wp-content/themes/rope-tow/dist/`. Ensure `VITE_DEV_SERVER` is *
 
 ## **Adding Blocks**
 
-- Create a new directory within the rope-tow/blocks folder alongside the other existing blocks, name it appropriately.
+- Create a new directory within the `rope-tow/blocks` folder alongside the other existing blocks, name it appropriately.
 	- Alternatively, you can clone an existing block's directory and rename the files to match your new block. Be sure to update all references to the duplicated block's name in the new files.
-- Add a reference to the new block in the rope-tow/assets/admin/js/blocks/editor.js file, under the "Custom gutenberg blocks" section.
-- Add a reference to the new block's stylesheet to rope-tow/assets/scss/blocks/_all.scss
+- Add a reference to the new block in the `rope-tow/assets/admin/js/blocks/editor.js` file, under the "Custom gutenberg blocks" section.
+- Add a reference to the new block's stylesheet to `rope-tow/assets/scss/blocks/_all.scss`
 
 
 
