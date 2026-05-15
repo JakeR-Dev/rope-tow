@@ -1,10 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "rope-tow/hero",
-  "title": "Hero",
+  "name": "rope-tow/content-grid",
+  "title": "Content Grid",
   "category": "the-goods",
-  "description": "Hero block with style and pinache",
+  "description": "Content Grid block with flexibility and style",
   "supports": {
     "html": false,
     "align": ["full", "wide"]
@@ -51,5 +51,5 @@
 			"default": "secondary"
 		}
   },
-  "render": "file:./hero.php"
+  "render": "file:./content-grid.php"
 }

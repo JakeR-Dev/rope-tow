@@ -184,7 +184,7 @@ function rope_tow_enqueue_vite_editor_dev() {
 	$editor_deps = rope_tow_get_editor_script_deps();
 
 	rope_tow_enqueue_module_script( 'rope-tow-vite-client-editor', esc_url( $server . '/@vite/client' ), $editor_deps );
-	rope_tow_enqueue_module_script( 'rope-tow-editor', esc_url( $server . '/assets/js/editor.js' ), $editor_deps );
+	rope_tow_enqueue_module_script( 'rope-tow-editor', esc_url( $server . '/assets/admin/js/blocks/editor.js' ), $editor_deps );
 }
 
 /**
@@ -198,7 +198,7 @@ function rope_tow_enqueue_vite_manifest() {
  * Enqueue block editor assets from the Vite production manifest.
  */
 function rope_tow_enqueue_vite_editor_manifest() {
-	rope_tow_enqueue_vite_manifest_entry( 'assets/js/editor.js', 'rope-tow-editor', 'rope-tow-editor', rope_tow_get_editor_script_deps() );
+	rope_tow_enqueue_vite_manifest_entry( 'assets/admin/js/blocks/editor.js', 'rope-tow-editor', 'rope-tow-editor', rope_tow_get_editor_script_deps() );
 }
 
 

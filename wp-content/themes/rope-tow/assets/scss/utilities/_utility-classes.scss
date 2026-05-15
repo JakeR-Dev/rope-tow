@@ -39,6 +39,9 @@
   &-color-white {
     background-color: var(--color-white);
   }
+  &-transparent {
+    background-color: transparent;
+  }
 }
 
 // BG Attachment utility classes
@@ -70,7 +73,8 @@
     .btn.btn-secondary-outline,
     p a:not(.btn),
     p a:not(.btn):active,
-    span {
+    span,
+    p {
       color: var(--color-white);
     }
   }

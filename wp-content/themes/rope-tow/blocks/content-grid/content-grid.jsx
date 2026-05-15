@@ -14,7 +14,7 @@ if (!blocks || !blockEditor || !components || !element) {
   const { useState } = element;
   const { PanelBody, ToolbarDropdownMenu } = components;
 
-  registerBlockType("rope-tow/hero", {
+  registerBlockType("rope-tow/content-grid", {
     edit: ({ attributes, setAttributes }) => {
       const {
         // Global shared attributes
@@ -39,7 +39,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
       // Define the block's props
       const blockProps = useBlockProps({
-        className: 'rt-hero rt-block section pt-' + paddingTop + ' pb-' + paddingBottom + ' mt-' + marginTop + ' mb-' + marginBottom + ' bg-' + backgroundColor + ' text-' + textColor,
+        className: 'rt-content-grid rt-block section pt-' + paddingTop + ' pb-' + paddingBottom + ' mt-' + marginTop + ' mb-' + marginBottom + ' bg-' + backgroundColor + ' text-' + textColor,
       });
       const bgImgClass = backgroundAttachment && backgroundAttachment === 'fixed' ? 'bg-attachment-image-fixed' : '';
 
@@ -101,47 +101,47 @@ if (!blocks || !blockEditor || !components || !element) {
 
             {/* Background image */}
             {backgroundImage?.url && (
-              <div className={`rt-hero__bg ${bgImgClass}`} aria-hidden="true">
+              <div className={`rt-content-grid__bg ${bgImgClass}`} aria-hidden="true">
                 <img
                   src={backgroundImage.url}
                   alt=""
-                  className="rt-hero__bg-img"
+                  className="rt-content-grid__bg-img"
                 />
               </div>
             )}
 
-            <div className="rt-hero__content container">
+            <div className="rt-content-grid__content container">
               <div className="flex">
                 <div className="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
                   {/* title */}
                   <RichText
                     tagName={titleTag || 'h1'}
-                    className="rt-hero__title"
+                    className="rt-content-grid__title"
                     value={title}
                     onFocus={() => setActiveTextField('title')}
                     onChange={(val) => setAttributes({ title: val })}
-                    placeholder="Hero title..."
+                    placeholder="Content Grid title..."
                     allowedFormats={[]}
                   />
                   {/* subtitle */}
                   <RichText
                     tagName={subtitleTag || 'p'}
-                    className="rt-hero__subtitle"
+                    className="rt-content-grid__subtitle"
                     value={subtitle}
                     onFocus={() => setActiveTextField('subtitle')}
                     onChange={(val) => setAttributes({ subtitle: val })}
-                    placeholder="Subtitle or tagline..."
+                    placeholder="Content Grid subtitle or tagline..."
                     allowedFormats={['core/bold', 'core/italic']}
                   />
                   {/* ctas */}
-                  <div className="rt-hero__ctas">
+                  <div className="rt-content-grid__ctas">
                     {cta1Url && (
-                      <a href={cta1Url} className={`rt-hero__cta rt-hero__cta--primary btn btn-${cta1Style}`}>
+                      <a href={cta1Url} className={`rt-content-grid__cta rt-content-grid__cta--primary btn btn-${cta1Style}`}>
                         {cta1Label}
                       </a>
                     )}
                     {cta2Url && (
-                      <a href={cta2Url} className={`rt-hero__cta rt-hero__cta--secondary btn btn-${cta2Style}`}>
+                      <a href={cta2Url} className={`rt-content-grid__cta rt-content-grid__cta--secondary btn btn-${cta2Style}`}>
                         {cta2Label}
                       </a>
                     )}

@@ -192,15 +192,15 @@
 				line-height: 1;
 				margin: 0;
 				text-transform: capitalize;
+				font-size: 1rem;
+				font-weight: var(--weight-bold);
+				padding: 1.75rem .6rem;
 				transition: all 0.3s ease-in-out;
+				@include media(wide) {
+					padding: 1.75rem 1rem;
+				}
 				&:hover {
 					opacity: .8;
-				}
-				font-size: 1rem;
-				padding: 1.75rem .6rem;
-				@include media(wide) {
-					font-size: 1.125rem;
-					padding: 1.75rem 1rem;
 				}
 			}
 

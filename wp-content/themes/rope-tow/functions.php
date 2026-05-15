@@ -36,9 +36,6 @@ if (!defined('ROPE_TOW_ICON')) {
 function rope_tow_include()
 {
 	$includes = [
-		// "classes/class-vite.php",
-		// "classes/class-rope-tow-block.php", // Rope Tow Block Class
-		// "classes/class-rope-tow-primitive.php", // Rope Tow Primitive Class
 		"functions/utils.php", // Utility functions
 		"functions/init.php", // Initial theme setup and constants
 		"functions/assets.php", // Asset enqueueing (Vite dev / prod)
@@ -46,10 +43,8 @@ function rope_tow_include()
 		"functions/config.php", // Configuration
 		"functions/security.php", // Security focused settings
 		"functions/cpt.php", // Custom Post Types
-		"functions/options.php", // ACF Theme Options
 		"functions/shortcodes.php", // Custom Wordpress Shortcodes for WYSIWYGs
 		"functions/blocks.php", // Declare Custom Blocks
-		"functions/acf.php", // Custom ACF field types (for the post archive module)
 		"functions/customizer/customizations.php" // Appearance > Customize
 	];
 	foreach ($includes as $file) {

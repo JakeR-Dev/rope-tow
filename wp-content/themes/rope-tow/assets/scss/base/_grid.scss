@@ -13,9 +13,16 @@
 
 /* Sections */
 $padding-sizes: (
+  none: 0,
   small: var(--section-padding-small),
   medium: var(--section-padding),
   large: var(--section-padding-large),
+);
+$margin-sizes: (
+  none: 0,
+  small: var(--section-margin-small),
+  medium: var(--section-margin-medium),
+  large: var(--section-margin-large),
 );
 
 section,
@@ -27,6 +34,14 @@ section,
     }
     &.pb-#{$size} {
       padding-bottom: $value;
+    }
+  }
+  @each $size, $value in $margin-sizes {
+    &.mt-#{$size} {
+      margin-top: $value;
+    }
+    &.mb-#{$size} {
+      margin-bottom: $value;
     }
   }
 }
