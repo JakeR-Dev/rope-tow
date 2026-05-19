@@ -30,3 +30,6 @@ html :where(.wp-block) {
   margin-top: 0;
   margin-bottom: 0;
 }
+i[class*="fa-"] {
+  font-style: normal;
+}
