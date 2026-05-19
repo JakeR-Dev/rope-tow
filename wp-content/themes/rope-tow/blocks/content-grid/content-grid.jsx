@@ -230,7 +230,7 @@ if (!blocks || !blockEditor || !components || !element) {
                   {/* title */}
                   <RichText
                     tagName={titleTag || 'h1'}
-                    className="rt-content-grid__title"
+                    className="rt-content-grid__title mb-3"
                     value={title}
                     onFocus={() => setActiveTextField('title')}
                     onChange={(val) => setAttributes({ title: val })}
@@ -241,7 +241,7 @@ if (!blocks || !blockEditor || !components || !element) {
                   {/* subtitle */}
                   <RichText
                     tagName={subtitleTag || 'p'}
-                    className="rt-content-grid__subtitle"
+                    className="rt-content-grid__subtitle mb-3"
                     value={subtitle}
                     onFocus={() => setActiveTextField('subtitle')}
                     onChange={(val) => setAttributes({ subtitle: val })}
@@ -249,9 +249,23 @@ if (!blocks || !blockEditor || !components || !element) {
                     allowedFormats={['core/bold', 'core/italic']}
                   />
 
+                  {/* ctas */}
+                  <div className="rt-content-grid__ctas flex gap-2 my-4">
+                    {cta1Url && (
+                      <a href={cta1Url} className={`rt-content-grid__cta rt-content-grid__cta--primary btn btn-${cta1Style}`}>
+                        {cta1Label}
+                      </a>
+                    )}
+                    {cta2Url && (
+                      <a href={cta2Url} className={`rt-content-grid__cta rt-content-grid__cta--secondary btn btn-${cta2Style}`}>
+                        {cta2Label}
+                      </a>
+                    )}
+                  </div>
+
                   {/* repeated items */}
                   {(gridItems.length > 0) && (
-                    <div className="rt-content-grid__items grid gap-3 mt-4 mb-4">
+                    <div className="rt-content-grid__items grid gap-3 my-4">
                       {gridItems.map((item, index) => {
                         const ItemTitleTag = item?.titleTag || 'h5';
                         const itemBgColor = item?.backgroundColor || 'white';
@@ -264,7 +278,7 @@ if (!blocks || !blockEditor || !components || !element) {
                         const itemLinkLabel = item?.linkLabel || 'Learn more';
 
                         return (
-                          <div className={`rt-content-grid__item span-12 sm:span-6 xl:span-4 p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`}>
+                          <div className={`rt-content-grid__item span-12 sm:span-6 lg:span-4 p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`}>
                             {/* Icon */}
                             {itemIcon && <i className={itemIcon} aria-hidden="true" />}
                             {/* Title */}
@@ -286,20 +300,6 @@ if (!blocks || !blockEditor || !components || !element) {
                       })}
                     </div>
                   )}
-
-                  {/* ctas */}
-                  <div className="rt-content-grid__ctas">
-                    {cta1Url && (
-                      <a href={cta1Url} className={`rt-content-grid__cta rt-content-grid__cta--primary btn btn-${cta1Style}`}>
-                        {cta1Label}
-                      </a>
-                    )}
-                    {cta2Url && (
-                      <a href={cta2Url} className={`rt-content-grid__cta rt-content-grid__cta--secondary btn btn-${cta2Style}`}>
-                        {cta2Label}
-                      </a>
-                    )}
-                  </div>
                 </div>
               </div>
             </div>

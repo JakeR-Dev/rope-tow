@@ -125,9 +125,16 @@ function rope_tow_get_editor_script_deps() {
 	return array( 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-element', 'wp-i18n' );
 }
 
-function rope_tow_enqueue_theme_assets() {
-	// Font awesome for social icons in footer
+/**
+ * Enqueue Font Awesome stylesheet.
+ */
+function rope_tow_enqueue_font_awesome() {
 	wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v6.7.2/css/all.css', array(), '6.7.2' );
+}
+
+function rope_tow_enqueue_theme_assets() {
+	// Font Awesome for frontend icons.
+	rope_tow_enqueue_font_awesome();
 
 	// Dev assets vs Prod assets
 	if ( rope_tow_is_vite_dev_server() ) {
@@ -142,6 +149,8 @@ add_action( 'wp_enqueue_scripts', 'rope_tow_enqueue_theme_assets' );
  * Enqueue block editor assets from Vite.
  */
 function rope_tow_enqueue_editor_assets() {
+	rope_tow_enqueue_font_awesome();
+
 	if ( rope_tow_is_vite_dev_server() ) {
 		rope_tow_enqueue_vite_editor_dev();
 	} else {

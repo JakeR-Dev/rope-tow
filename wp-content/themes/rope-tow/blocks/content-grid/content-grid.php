@@ -47,17 +47,33 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
 				<!-- Title -->
 				<?php if ( $title ) { ?>
-					<<?php echo esc_attr( $title_tag ); ?> class="rt-content-grid__title"><?php echo wp_kses_post( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
+					<<?php echo esc_attr( $title_tag ); ?> class="rt-content-grid__title mb-3"><?php echo wp_kses_post( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
 				<?php } ?>
 
 				<!-- Subtitle -->
 				<?php if ( $subtitle ) { ?>
-					<<?php echo esc_attr( $subtitle_tag ); ?> class="rt-content-grid__subtitle"><?php echo wp_kses_post( $subtitle ); ?></<?php echo esc_attr( $subtitle_tag ); ?>>
+					<<?php echo esc_attr( $subtitle_tag ); ?> class="rt-content-grid__subtitle mb-3"><?php echo wp_kses_post( $subtitle ); ?></<?php echo esc_attr( $subtitle_tag ); ?>>
+				<?php } ?>
+
+				<!-- CTAs -->
+				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
+					<div class="rt-content-grid__ctas flex gap-2 my-4">
+						<?php if ( $ctas['cta1_url'] ) { ?>
+							<a href="<?php echo esc_url( $ctas['cta1_url'] ); ?>" class="rt-content-grid__cta rt-content-grid__cta--primary btn btn-<?php echo esc_attr( $ctas['cta1_style'] ); ?>">
+								<?php echo esc_html( $ctas['cta1_label'] ); ?>
+							</a>
+						<?php } ?>
+						<?php if ( $ctas['cta2_url'] ) { ?>
+							<a href="<?php echo esc_url( $ctas['cta2_url'] ); ?>" class="rt-content-grid__cta rt-content-grid__cta--secondary btn btn-<?php echo esc_attr( $ctas['cta2_style'] ); ?>">
+								<?php echo esc_html( $ctas['cta2_label'] ); ?>
+							</a>
+						<?php } ?>
+					</div>
 				<?php } ?>
 
 				<!-- Grid items -->
 				<?php if ( !empty( $items ) ) { ?>
-					<div class="rt-content-grid__items grid gap-3 lg:gap-4 mt-4 mb-4">
+					<div class="rt-content-grid__items grid gap-3 lg:gap-4 my-4">
 						<?php foreach ( $items as $item ) {
 							if ( is_object( $item ) ) {
 								$item = get_object_vars( $item );
@@ -95,22 +111,6 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 									</a>
 								<?php } ?>
 							</div>
-						<?php } ?>
-					</div>
-				<?php } ?>
-
-				<!-- CTAs -->
-				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
-					<div class="rt-content-grid__ctas">
-						<?php if ( $ctas['cta1_url'] ) { ?>
-							<a href="<?php echo esc_url( $ctas['cta1_url'] ); ?>" class="rt-content-grid__cta rt-content-grid__cta--primary btn btn-<?php echo esc_attr( $ctas['cta1_style'] ); ?>">
-								<?php echo esc_html( $ctas['cta1_label'] ); ?>
-							</a>
-						<?php } ?>
-						<?php if ( $ctas['cta2_url'] ) { ?>
-							<a href="<?php echo esc_url( $ctas['cta2_url'] ); ?>" class="rt-content-grid__cta rt-content-grid__cta--secondary btn btn-<?php echo esc_attr( $ctas['cta2_style'] ); ?>">
-								<?php echo esc_html( $ctas['cta2_label'] ); ?>
-							</a>
 						<?php } ?>
 					</div>
 				<?php } ?>
