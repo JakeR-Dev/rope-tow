@@ -30,6 +30,10 @@
 		margin-bottom: var(--space-4);
 	}
 
+	&__item {
+		border-radius: .5rem;
+	}
+
 	&__ctas {
 		display: flex;
 		gap: var(--space-2);

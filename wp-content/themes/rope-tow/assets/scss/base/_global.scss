@@ -102,4 +102,4 @@ $spacing-scale: (
 @include generate-spacing-utils(mt, margin-top);
 @include generate-spacing-utils(mb, margin-bottom);
 // Generate gap utility classes
-@include generate-spacing-utils(g, gap);
+@include generate-spacing-utils(gap, gap);

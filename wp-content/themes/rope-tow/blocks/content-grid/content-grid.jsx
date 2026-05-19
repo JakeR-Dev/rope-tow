@@ -1,5 +1,5 @@
 import "./editor.scss";
-import { headingTagOptions } from "../../assets/admin/js/blocks/block-options";
+import { headingTagOptions, buttonStyleOptions, backgroundColorOptions, textColorOptions } from "../../assets/admin/js/blocks/block-options";
 import { SpacingControls } from "../../assets/admin/js/blocks/spacingControls";
 import { BackgroundControls } from "../../assets/admin/js/blocks/backgroundControls";
 import { ButtonPairControls } from "../../assets/admin/js/blocks/buttonPair";
@@ -12,7 +12,7 @@ if (!blocks || !blockEditor || !components || !element) {
   const { registerBlockType } = blocks;
   const { InspectorControls, BlockControls, RichText, useBlockProps } = blockEditor;
   const { useState } = element;
-  const { PanelBody, ToolbarDropdownMenu } = components;
+  const { PanelBody, ToolbarDropdownMenu, TextControl, TextareaControl, Button, SelectControl } = components;
 
   registerBlockType("rope-tow/content-grid", {
     edit: ({ attributes, setAttributes }) => {
@@ -21,7 +21,7 @@ if (!blocks || !blockEditor || !components || !element) {
         paddingTop, paddingBottom, marginTop, marginBottom,
         backgroundImage, backgroundColor, backgroundAttachment, textColor,
         // Block-specific attributes
-        title, subtitle, titleTag, subtitleTag,
+        title, subtitle, titleTag, subtitleTag, items,
         cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
       } = attributes;
 
@@ -35,6 +35,41 @@ if (!blocks || !blockEditor || !components || !element) {
           return;
         }
         setAttributes({ titleTag: tag });
+      };
+
+      // Grid items repeater logic
+      const gridItems = Array.isArray(items) ? items : [];
+      const addGridItem = () => {
+        setAttributes({
+          items: [
+            ...gridItems,
+            {
+              title: '',
+              titleTag: 'h4',
+              description: '',
+              backgroundColor: 'white',
+              textColor: 'dark',
+              icon: '',
+              linkLabel: '',
+              linkUrl: '',
+              buttonStyle: 'primary',
+            },
+          ],
+        });
+      };
+
+      const updateGridItem = (index, field, value) => {
+        const nextItems = gridItems.map((item, itemIndex) => (
+          itemIndex === index ? { ...item, [field]: value } : item
+        ));
+
+        setAttributes({ items: nextItems });
+      };
+
+      const removeGridItem = (index) => {
+        setAttributes({
+          items: gridItems.filter((_, itemIndex) => itemIndex !== index),
+        });
       };
 
       // Define the block's props
@@ -95,8 +130,87 @@ if (!blocks || !blockEditor || !components || !element) {
                 setAttributes={setAttributes}
               />
             </PanelBody>
+
+            {/* Content grid repeater */}
+            <PanelBody title="Grid Items" initialOpen={false}>
+              {gridItems.length === 0 && (
+                <p>Add your first grid item.</p>
+              )}
+
+              {gridItems.map((item, index) => (
+                <div className="rt-content-grid__item-control" key={`grid-item-${index}`}>
+                  <TextControl
+                    label={`Item ${index + 1} Title`}
+                    value={item?.title || ''}
+                    onChange={(val) => updateGridItem(index, 'title', val)}
+                  />
+                  <SelectControl
+                    label="Title Tag"
+                    value={item?.titleTag || 'h5'}
+                    options={headingTagOptions}
+                    onChange={(val) => updateGridItem(index, 'titleTag', val)}
+                  />
+                  <TextareaControl
+                    label="Description"
+                    value={item?.description || ''}
+                    onChange={(val) => updateGridItem(index, 'description', val)}
+                  />
+                  <SelectControl
+                    label="Background Color"
+                    value={item?.backgroundColor || 'white'}
+                    options={backgroundColorOptions}
+                    onChange={(val) => updateGridItem(index, 'backgroundColor', val)}
+                  />
+                  <SelectControl
+                    label="Text Color"
+                    value={item?.textColor || 'dark'}
+                    options={textColorOptions}
+                    onChange={(val) => updateGridItem(index, 'textColor', val)}
+                  />
+                  <TextControl
+                    label="Icon (Font Awesome class)"
+                    value={item?.icon || ''}
+                    onChange={(val) => updateGridItem(index, 'icon', val)}
+                    help={
+                      <>
+                        Example: fa-solid fa-star <a href="https://fontawesome.com/v6/search?ic=free-collection" target="_blank" rel="noopener noreferrer"> Need Icons?</a>
+                      </>
+                    }
+                  />
+                  <TextControl
+                    label="Button Label"
+                    value={item?.linkLabel || ''}
+                    onChange={(val) => updateGridItem(index, 'linkLabel', val)}
+                  />
+                  <TextControl
+                    label="Button URL"
+                    value={item?.linkUrl || ''}
+                    onChange={(val) => updateGridItem(index, 'linkUrl', val)}
+                  />
+                  <SelectControl
+                    label="Button Style"
+                    value={item?.buttonStyle || 'primary'}
+                    options={buttonStyleOptions}
+                    onChange={(val) => updateGridItem(index, 'buttonStyle', val)}
+                  />
+                  <Button
+                    isDestructive
+                    variant="secondary"
+                    onClick={() => removeGridItem(index)}
+                  >
+                    Remove Item
+                  </Button>
+                  <hr />
+                </div>
+              ))}
+
+              <Button variant="primary" onClick={addGridItem}>
+                Add Item
+              </Button>
+            </PanelBody>
           </InspectorControls>
 
+          {/* Render the block content in the editor */}
           <div {...blockProps}>
 
             {/* Background image */}
@@ -123,6 +237,7 @@ if (!blocks || !blockEditor || !components || !element) {
                     placeholder="Content Grid title..."
                     allowedFormats={[]}
                   />
+
                   {/* subtitle */}
                   <RichText
                     tagName={subtitleTag || 'p'}
@@ -133,6 +248,45 @@ if (!blocks || !blockEditor || !components || !element) {
                     placeholder="Content Grid subtitle or tagline..."
                     allowedFormats={['core/bold', 'core/italic']}
                   />
+
+                  {/* repeated items */}
+                  {(gridItems.length > 0) && (
+                    <div className="rt-content-grid__items grid gap-3 mt-4 mb-4">
+                      {gridItems.map((item, index) => {
+                        const ItemTitleTag = item?.titleTag || 'h5';
+                        const itemBgColor = item?.backgroundColor || 'white';
+                        const itemTextColor = item?.textColor || 'dark';
+                        const itemIcon = item?.icon;
+                        const itemTitle = item?.title;
+                        const itemDescription = item?.description;
+                        const itemLinkUrl = item?.linkUrl;
+                        const itemButtonStyle = item?.buttonStyle || 'primary';
+                        const itemLinkLabel = item?.linkLabel || 'Learn more';
+
+                        return (
+                          <div className={`rt-content-grid__item span-12 sm:span-6 xl:span-4 p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`}>
+                            {/* Icon */}
+                            {itemIcon && <i className={itemIcon} aria-hidden="true" />}
+                            {/* Title */}
+                            {itemTitle && (
+                              <ItemTitleTag className="rt-content-grid__item-title mb-2 ">{itemTitle}</ItemTitleTag>
+                            )}
+                            {/* Description */}
+                            {itemDescription && (
+                              <p className="rt-content-grid__item-description">{itemDescription}</p>
+                            )}
+                            {/* Button */}
+                            {itemLinkUrl && (
+                              <a className={`rt-content-grid__item-link btn btn-${itemButtonStyle}`} href={itemLinkUrl}>
+                                {itemLinkLabel}
+                              </a>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
                   {/* ctas */}
                   <div className="rt-content-grid__ctas">
                     {cta1Url && (

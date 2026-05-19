@@ -26,6 +26,10 @@
       "type": "string",
       "default": "p"
     },
+    "items": {
+      "type": "array",
+      "default": []
+    },
     "cta1Label": {
 			"type": "string",
 			"default": "Learn More"
