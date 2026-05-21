@@ -24,13 +24,6 @@
 		box-shadow: none;
 	}
 
-	// sibling buttons
-	+.btn {
-		@include media(tablet) {
-			margin-left: 20px;
-		}
-	}
-
 	// large variant
 	&.btn-lg {
 		padding: var(--button-lg-padding-y) var(--button-lg-padding-x);

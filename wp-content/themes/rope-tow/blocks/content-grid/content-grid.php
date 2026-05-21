@@ -12,10 +12,13 @@ if (!defined('ABSPATH')) {
 // Gather block-specific attributes with defaults
 $title = $attributes['title'] ?? '';
 $title_tag = rope_tow_block_sanitize_tag( $attributes['titleTag'] ?? 'h1', 'h1' );
+$pretitle = $attributes['pretitle'] ?? '';
+$pretitle_tag = rope_tow_block_sanitize_tag( $attributes['pretitleTag'] ?? 'h6', 'h6');
 $subtitle = $attributes['subtitle'] ?? '';
 $subtitle_tag = rope_tow_block_sanitize_tag( $attributes['subtitleTag'] ?? 'p', 'p' );
 $items = $attributes['items'] ?? [];
-// Standardize $items as an array
+$grid_columns = $attributes['gridColumns'] ?? 'span-4';
+// Standardize grid $items as an array
 if ( ! is_array( $items ) ) {
 	$items = [];
 }
@@ -45,9 +48,14 @@ $wrapper_attributes = get_block_wrapper_attributes( [
   <div class="rt-content-grid__content container">
 		<div class="flex">
 			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
+				<!-- Pretitle -->
+				<?php if ( $pretitle ) { ?>
+					<p class="<?php echo ( $pretitle_tag ); ?> rt-content-grid__pretitle mb-0"><?php echo wp_kses_post( $pretitle ); ?></p>
+				<?php } ?>
+
 				<!-- Title -->
 				<?php if ( $title ) { ?>
-					<<?php echo esc_attr( $title_tag ); ?> class="rt-content-grid__title mb-3"><?php echo wp_kses_post( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
+					<<?php echo esc_attr( $title_tag ); ?> class="rt-content-grid__title mb-3 mt-0"><?php echo wp_kses_post( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
 				<?php } ?>
 
 				<!-- Subtitle -->
@@ -57,7 +65,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
 				<!-- CTAs -->
 				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
-					<div class="rt-content-grid__ctas flex gap-2 my-4">
+					<div class="rt-content-grid__ctas flex gap-3 my-4">
 						<?php if ( $ctas['cta1_url'] ) { ?>
 							<a href="<?php echo esc_url( $ctas['cta1_url'] ); ?>" class="rt-content-grid__cta rt-content-grid__cta--primary btn btn-<?php echo esc_attr( $ctas['cta1_style'] ); ?>">
 								<?php echo esc_html( $ctas['cta1_label'] ); ?>
@@ -73,7 +81,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
 				<!-- Grid items -->
 				<?php if ( !empty( $items ) ) { ?>
-					<div class="rt-content-grid__items grid gap-3 lg:gap-4 my-4">
+					<div class="rt-content-grid__items grid gap-3 my-4">
 						<?php foreach ( $items as $item ) {
 							if ( is_object( $item ) ) {
 								$item = get_object_vars( $item );
@@ -91,7 +99,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 							$item_text_color = isset ( $item['textColor'] ) ? (string) $item['textColor'] : 'dark'; ?>
 
 							<!-- Grid items -->
-							<div class="rt-content-grid__item span-12 sm:span-6 lg:span-4 p-3 lg:p-4 bg-<?php echo esc_attr( $item_bg_color ); ?> text-<?php echo esc_attr( $item_text_color ); ?>">
+							<div class="rt-content-grid__item span-12 sm:span-6 lg:<?php echo $grid_columns; ?> p-3 lg:p-4 bg-<?php echo esc_attr( $item_bg_color ); ?> text-<?php echo esc_attr( $item_text_color ); ?>">
 								<!-- Icon -->
 								<?php if ( '' !== $item_icon_class ) { ?>
 									<i class="<?php echo esc_attr( $item_icon_class ); ?>" aria-hidden="true"></i>

@@ -10,7 +10,15 @@
     "align": ["full", "wide"]
   },
   "attributes": {
+    "gridColumns": {
+      "type": "string",
+      "default": "span-4"
+    },
     "title": {
+      "type": "string",
+      "default": ""
+    },
+    "pretitle": {
       "type": "string",
       "default": ""
     },
@@ -21,6 +29,10 @@
     "titleTag": {
       "type": "string",
       "default": "h1"
+    },
+    "pretitleTag": {
+      "type": "string",
+      "default": "h6"
     },
     "subtitleTag": {
       "type": "string",

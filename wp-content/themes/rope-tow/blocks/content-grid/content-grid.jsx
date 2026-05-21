@@ -21,17 +21,26 @@ if (!blocks || !blockEditor || !components || !element) {
         paddingTop, paddingBottom, marginTop, marginBottom,
         backgroundImage, backgroundColor, backgroundAttachment, textColor,
         // Block-specific attributes
-        title, subtitle, titleTag, subtitleTag, items,
+        title, pretitle, subtitle, titleTag, pretitleTag, subtitleTag, items,
         cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
+        gridColumns
       } = attributes;
 
       // Typography options for title/subtitle in toolbar
       const [activeTextField, setActiveTextField] = useState('title');
-      const currentTag = activeTextField === 'subtitle' ? (subtitleTag || 'p') : (titleTag || 'h1');
+
+      // Track the current text field's tag
+      const currentTag = (
+        activeTextField === 'subtitle' ? (subtitleTag || 'p') :
+        activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
+        (titleTag || 'h1'));
 
       const setActiveFieldTag = (tag) => {
         if (activeTextField === 'subtitle') {
           setAttributes({ subtitleTag: tag });
+          return;
+        } else if (activeTextField === 'pretitle') {
+          setAttributes({ pretitleTag: tag });
           return;
         }
         setAttributes({ titleTag: tag });
@@ -115,6 +124,21 @@ if (!blocks || !blockEditor || !components || !element) {
                 backgroundColor={backgroundColor}
                 textColor={textColor}
                 setAttributes={setAttributes}
+              />
+
+              <hr />
+
+              {/* Grid settings */}
+              <SelectControl
+                label="Grid Items Per Row"
+                value={gridColumns}
+                options={[
+                  { label: '1', value: 'span-12' },
+                  { label: '2', value: 'span-6' },
+                  { label: '3', value: 'span-4' },
+                  { label: '4', value: 'span-3' },
+                ]}
+                onChange={(val) => setAttributes({ gridColumns: val })}
               />
             </PanelBody>
 
@@ -227,6 +251,17 @@ if (!blocks || !blockEditor || !components || !element) {
             <div className="rt-content-grid__content container">
               <div className="flex">
                 <div className="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
+                  {/* pretitle */}
+                  <RichText
+                    tagName='p'
+                    className={`${pretitleTag} rt-content-grid__pretitle mb-0`}
+                    value={pretitle}
+                    onFocus={() => setActiveTextField('pretitle')}
+                    onChange={(val) => setAttributes({ pretitle: val })}
+                    placeholder="Content Grid pretitle"
+                    allowedFormats={['core/bold', 'core/italic']}
+                  />
+
                   {/* title */}
                   <RichText
                     tagName={titleTag || 'h1'}
@@ -245,12 +280,12 @@ if (!blocks || !blockEditor || !components || !element) {
                     value={subtitle}
                     onFocus={() => setActiveTextField('subtitle')}
                     onChange={(val) => setAttributes({ subtitle: val })}
-                    placeholder="Content Grid subtitle or tagline..."
+                    placeholder="Content Grid subtitle"
                     allowedFormats={['core/bold', 'core/italic']}
                   />
 
                   {/* ctas */}
-                  <div className="rt-content-grid__ctas flex gap-2 my-4">
+                  <div className="rt-content-grid__ctas flex gap-3 my-4">
                     {cta1Url && (
                       <a href={cta1Url} className={`rt-content-grid__cta rt-content-grid__cta--primary btn btn-${cta1Style}`}>
                         {cta1Label}
@@ -278,7 +313,7 @@ if (!blocks || !blockEditor || !components || !element) {
                         const itemLinkLabel = item?.linkLabel || 'Learn more';
 
                         return (
-                          <div className={`rt-content-grid__item span-12 sm:span-6 lg:span-4 p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`}>
+                          <div className={`rt-content-grid__item span-12 sm:span-6 lg:${gridColumns} p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`}>
                             {/* Icon */}
                             {itemIcon && <i className={itemIcon} aria-hidden="true" />}
                             {/* Title */}
