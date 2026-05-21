@@ -18,6 +18,7 @@ $subtitle = $attributes['subtitle'] ?? '';
 $subtitle_tag = rope_tow_block_sanitize_tag( $attributes['subtitleTag'] ?? 'p', 'p' );
 $items = $attributes['items'] ?? [];
 $grid_columns = $attributes['gridColumns'] ?? 'span-4';
+$grid_item_border_radius = $attributes['gridItemBorderRadius'] ?? 8;
 // Standardize grid $items as an array
 if ( ! is_array( $items ) ) {
 	$items = [];
@@ -99,7 +100,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 							$item_text_color = isset ( $item['textColor'] ) ? (string) $item['textColor'] : 'dark'; ?>
 
 							<!-- Grid items -->
-							<div class="rt-content-grid__item span-12 sm:span-6 lg:<?php echo $grid_columns; ?> p-3 lg:p-4 bg-<?php echo esc_attr( $item_bg_color ); ?> text-<?php echo esc_attr( $item_text_color ); ?>">
+							<div class="rt-content-grid__item span-12 sm:span-6 lg:<?php echo $grid_columns; ?> p-3 lg:p-4 bg-<?php echo esc_attr( $item_bg_color ); ?> text-<?php echo esc_attr( $item_text_color ); ?>" style="border-radius: <?php echo $grid_item_border_radius; ?>px">
 								<!-- Icon -->
 								<?php if ( '' !== $item_icon_class ) { ?>
 									<i class="<?php echo esc_attr( $item_icon_class ); ?>" aria-hidden="true"></i>

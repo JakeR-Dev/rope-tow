@@ -12,7 +12,7 @@ if (!blocks || !blockEditor || !components || !element) {
   const { registerBlockType } = blocks;
   const { InspectorControls, BlockControls, RichText, useBlockProps } = blockEditor;
   const { useState } = element;
-  const { PanelBody, ToolbarDropdownMenu, TextControl, TextareaControl, Button, SelectControl } = components;
+  const { PanelBody, ToolbarDropdownMenu, TextControl, TextareaControl, Button, SelectControl, RangeControl } = components;
 
   registerBlockType("rope-tow/content-grid", {
     edit: ({ attributes, setAttributes }) => {
@@ -23,7 +23,7 @@ if (!blocks || !blockEditor || !components || !element) {
         // Block-specific attributes
         title, pretitle, subtitle, titleTag, pretitleTag, subtitleTag, items,
         cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
-        gridColumns
+        gridColumns, gridItemBorderRadius
       } = attributes;
 
       // Typography options for title/subtitle in toolbar
@@ -32,8 +32,8 @@ if (!blocks || !blockEditor || !components || !element) {
       // Track the current text field's tag
       const currentTag = (
         activeTextField === 'subtitle' ? (subtitleTag || 'p') :
-        activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
-        (titleTag || 'h1'));
+          activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
+            (titleTag || 'h1'));
 
       const setActiveFieldTag = (tag) => {
         if (activeTextField === 'subtitle') {
@@ -128,7 +128,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
               <hr />
 
-              {/* Grid settings */}
+              {/* Grid items per row */}
               <SelectControl
                 label="Grid Items Per Row"
                 value={gridColumns}
@@ -139,6 +139,16 @@ if (!blocks || !blockEditor || !components || !element) {
                   { label: '4', value: 'span-3' },
                 ]}
                 onChange={(val) => setAttributes({ gridColumns: val })}
+              />
+
+              {/* Grid items border radius */}
+              <RangeControl
+                label="Grid Item Border Radius (px)"
+                value={gridItemBorderRadius ?? 8}
+                onChange={(value) => setAttributes({ gridItemBorderRadius: value })}
+                min={0}
+                max={40}
+                step={1}
               />
             </PanelBody>
 
@@ -313,7 +323,7 @@ if (!blocks || !blockEditor || !components || !element) {
                         const itemLinkLabel = item?.linkLabel || 'Learn more';
 
                         return (
-                          <div className={`rt-content-grid__item span-12 sm:span-6 lg:${gridColumns} p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`}>
+                          <div className={`rt-content-grid__item span-12 sm:span-6 lg:${gridColumns} p-3 bg-${itemBgColor} text-${itemTextColor}`} key={`grid-item-preview-${index}`} style={{ borderRadius: `${gridItemBorderRadius ?? 8}px` }}>
                             {/* Icon */}
                             {itemIcon && <i className={itemIcon} aria-hidden="true" />}
                             {/* Title */}
