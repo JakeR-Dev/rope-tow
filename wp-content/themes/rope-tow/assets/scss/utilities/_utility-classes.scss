@@ -96,3 +96,9 @@
   white-space: nowrap;
   border: 0;
 }
+
+// Centered button group
+.flex-center {
+	justify-content: center;
+	flex-wrap: wrap;
+}

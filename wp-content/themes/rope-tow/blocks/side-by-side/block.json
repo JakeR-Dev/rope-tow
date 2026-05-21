@@ -1,16 +1,20 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "rope-tow/hero",
-  "title": "Hero",
+  "name": "rope-tow/side-by-side",
+  "title": "Side-By-Side",
   "category": "the-goods",
-  "description": "Hero block with style and pinache",
+  "description": "Side-by-side content block with style and flair",
   "supports": {
     "html": false,
     "align": ["full", "wide"]
   },
   "attributes": {
     "title": {
+      "type": "string",
+      "default": ""
+    },
+    "pretitle": {
       "type": "string",
       "default": ""
     },
@@ -21,6 +25,10 @@
     "titleTag": {
       "type": "string",
       "default": "h1"
+    },
+    "pretitleTag": {
+      "type": "string",
+      "default": "h6"
     },
     "subtitleTag": {
       "type": "string",
@@ -49,23 +57,27 @@
 		"cta2Style": {
 			"type": "string",
 			"default": "secondary"
-		}
+		},
+    "image": {
+      "type": "object",
+      "default": {}
+    }
   },
   "example": {
     "attributes": {
-      "title": "Welcome to Rope Tow",
-      "subtitle": "Your new favorite WordPress starter theme. Fast, modern, scalable, and accessible.",
-      "titleTag": "h1",
+      "pretitle": "Why Teams Choose Us",
+      "title": "Everything You Need In One Section",
+      "subtitle": "Combine strong messaging with clear calls to action.",
+      "titleTag": "h2",
+      "pretitleTag": "h6",
       "subtitleTag": "p",
       "cta1Label": "Get Started",
       "cta1Url": "#",
       "cta1Style": "primary",
-      "cta2Label": "Learn More",
+      "cta2Label": "See Pricing",
       "cta2Url": "#",
-      "cta2Style": "secondary",
-      "paddingTop": "medium",
-      "paddingBottom": "small"
+      "cta2Style": "secondary"
     }
   },
-  "render": "file:./hero.php"
+  "render": "file:./side-by-side.php"
 }

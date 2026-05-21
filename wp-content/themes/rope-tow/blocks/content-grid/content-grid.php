@@ -40,7 +40,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 		<div class="rt-content-grid__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
         'class'   => 'rt-content-grid__bg-img',
-        'loading' => 'eager',
+        'loading' => 'lazy',
         'decoding' => 'async',
       ] ); ?>
     </div>
@@ -51,7 +51,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
 				<!-- Pretitle -->
 				<?php if ( $pretitle ) { ?>
-					<p class="<?php echo ( $pretitle_tag ); ?> rt-content-grid__pretitle mb-0"><?php echo wp_kses_post( $pretitle ); ?></p>
+					<p class="<?php echo ( $pretitle_tag ); ?> rt-content-grid__pretitle mb-2"><?php echo wp_kses_post( $pretitle ); ?></p>
 				<?php } ?>
 
 				<!-- Title -->
@@ -66,7 +66,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
 				<!-- CTAs -->
 				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
-					<div class="rt-content-grid__ctas flex gap-3 my-4">
+					<div class="rt-content-grid__ctas flex flex-center gap-3 my-4">
 						<?php if ( $ctas['cta1_url'] ) { ?>
 							<a href="<?php echo esc_url( $ctas['cta1_url'] ); ?>" class="rt-content-grid__cta rt-content-grid__cta--primary btn btn-<?php echo esc_attr( $ctas['cta1_style'] ); ?>">
 								<?php echo esc_html( $ctas['cta1_label'] ); ?>

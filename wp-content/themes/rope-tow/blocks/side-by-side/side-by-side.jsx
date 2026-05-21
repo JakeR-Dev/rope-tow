@@ -10,28 +10,34 @@ if (!blocks || !blockEditor || !components || !element) {
   // If WordPress block editor APIs are not available.
 } else {
   const { registerBlockType } = blocks;
-  const { InspectorControls, BlockControls, RichText, useBlockProps } = blockEditor;
+  const { InspectorControls, BlockControls, RichText, useBlockProps, MediaUpload, MediaUploadCheck } = blockEditor;
   const { useState } = element;
-  const { PanelBody, ToolbarDropdownMenu } = components;
+  const { PanelBody, ToolbarDropdownMenu, Button } = components;
 
-  registerBlockType("rope-tow/hero", {
+  registerBlockType("rope-tow/side-by-side", {
     edit: ({ attributes, setAttributes }) => {
       const {
         // Global shared attributes
         paddingTop, paddingBottom, marginTop, marginBottom,
         backgroundImage, backgroundColor, backgroundAttachment, textColor,
         // Block-specific attributes
-        title, subtitle, titleTag, subtitleTag,
-        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
+        title, pretitle, subtitle, titleTag, pretitleTag, subtitleTag,
+        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style, image
       } = attributes;
 
       // Typography options for title/subtitle in toolbar
       const [activeTextField, setActiveTextField] = useState('title');
-      const currentTag = activeTextField === 'subtitle' ? (subtitleTag || 'p') : (titleTag || 'h1');
+      const currentTag = 
+        activeTextField === 'subtitle' ? (subtitleTag || 'p') :
+        activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
+        (titleTag || 'h1');
 
       const setActiveFieldTag = (tag) => {
         if (activeTextField === 'subtitle') {
           setAttributes({ subtitleTag: tag });
+          return;
+        } else if (activeTextField === 'pretitle') {
+          setAttributes({ pretitleTag: tag });
           return;
         }
         setAttributes({ titleTag: tag });
@@ -39,7 +45,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
       // Define the block's props
       const blockProps = useBlockProps({
-        className: 'rt-hero rt-block section pt-' + paddingTop + ' pb-' + paddingBottom + ' mt-' + marginTop + ' mb-' + marginBottom + ' bg-' + backgroundColor + ' text-' + textColor,
+        className: 'rt-side-by-side rt-block section pt-' + paddingTop + ' pb-' + paddingBottom + ' mt-' + marginTop + ' mb-' + marginBottom + ' bg-' + backgroundColor + ' text-' + textColor,
       });
       const bgImgClass = backgroundAttachment && backgroundAttachment === 'fixed' ? 'bg-attachment-image-fixed' : '';
 
@@ -95,39 +101,86 @@ if (!blocks || !blockEditor || !components || !element) {
                 setAttributes={setAttributes}
               />
             </PanelBody>
+
+            {/* Image */}
+            <PanelBody title="Image" initialOpen={false}>
+              <MediaUploadCheck>
+                <MediaUpload
+                  onSelect={(media) => setAttributes({ image: media })}
+                  allowedTypes={['image']}
+                  value={image?.id}
+                  render={({ open }) => (
+                    <div className="components-base-control components-background-controls">
+                      {image?.url && (
+                        <img
+                          src={image.url}
+                          alt="Image preview"
+                          style={{ width: '100%', marginBottom: '8px' }}
+                        />
+                      )}
+                      <Button onClick={open} variant="secondary">
+                        {image?.url ? 'Replace Image' : 'Select Image'}
+                      </Button>
+                      {image?.url && (
+                        <Button
+                          onClick={() => setAttributes({ image: {} })}
+                          variant="link"
+                          isDestructive
+                          style={{ display: 'block', marginTop: '8px' }}
+                        >
+                          Remove Image
+                        </Button>
+                      )}
+                    </div>
+                  )}
+                />
+              </MediaUploadCheck>
+            </PanelBody>
           </InspectorControls>
 
           <div {...blockProps}>
 
             {/* Background image */}
             {backgroundImage?.url && (
-              <div className={`rt-hero__bg ${bgImgClass}`} aria-hidden="true">
+              <div className={`rt-side-by-side__bg ${bgImgClass}`} aria-hidden="true">
                 <img
                   src={backgroundImage.url}
                   alt=""
-                  className="rt-hero__bg-img"
+                  className="rt-side-by-side__bg-img"
                 />
               </div>
             )}
 
-            <div className="rt-hero__content container">
+            <div className="rt-side-by-side__content container">
               <div className="flex">
-                <div className="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
+                {/* Content side */}
+                <div className="flex-12 md:flex-6">
+                  {/* Pretitle */}
+                  <RichText
+                    tagName='p'
+                    className={`${pretitleTag} rt-side-by-side__pretitle mb-0`}
+                    value={pretitle}
+                    onFocus={() => setActiveTextField('pretitle')}
+                    onChange={(val) => setAttributes({ pretitle: val })}
+                    placeholder="Lorem Ipsum Dolor"
+                    allowedFormats={['core/bold', 'core/italic']}
+                  />
+                  
                   {/* Title */}
                   <RichText
                     tagName={titleTag || 'h1'}
-                    className="rt-hero__title"
+                    className="rt-side-by-side__title mt-0 mb-3"
                     value={title}
                     onFocus={() => setActiveTextField('title')}
                     onChange={(val) => setAttributes({ title: val })}
-                    placeholder="Hero Title"
+                    placeholder="Side-By-Side Title"
                     allowedFormats={['core/italic']}
                   />
 
                   {/* Subtitle */}
                   <RichText
                     tagName={subtitleTag || 'p'}
-                    className="rt-hero__subtitle"
+                    className="rt-side-by-side__subtitle mb-4"
                     value={subtitle}
                     onFocus={() => setActiveTextField('subtitle')}
                     onChange={(val) => setAttributes({ subtitle: val })}
@@ -137,17 +190,31 @@ if (!blocks || !blockEditor || !components || !element) {
 
                   {/* CTAs */}
                   {(cta1Url || cta2Url) && (
-                    <div className="rt-hero__ctas flex flex-center gap-3 my-4">
+                    <div className="rt-side-by-side__ctas flex gap-3 my-4">
                       {cta1Url && (
-                        <a href={cta1Url} className={`rt-hero__cta rt-hero__cta--primary btn btn-${cta1Style}`}>
+                        <a href={cta1Url} className={`rt-side-by-side__cta rt-side-by-side__cta--primary btn btn-${cta1Style}`}>
                           {cta1Label}
                         </a>
                       )}
                       {cta2Url && (
-                        <a href={cta2Url} className={`rt-hero__cta rt-hero__cta--secondary btn btn-${cta2Style}`}>
+                        <a href={cta2Url} className={`rt-side-by-side__cta rt-side-by-side__cta--secondary btn btn-${cta2Style}`}>
                           {cta2Label}
                         </a>
                       )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Image side */}
+                <div className="flex-12 md:flex-6">
+                  {/* Image */}
+                  {image?.url && (
+                    <div className="rt-side-by-side__img-wrapper">
+                      <img
+                        src={image.url}
+                        alt=""
+                        className="rt-side-by-side__img"
+                      />
                     </div>
                   )}
                 </div>

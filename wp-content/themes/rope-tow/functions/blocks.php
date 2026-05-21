@@ -33,10 +33,10 @@ function rope_tow_shared_block_attributes( $metadata ) {
 		'paddingBottom' 				=> [ 'type' => 'string', 'default' => 'medium' ],
 		'marginTop'     				=> [ 'type' => 'string', 'default' => 'none' ],
 		'marginBottom'  				=> [ 'type' => 'string', 'default' => 'none' ],
-		"backgroundImage" 			=> [ 'type' => 'object', 'default' => (object)[] ],
-    "textColor" 						=> [ 'type' => 'string', 'default' => 'light' ],
-		"backgroundColor" 			=> [ 'type' => 'string', 'default' => 'brand-primary' ],
-		"backgroundAttachment" 	=> [ 'type' => 'string', 'default' => 'scroll' ]
+		'backgroundImage' 			=> [ 'type' => 'object', 'default' => (object)[] ],
+    'textColor' 						=> [ 'type' => 'string', 'default' => 'light' ],
+		'backgroundColor' 			=> [ 'type' => 'string', 'default' => 'brand-primary' ],
+		'backgroundAttachment' 	=> [ 'type' => 'string', 'default' => 'scroll' ]
 	];
 
 	// Merge: existing block.json values take priority so per-block overrides still work.

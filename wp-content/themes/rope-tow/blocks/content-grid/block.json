@@ -71,5 +71,60 @@
 			"default": "secondary"
 		}
   },
+  "example": {
+    "attributes": {
+      "title": "Choose The Right Service",
+      "pretitle": "Popular Options",
+      "subtitle": "Pick a package and get started quickly.",
+      "titleTag": "h2",
+      "pretitleTag": "h6",
+      "subtitleTag": "p",
+      "gridColumns": "span-4",
+      "gridItemBorderRadius": 8,
+      "backgroundColor": "color-gray-light",
+      "textColor": "dark",
+      "items": [
+        {
+          "title": "Starter",
+          "titleTag": "h5",
+          "description": "Great for testing and small campaigns.",
+          "backgroundColor": "color-white",
+          "textColor": "dark",
+          "icon": "",
+          "linkLabel": "Select",
+          "linkUrl": "#",
+          "buttonStyle": "primary"
+        },
+        {
+          "title": "Growth",
+          "titleTag": "h5",
+          "description": "Ideal for teams scaling up their efforts.",
+          "backgroundColor": "color-white",
+          "textColor": "dark",
+          "icon": "",
+          "linkLabel": "Select",
+          "linkUrl": "#",
+          "buttonStyle": "primary"
+        },
+        {
+          "title": "Enterprise",
+          "titleTag": "h5",
+          "description": "Best for advanced workflows and support.",
+          "backgroundColor": "color-white",
+          "textColor": "dark",
+          "icon": "",
+          "linkLabel": "Select",
+          "linkUrl": "#",
+          "buttonStyle": "primary"
+        }
+      ],
+      "cta1Label": "Get Started",
+      "cta1Url": "#",
+      "cta1Style": "primary",
+      "cta2Label": "Contact Sales",
+      "cta2Url": "#",
+      "cta2Style": "secondary"
+    }
+  },
   "render": "file:./content-grid.php"
 }

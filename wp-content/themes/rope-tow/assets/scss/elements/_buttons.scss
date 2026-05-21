@@ -1,6 +1,6 @@
 @use "../utilities/responsive" as *;
 
-// base button style
+// Base button style
 .btn {
 	position: relative;
 	display: inline-block;
@@ -24,19 +24,19 @@
 		box-shadow: none;
 	}
 
-	// large variant
+	// Large variant
 	&.btn-lg {
 		padding: var(--button-lg-padding-y) var(--button-lg-padding-x);
 		font-size: var(--button-lg-font-size);
 	}
 
-	// small variant
+	// Small variant
 	&.btn-sm {
 		padding: var(--button-sm-padding-y) var(--button-sm-padding-x);
 		font-size: var(--button-sm-font-size);
 	}
 
-	// primary variant
+	// Primary variant
 	&.btn-primary {
 		background: var(--primary-button-color);
 		border-color: var(--primary-button-color);
@@ -54,7 +54,7 @@
 		}
 	}
 
-	// primary outline variant
+	// Primary outline variant
 	&.btn-primary-outline {
 		background: transparent;
 		border-color: var(--primary-button-color);
@@ -73,7 +73,7 @@
 		}
 	}
 
-	// secondary variant
+	// Secondary variant
 	&.btn-secondary {
 		background: var(--secondary-button-color);
 		border-color: var(--secondary-button-color);
@@ -91,7 +91,7 @@
 		}
 	}
 
-	// secondary outline variant
+	// Secondary outline variant
 	&.btn-secondary-outline {
 		background: transparent;
 		border-color: var(--secondary-button-color);
@@ -110,7 +110,7 @@
 		}
 	}
 
-	// white variant
+	// White variant
 	&.btn-white {
 		background: var(--color-white);
 		border-color: var(--color-white);
@@ -129,7 +129,7 @@
 		}
 	}
 
-	// white outline variant
+	// White outline variant
 	&.btn-white-outline {
 		background: transparent;
 		border-color: var(--color-white);
@@ -148,7 +148,7 @@
 		}
 	}
 
-	// simple with icon variant
+	// Simple with icon variant
 	&.clean-w-icon {
 		background: transparent;
 		border-color: transparent;
@@ -202,6 +202,7 @@
 	}
 }
 
+// Block editor button styles
 .wp-block-button {
 	&:not(.is-style-outline) {
 		.wp-element-button {
@@ -215,7 +216,7 @@
 	}
 }
 
-// close button
+// Close button
 button.close {
 	position: relative;
 	display: inline-block;

@@ -261,54 +261,56 @@ if (!blocks || !blockEditor || !components || !element) {
             <div className="rt-content-grid__content container">
               <div className="flex">
                 <div className="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
-                  {/* pretitle */}
+                  {/* Pretitle */}
                   <RichText
                     tagName='p'
                     className={`${pretitleTag} rt-content-grid__pretitle mb-0`}
                     value={pretitle}
                     onFocus={() => setActiveTextField('pretitle')}
                     onChange={(val) => setAttributes({ pretitle: val })}
-                    placeholder="Content Grid pretitle"
+                    placeholder="Lorem Ipsum Dolor"
                     allowedFormats={['core/bold', 'core/italic']}
                   />
 
-                  {/* title */}
+                  {/* Title */}
                   <RichText
                     tagName={titleTag || 'h1'}
                     className="rt-content-grid__title mb-3"
                     value={title}
                     onFocus={() => setActiveTextField('title')}
                     onChange={(val) => setAttributes({ title: val })}
-                    placeholder="Content Grid title..."
-                    allowedFormats={[]}
+                    placeholder="Content Grid Title"
+                    allowedFormats={['core/italic']}
                   />
 
-                  {/* subtitle */}
+                  {/* Subtitle */}
                   <RichText
                     tagName={subtitleTag || 'p'}
                     className="rt-content-grid__subtitle mb-3"
                     value={subtitle}
                     onFocus={() => setActiveTextField('subtitle')}
                     onChange={(val) => setAttributes({ subtitle: val })}
-                    placeholder="Content Grid subtitle"
+                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     allowedFormats={['core/bold', 'core/italic']}
                   />
 
-                  {/* ctas */}
-                  <div className="rt-content-grid__ctas flex gap-3 my-4">
-                    {cta1Url && (
-                      <a href={cta1Url} className={`rt-content-grid__cta rt-content-grid__cta--primary btn btn-${cta1Style}`}>
-                        {cta1Label}
-                      </a>
-                    )}
-                    {cta2Url && (
-                      <a href={cta2Url} className={`rt-content-grid__cta rt-content-grid__cta--secondary btn btn-${cta2Style}`}>
-                        {cta2Label}
-                      </a>
-                    )}
-                  </div>
+                  {/* CTAs */}
+                  {(cta1Url || cta2Url) && (
+                    <div className="rt-content-grid__ctas flex flex-center gap-3 my-4">
+                      {cta1Url && (
+                        <a href={cta1Url} className={`rt-content-grid__cta rt-content-grid__cta--primary btn btn-${cta1Style}`}>
+                          {cta1Label}
+                        </a>
+                      )}
+                      {cta2Url && (
+                        <a href={cta2Url} className={`rt-content-grid__cta rt-content-grid__cta--secondary btn btn-${cta2Style}`}>
+                          {cta2Label}
+                        </a>
+                      )}
+                    </div>
+                  )}
 
-                  {/* repeated items */}
+                  {/* Repeated items */}
                   {(gridItems.length > 0) && (
                     <div className="rt-content-grid__items grid gap-3 my-4">
                       {gridItems.map((item, index) => {
