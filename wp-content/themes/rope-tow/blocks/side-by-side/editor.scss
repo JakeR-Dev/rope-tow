@@ -1,7 +1,4 @@
-@use 'sass:meta';
-
 // Block-editor-specific style overrides
-.editor-styles-wrapper {
-  // Include the front-end styles scoped to the editor
-  @include meta.load-css('./side-by-side');
-}
+// .editor-styles-wrapper {
+
+// }

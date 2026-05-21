@@ -249,16 +249,16 @@ if (!blocks || !blockEditor || !components || !element) {
 
             {/* Background image */}
             {backgroundImage?.url && (
-              <div className={`rt-content-grid__bg ${bgImgClass}`} aria-hidden="true">
+              <div className={`rt-block__bg ${bgImgClass}`} aria-hidden="true">
                 <img
                   src={backgroundImage.url}
                   alt=""
-                  className="rt-content-grid__bg-img"
+                  className="rt-block__bg-img"
                 />
               </div>
             )}
 
-            <div className="rt-content-grid__content container">
+            <div className="rt-block__content container">
               <div className="flex">
                 <div className="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
                   {/* Pretitle */}

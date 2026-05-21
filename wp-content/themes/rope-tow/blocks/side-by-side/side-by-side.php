@@ -18,6 +18,7 @@ $subtitle = $attributes['subtitle'] ?? '';
 $subtitle_tag = rope_tow_block_sanitize_tag( $attributes['subtitleTag'] ?? 'p', 'p' );
 $image = $attributes['image'] ?? [];
 $image_id = is_array($image) ? $image['id'] : '';
+$vert_align = $attributes['verticalAlignment'] ?? 'center';
 
 // Gather shared attributes using helper functions
 $ctas = rope_tow_block_cta_attributes( $attributes );
@@ -32,17 +33,17 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 <div <?php echo $wrapper_attributes; ?>>
 	<!-- background image -->
 	<?php if ( $basics['background_image_id'] ) { ?>
-		<div class="rt-side-by-side__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
+		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
-        'class'   => 'rt-side-by-side__bg-img',
+        'class'   => 'rt-block__bg-img',
         'loading' => 'lazy',
         'decoding' => 'async',
       ] ); ?>
     </div>
   <?php } ?>
 
-  <div class="rt-side-by-side__content container">
-		<div class="flex">
+  <div class="rt-block__content container">
+		<div class="flex align-<?php echo $vert_align; ?>">
 			<!-- Content side -->
 			<div class="flex-12 md:flex-6">
 				<!-- Pretitle -->

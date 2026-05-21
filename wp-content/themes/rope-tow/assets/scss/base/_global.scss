@@ -26,11 +26,18 @@ $utility-breakpoints: (
   xl: wide
 );
 
-/* Alignment utilities */
+/* Text alignment utilities */
 $text-align-utils: (
   text-left: left,
   text-center: center,
   text-right: right
+);
+
+/* Vertical alignment utilities */
+$vert-align-utils: (
+  align-top: flex-start,
+  align-center: center,
+  align-bottom: flex-end
 );
 
 /* Spacing scale (from CSS variables in _grid.scss) */
@@ -89,6 +96,8 @@ $spacing-scale: (
 @include generate-utils($display-utils, display);
 // Generate text align utility classes
 @include generate-utils($text-align-utils, text-align);
+// Generate vertical align utility classes
+@include generate-utils($vert-align-utils, align-items);
 // Generate padding utility classes
 @include generate-spacing-utils(p, padding);
 @include generate-spacing-utils(px, padding-inline);

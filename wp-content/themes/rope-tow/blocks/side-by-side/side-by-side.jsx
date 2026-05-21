@@ -12,7 +12,7 @@ if (!blocks || !blockEditor || !components || !element) {
   const { registerBlockType } = blocks;
   const { InspectorControls, BlockControls, RichText, useBlockProps, MediaUpload, MediaUploadCheck } = blockEditor;
   const { useState } = element;
-  const { PanelBody, ToolbarDropdownMenu, Button } = components;
+  const { PanelBody, ToolbarDropdownMenu, Button, SelectControl } = components;
 
   registerBlockType("rope-tow/side-by-side", {
     edit: ({ attributes, setAttributes }) => {
@@ -22,7 +22,8 @@ if (!blocks || !blockEditor || !components || !element) {
         backgroundImage, backgroundColor, backgroundAttachment, textColor,
         // Block-specific attributes
         title, pretitle, subtitle, titleTag, pretitleTag, subtitleTag,
-        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style, image
+        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style, image,
+        verticalAlignment
       } = attributes;
 
       // Typography options for title/subtitle in toolbar
@@ -102,8 +103,21 @@ if (!blocks || !blockEditor || !components || !element) {
               />
             </PanelBody>
 
-            {/* Image */}
+            {/* Image Options */}
             <PanelBody title="Image" initialOpen={false}>
+              {/* Vert. Alignment */}
+              <SelectControl
+                label="Vertical Alignment"
+                value={verticalAlignment}
+                options={[
+                  { label: 'Center', value: 'center' },
+                  { label: 'Top', value: 'top' },
+                  { label: 'Bottom', value: 'bottom' },
+                ]}
+                onChange={(val) => setAttributes({ verticalAlignment: val })}
+              />
+
+              {/* Image */}
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={(media) => setAttributes({ image: media })}
@@ -142,17 +156,17 @@ if (!blocks || !blockEditor || !components || !element) {
 
             {/* Background image */}
             {backgroundImage?.url && (
-              <div className={`rt-side-by-side__bg ${bgImgClass}`} aria-hidden="true">
+              <div className={`rt-block__bg ${bgImgClass}`} aria-hidden="true">
                 <img
                   src={backgroundImage.url}
                   alt=""
-                  className="rt-side-by-side__bg-img"
+                  className="rt-block__bg-img"
                 />
               </div>
             )}
 
-            <div className="rt-side-by-side__content container">
-              <div className="flex">
+            <div className="rt-block__content container">
+              <div className={`flex align-${verticalAlignment}`}>
                 {/* Content side */}
                 <div className="flex-12 md:flex-6">
                   {/* Pretitle */}

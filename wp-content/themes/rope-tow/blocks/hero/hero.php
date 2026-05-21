@@ -28,16 +28,16 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 <div <?php echo $wrapper_attributes; ?>>
 	<!-- background image -->
 	<?php if ( $basics['background_image_id'] ) { ?>
-		<div class="rt-hero__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
+		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
-        'class'   => 'rt-hero__bg-img',
+        'class'   => 'rt-block__bg-img',
         'loading' => 'eager',
         'decoding' => 'async',
       ] ); ?>
     </div>
   <?php } ?>
 
-  <div class="rt-hero__content container">
+  <div class="rt-block__content container">
 		<div class="flex">
 			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
 				<!-- title -->

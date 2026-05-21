@@ -61,6 +61,10 @@
     "image": {
       "type": "object",
       "default": {}
+    },
+    "verticalAlignment": {
+      "type": "string",
+      "default": "center"
     }
   },
   "example": {
@@ -76,7 +80,8 @@
       "cta1Style": "primary",
       "cta2Label": "See Pricing",
       "cta2Url": "#",
-      "cta2Style": "secondary"
+      "cta2Style": "secondary",
+      "verticalAlignment": "center"
     }
   },
   "render": "file:./side-by-side.php"

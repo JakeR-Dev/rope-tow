@@ -13,6 +13,7 @@
   // Include the properly-scoped global styles
   @include meta.load-css('./grid');
   @include meta.load-css('./global');
+  @include meta.load-css('../blocks/all');
   @include meta.load-css('./typography');
   @include meta.load-css('../elements/buttons');
   @include meta.load-css('../elements/images');
