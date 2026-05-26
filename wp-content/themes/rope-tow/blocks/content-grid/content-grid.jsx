@@ -312,7 +312,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
                   {/* Repeated items */}
                   {(gridItems.length > 0) && (
-                    <div className="rt-content-grid__items grid gap-3 my-4">
+                    <div className="rt-content-grid__items grid gap-3 mt-4">
                       {gridItems.map((item, index) => {
                         const ItemTitleTag = item?.titleTag || 'h5';
                         const itemBgColor = item?.backgroundColor || 'white';

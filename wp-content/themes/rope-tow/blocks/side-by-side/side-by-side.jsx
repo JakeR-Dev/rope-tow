@@ -12,7 +12,7 @@ if (!blocks || !blockEditor || !components || !element) {
   const { registerBlockType } = blocks;
   const { InspectorControls, BlockControls, RichText, useBlockProps, MediaUpload, MediaUploadCheck } = blockEditor;
   const { useState } = element;
-  const { PanelBody, ToolbarDropdownMenu, Button, SelectControl } = components;
+  const { PanelBody, ToolbarDropdownMenu, Button, SelectControl, RangeControl } = components;
 
   registerBlockType("rope-tow/side-by-side", {
     edit: ({ attributes, setAttributes }) => {
@@ -23,7 +23,7 @@ if (!blocks || !blockEditor || !components || !element) {
         // Block-specific attributes
         title, pretitle, subtitle, titleTag, pretitleTag, subtitleTag,
         cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style, image,
-        verticalAlignment
+        verticalAlignment, imageBorderRadius, imageSide
       } = attributes;
 
       // Typography options for title/subtitle in toolbar
@@ -46,7 +46,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
       // Define the block's props
       const blockProps = useBlockProps({
-        className: 'rt-side-by-side rt-block section pt-' + paddingTop + ' pb-' + paddingBottom + ' mt-' + marginTop + ' mb-' + marginBottom + ' bg-' + backgroundColor + ' text-' + textColor,
+        className: 'rt-side-by-side rt-block section pt-' + paddingTop + ' pb-' + paddingBottom + ' mt-' + marginTop + ' mb-' + marginBottom + ' bg-' + backgroundColor + ' text-' + textColor + ' image-side-' + imageSide,
       });
       const bgImgClass = backgroundAttachment && backgroundAttachment === 'fixed' ? 'bg-attachment-image-fixed' : '';
 
@@ -117,6 +117,27 @@ if (!blocks || !blockEditor || !components || !element) {
                 onChange={(val) => setAttributes({ verticalAlignment: val })}
               />
 
+              {/* Image Side */}
+              <SelectControl
+                label="Image Side"
+                value={imageSide}
+                options={[
+                  { label: 'Right', value: 'right' },
+                  { label: 'Left', value: 'left' }
+                ]}
+                onChange={(val) => setAttributes({ imageSide: val })}
+              />
+
+              {/* Image border radius */}
+              <RangeControl
+                label="Image Border Radius (%)"
+                value={imageBorderRadius ?? 0}
+                onChange={(value) => setAttributes({ imageBorderRadius: value })}
+                min={0}
+                max={50}
+                step={1}
+              />
+
               {/* Image */}
               <MediaUploadCheck>
                 <MediaUpload
@@ -168,7 +189,7 @@ if (!blocks || !blockEditor || !components || !element) {
             <div className="rt-block__content container">
               <div className={`flex align-${verticalAlignment}`}>
                 {/* Content side */}
-                <div className="flex-12 md:flex-6">
+                <div className="flex-12 md:flex-6 rt-side-by-side__content-col">
                   {/* Pretitle */}
                   <RichText
                     tagName='p'
@@ -204,7 +225,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
                   {/* CTAs */}
                   {(cta1Url || cta2Url) && (
-                    <div className="rt-side-by-side__ctas flex gap-3 my-4">
+                    <div className="rt-side-by-side__ctas flex gap-3 mt-4">
                       {cta1Url && (
                         <a href={cta1Url} className={`rt-side-by-side__cta rt-side-by-side__cta--primary btn btn-${cta1Style}`}>
                           {cta1Label}
@@ -220,7 +241,7 @@ if (!blocks || !blockEditor || !components || !element) {
                 </div>
 
                 {/* Image side */}
-                <div className="flex-12 md:flex-6">
+                <div className="flex-12 md:flex-6 rt-side-by-side__img-col">
                   {/* Image */}
                   {image?.url && (
                     <div className="rt-side-by-side__img-wrapper">
@@ -228,6 +249,7 @@ if (!blocks || !blockEditor || !components || !element) {
                         src={image.url}
                         alt=""
                         className="rt-side-by-side__img"
+                        style={{ borderRadius: `${imageBorderRadius ?? 0}%` }}
                       />
                     </div>
                   )}

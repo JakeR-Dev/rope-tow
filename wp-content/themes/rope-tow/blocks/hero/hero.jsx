@@ -137,7 +137,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
                   {/* CTAs */}
                   {(cta1Url || cta2Url) && (
-                    <div className="rt-hero__ctas flex flex-center gap-3 my-4">
+                    <div className="rt-hero__ctas flex flex-center gap-3 mt-4">
                       {cta1Url && (
                         <a href={cta1Url} className={`rt-hero__cta rt-hero__cta--primary btn btn-${cta1Style}`}>
                           {cta1Label}

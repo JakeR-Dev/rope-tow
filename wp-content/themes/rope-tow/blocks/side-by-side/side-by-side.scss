@@ -1,5 +1,19 @@
-// @use '../../assets/scss/base/shared' as *;
+@use '../../assets/scss/base/shared' as *;
 
-// .rt-side-by-side {
-
-// }
+.rt-side-by-side {
+  &__img {
+    display: block;
+  }
+  &.image-side-left {
+    .rt-side-by-side__img-col {
+      order: -1;
+    }
+  }
+  // on mobile, image always stacks on top of content
+  &__img-col {
+    order: -1;
+    @include media(tablet) {
+      order: initial;
+    }
+  }
+}

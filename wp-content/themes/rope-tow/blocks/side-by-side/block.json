@@ -65,6 +65,14 @@
     "verticalAlignment": {
       "type": "string",
       "default": "center"
+    },
+    "imageBorderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "imageSide":  {
+      "type": "string",
+      "default": "right"
     }
   },
   "example": {
@@ -81,7 +89,8 @@
       "cta2Label": "See Pricing",
       "cta2Url": "#",
       "cta2Style": "secondary",
-      "verticalAlignment": "center"
+      "verticalAlignment": "center",
+      "imageBorderRadius": "0"
     }
   },
   "render": "file:./side-by-side.php"

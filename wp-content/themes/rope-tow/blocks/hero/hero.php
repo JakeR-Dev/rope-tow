@@ -52,7 +52,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
 				<!-- ctas -->
 				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
-					<div class="rt-hero__ctas flex flex-center gap-3 my-4">
+					<div class="rt-hero__ctas flex flex-center gap-3 mt-4">
 						<?php if ( $ctas['cta1_url'] ) { ?>
 							<a href="<?php echo esc_url( $ctas['cta1_url'] ); ?>" class="rt-hero__cta rt-hero__cta--primary btn btn-<?php echo esc_attr( $ctas['cta1_style'] ); ?>">
 								<?php echo esc_html( $ctas['cta1_label'] ); ?>

@@ -19,6 +19,8 @@ $subtitle_tag = rope_tow_block_sanitize_tag( $attributes['subtitleTag'] ?? 'p', 
 $image = $attributes['image'] ?? [];
 $image_id = is_array($image) ? $image['id'] : '';
 $vert_align = $attributes['verticalAlignment'] ?? 'center';
+$image_border_rad = $attributes['imageBorderRadius'] ?? '0';
+$image_side = $attributes['imageSide'] ?? 'right';
 
 // Gather shared attributes using helper functions
 $ctas = rope_tow_block_cta_attributes( $attributes );
@@ -26,7 +28,7 @@ $basics = rope_tow_block_basics_attributes( $attributes );
 
 // Define block wrapper classes and attributes
 $wrapper_attributes = get_block_wrapper_attributes( [
-	'class' => 'rt-side-by-side rt-block section pt-' . esc_attr( $basics['padding_top'] ) . ' pb-' . esc_attr( $basics['padding_bottom'] ) . ' mt-' . esc_attr( $basics['margin_top'] ) . ' mb-' . esc_attr( $basics['margin_bottom'] ) . ' bg-' . esc_attr( $basics['background_color'] ) . ' text-' . esc_attr( $basics['text_color'] ),
+	'class' => 'rt-side-by-side rt-block section pt-' . esc_attr( $basics['padding_top'] ) . ' pb-' . esc_attr( $basics['padding_bottom'] ) . ' mt-' . esc_attr( $basics['margin_top'] ) . ' mb-' . esc_attr( $basics['margin_bottom'] ) . ' bg-' . esc_attr( $basics['background_color'] ) . ' text-' . esc_attr( $basics['text_color'] . ' image-side-' . esc_attr( $image_side ) ),
 ] );
 ?>
 
@@ -45,7 +47,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
   <div class="rt-block__content container">
 		<div class="flex align-<?php echo $vert_align; ?>">
 			<!-- Content side -->
-			<div class="flex-12 md:flex-6">
+			<div class="flex-12 md:flex-6 rt-side-by-side__content-col">
 				<!-- Pretitle -->
 				<?php if ( $pretitle ) { ?>
 					<p class="<?php echo $pretitle_tag; ?> rt-side-by-side__pretitle mb-2"><?php echo wp_kses_post( $pretitle ); ?></p>
@@ -63,7 +65,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
 				<!-- CTAs -->
 				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
-					<div class="rt-side-by-side__ctas flex gap-3 my-4">
+					<div class="rt-side-by-side__ctas flex gap-3 mt-4">
 						<?php if ( $ctas['cta1_url'] ) { ?>
 							<a href="<?php echo esc_url( $ctas['cta1_url'] ); ?>" class="rt-side-by-side__cta rt-side-by-side__cta--primary btn btn-<?php echo esc_attr( $ctas['cta1_style'] ); ?>">
 								<?php echo esc_html( $ctas['cta1_label'] ); ?>
@@ -79,13 +81,14 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 			</div>
 
 			<!-- Image side -->
-			<div class="flex-12 md:flex-6">
+			<div class="flex-12 md:flex-6 rt-side-by-side__img-col">
 				<?php if ($image_id) { ?>
 					<div class="rt-side-by-side__img-wrapper">
 						<?php echo wp_get_attachment_image( $image_id, 'full', false, [
 							'class'   => 'rt-side-by-side__img',
 							'loading' => 'lazy',
 							'decoding' => 'async',
+							'style' => 'border-radius:' . $image_border_rad . '%'
 						] ); ?>
 					</div>
 				<?php } ?>

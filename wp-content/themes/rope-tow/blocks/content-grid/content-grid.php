@@ -82,7 +82,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
 				<!-- Grid items -->
 				<?php if ( !empty( $items ) ) { ?>
-					<div class="rt-content-grid__items grid gap-3 my-4">
+					<div class="rt-content-grid__items grid gap-3 mt-4">
 						<?php foreach ( $items as $item ) {
 							if ( is_object( $item ) ) {
 								$item = get_object_vars( $item );
