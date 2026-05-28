@@ -26,7 +26,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 ?>
 
 <div <?php echo $wrapper_attributes; ?>>
-	<!-- background image -->
+	<!-- Background image -->
 	<?php if ( $basics['background_image_id'] ) { ?>
 		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
@@ -37,20 +37,21 @@ $wrapper_attributes = get_block_wrapper_attributes( [
     </div>
   <?php } ?>
 
+  <!-- Content area -->
   <div class="rt-block__content container">
 		<div class="flex">
 			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
-				<!-- title -->
+				<!-- Title -->
 				<?php if ( $title ) { ?>
 					<<?php echo esc_attr( $title_tag ); ?> class="rt-hero__title mb-3 mt-0"><?php echo wp_kses_post( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
 				<?php } ?>
 
-				<!-- subtitle -->
+				<!-- Subtitle -->
 				<?php if ( $subtitle ) { ?>
 					<<?php echo esc_attr( $subtitle_tag ); ?> class="rt-hero__subtitle mb-3"><?php echo wp_kses_post( $subtitle ); ?></<?php echo esc_attr( $subtitle_tag ); ?>>
 				<?php } ?>
 
-				<!-- ctas -->
+				<!-- CTAs -->
 				<?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
 					<div class="rt-hero__ctas flex flex-center gap-3 mt-4">
 						<?php if ( $ctas['cta1_url'] ) { ?>

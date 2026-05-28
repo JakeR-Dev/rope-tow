@@ -51,6 +51,14 @@ em,
 	font-style: italic;
 }
 
+ul, ol {
+	padding-left: var(--list-indent);
+	text-indent: .5rem;
+	li::marker {
+		color: var(--list-marker-color);
+	}
+}
+
 h1,
 .h1,
 h2,

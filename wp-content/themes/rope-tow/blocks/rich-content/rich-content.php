@@ -9,11 +9,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-// Gather block-specific attributes with defaults
-
-
 // Gather shared attributes using helper functions
-$ctas = rope_tow_block_cta_attributes( $attributes );
 $basics = rope_tow_block_basics_attributes( $attributes );
 
 // Define block wrapper classes and attributes
@@ -23,7 +19,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 ?>
 
 <div <?php echo $wrapper_attributes; ?>>
-	<!-- background image -->
+	<!-- Background image -->
 	<?php if ( $basics['background_image_id'] ) { ?>
 		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
@@ -34,6 +30,10 @@ $wrapper_attributes = get_block_wrapper_attributes( [
     </div>
   <?php } ?>
 
+  <!-- Rich content area -->
   <div class="rt-block__content container">
+    <?php if ( ! empty( trim( (string) $content ) ) ) { ?>
+      <div class="rt-rich-content__body"><?php echo $content; ?></div>
+    <?php } ?>
   </div>
 </div>

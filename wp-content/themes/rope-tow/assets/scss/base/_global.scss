@@ -30,7 +30,10 @@ $utility-breakpoints: (
 $text-align-utils: (
   text-left: left,
   text-center: center,
-  text-right: right
+  text-right: right,
+  has-text-align-left: left,
+  has-text-align-center: center,
+  has-text-align-right: right
 );
 
 /* Vertical alignment utilities */

@@ -50,7 +50,7 @@ add_filter( 'block_type_metadata', 'rope_tow_shared_block_attributes' );
  * Shared HTML tags supported by block heading/tag controls.
  */
 function rope_tow_block_allowed_tags() {
-	return [ 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
+	return [ 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol' ];
 }
 
 /**

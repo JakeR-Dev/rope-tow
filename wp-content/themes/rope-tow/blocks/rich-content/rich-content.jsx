@@ -1,17 +1,17 @@
 import "./editor.scss";
-import { headingTagOptions } from "../../assets/admin/js/blocks/block-options";
 import { SpacingControls } from "../../assets/admin/js/blocks/spacingControls";
 import { BackgroundControls } from "../../assets/admin/js/blocks/backgroundControls";
-import { ButtonPairControls } from "../../assets/admin/js/blocks/buttonPair";
 
-const { blocks, blockEditor, components, element } = window.wp || {};
+const { blocks, blockEditor, components } = window.wp || {};
 
-if (!blocks || !blockEditor || !components || !element) {
+if (!blocks || !blockEditor || !components) {
   // If WordPress block editor APIs are not available.
 } else {
   const { registerBlockType } = blocks;
-  const { InspectorControls, BlockControls, useBlockProps } = blockEditor;
+  const { InspectorControls, InnerBlocks, useBlockProps } = blockEditor;
   const { PanelBody } = components;
+
+  const ALLOWED_BLOCKS = ["core/paragraph", "core/heading", "core/list"];
 
   registerBlockType("rope-tow/rich-content", {
     edit: ({ attributes, setAttributes }) => {
@@ -19,8 +19,6 @@ if (!blocks || !blockEditor || !components || !element) {
         // Global shared attributes
         paddingTop, paddingBottom, marginTop, marginBottom,
         backgroundImage, backgroundColor, backgroundAttachment, textColor,
-        // Block-specific attributes
-        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
       } = attributes;
 
       // Define the block's props
@@ -55,19 +53,6 @@ if (!blocks || !blockEditor || !components || !element) {
                 setAttributes={setAttributes}
               />
             </PanelBody>
-
-            {/* CTA Buttons */}
-            <PanelBody title="CTA Buttons" initialOpen={false}>
-              <ButtonPairControls
-                cta1Label={cta1Label}
-                cta1Url={cta1Url}
-                cta1Style={cta1Style}
-                cta2Label={cta2Label}
-                cta2Url={cta2Url}
-                cta2Style={cta2Style}
-                setAttributes={setAttributes}
-              />
-            </PanelBody>
           </InspectorControls>
 
           <div {...blockProps}>
@@ -83,29 +68,20 @@ if (!blocks || !blockEditor || !components || !element) {
               </div>
             )}
 
+            {/* Rich content area */}
             <div className="rt-block__content container">
-            
-              {/* CTAs */}
-              {(cta1Url || cta2Url) && (
-                <div className="rt-rich-content__ctas flex gap-3 mt-4">
-                  {cta1Url && (
-                    <a href={cta1Url} className={`rt-rich-content__cta rt-rich-content__cta--primary btn btn-${cta1Style}`}>
-                      {cta1Label}
-                    </a>
-                  )}
-                  {cta2Url && (
-                    <a href={cta2Url} className={`rt-rich-content__cta rt-rich-content__cta--secondary btn btn-${cta2Style}`}>
-                      {cta2Label}
-                    </a>
-                  )}
-                </div>
-              )}
+              <div className="rt-rich-content__body">
+                <InnerBlocks
+                  allowedBlocks={ALLOWED_BLOCKS}
+                  template={[['core/paragraph', { placeholder: 'Add rich content...' }]]}
+                />
+              </div>
             </div>
           </div>
         </>
       );
     },
 
-    save: () => null,
+    save: () => <InnerBlocks.Content />,
   });
 }

@@ -33,7 +33,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 ?>
 
 <div <?php echo $wrapper_attributes; ?>>
-	<!-- background image -->
+	<!-- Background image -->
 	<?php if ( $basics['background_image_id'] ) { ?>
 		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
@@ -44,6 +44,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
     </div>
   <?php } ?>
 
+  <!-- Content area -->
   <div class="rt-block__content container">
 		<div class="flex align-<?php echo $vert_align; ?>">
 			<!-- Content side -->

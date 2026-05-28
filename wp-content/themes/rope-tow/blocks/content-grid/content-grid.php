@@ -46,6 +46,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
     </div>
   <?php } ?>
 
+  <!-- Content area -->
   <div class="rt-block__content container">
 		<div class="flex">
 			<div class="flex-12 md:flex-10 xl:flex-8 mx-auto text-center">
