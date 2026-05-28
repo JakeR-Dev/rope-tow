@@ -2,7 +2,7 @@
 
 > Rope Tow is your new favorite WordPress starter theme. Fast, modern, and flexible, Rope Tow is the perfect foundation for your next WordPress project.
 
-<!-- ![Rope Tow](static/nylon-cover.png) -->
+![Rope Tow Banner](wp-content/themes/rope-tow/assets/img/rope-tow-banner-2560x1280.webp)
 
 ## **Prerequisites**
 
