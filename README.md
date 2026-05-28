@@ -4,6 +4,8 @@
 
 ![Rope Tow Banner](wp-content/themes/rope-tow/assets/img/rope-tow-banner-2560x1280.webp)
 
+Rope Tow is designed to be visually manageable for non-developers and developers alike, with styling and layout controls available through a WP API-based Theme Customizer workflow and a flexible Gutenberg block setup.
+
 ## **Prerequisites**
 
 Before you start with Rope Tow, ensure you have the following setup:
@@ -15,7 +17,7 @@ Before you start with Rope Tow, ensure you have the following setup:
 
 ## **Theme Setup**
 
-All build tooling lives inside the theme directory:
+All build tooling happens inside the theme directory:
 
 ```bash
 cd wp-content/themes/rope-tow
@@ -24,7 +26,7 @@ npm install
 
 ### **Rope Tow CLI (Local)**
 
-After `npm install`, run the block scaffolding CLI locally (no global link required):
+After `npm install`, you will have the Rope Tow CLI available. To create a new block scffold, run the following from the theme root directory:
 
 ```bash
 npm exec -- rope-tow new block your-block-name
@@ -43,7 +45,7 @@ This command will:
 - Add the block import to `assets/admin/js/blocks/editor.js`
 - Add the block stylesheet include to `assets/scss/blocks/_all.scss`
 
-If you want a cleaner command than `npm exec -- ...` without global linking, add this shell function to your `~/.zshrc`:
+If you want a cleaner command than `npm exec -- ...`, add this shell function to your `~/.zshrc`:
 
 ```bash
 rope-tow() {
@@ -94,12 +96,14 @@ Output goes to `wp-content/themes/rope-tow/dist/`. Ensure `VITE_DEV_SERVER` is *
 
 ## **Adding Blocks**
 
-Use the CLI instead of manual steps:
+Use the available Rope Tow CLI:
 
 ```bash
 npm exec -- rope-tow new block your-block-name
 ```
 
+Or, if you've initialized the shell function in `~/.zshrc`:
 
-
-
+```bash
+rope-tow new block your-block-name
+```
