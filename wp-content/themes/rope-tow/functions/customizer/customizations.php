@@ -47,10 +47,13 @@ function rope_tow_add_setting($wp_customize, $id, $args) {
 }
 
 // *******
-// Set new values in css vars
+// Build the customizer CSS variable block as rendered markup.
+// Used for both front-end output and block editor injection.
 // *******
 
-function rope_tow_customize_css() {
+function rope_tow_get_customize_css_markup() {
+  ob_start();
+
   // *****
   // typography
   // *****
@@ -208,9 +211,66 @@ function rope_tow_customize_css() {
     }
   </style>
   <?php
+  return ob_get_clean();
 }
-// add later in page for precedent over other base stylesheet-defined vars
+
+// *******
+// Enqueue the customizer CSS variables for front-end output
+// *******
+
+function rope_tow_customize_css() {
+  // check to make sure we're only doing this once
+  static $did_output = false;
+
+  if ( $did_output ) {
+    return;
+  }
+
+  $did_output = true;
+
+  // print the rope_tow_get_customize_css_markup();
+  echo rope_tow_get_customize_css_markup();
+}
 add_action('wp_footer', 'rope_tow_customize_css');
+
+// *******
+// Enqueue the customizer CSS variables for the block editor canvas.
+//
+// This reuses the same generated customizer markup, strips the wrapping
+// <style> tag, and injects the raw CSS into the iframe-safe block assets
+// pipeline.
+// *******
+
+function rope_tow_enqueue_customizer_editor_css() {
+  // admin-side only check
+  if ( ! is_admin() ) {
+    return;
+  }
+
+  // grab the full customizer styles markup
+  $markup = rope_tow_get_customize_css_markup();
+
+  if ( ! preg_match( '/<style[^>]*>(.*)<\/style>/s', $markup, $matches ) ) {
+    return;
+  }
+
+  // only grab the inner CSS rules, stripping out the wrapping <style> tag
+  $customizer_rules = trim( $matches[1] );
+
+  // In the block editor canvas, scope variables to the content wrapper too
+  // so these values win over global :root defaults.
+  $customizer_rules = preg_replace( '/:root\s*\{/', ':root, .editor-styles-wrapper {', $customizer_rules, 1 );
+
+  if ( empty( $customizer_rules ) ) {
+    return;
+  }
+
+  // register the styles as required by block editor
+  wp_register_style( 'rope-tow-customizer-vars', false, array(), ROPE_TOW_VERSION );
+  wp_enqueue_style( 'rope-tow-customizer-vars' );
+  wp_add_inline_style( 'rope-tow-customizer-vars', $customizer_rules );
+}
+add_action('enqueue_block_assets', 'rope_tow_enqueue_customizer_editor_css', 9999);
 
 // *******
 // Enable tom select for customizer controls

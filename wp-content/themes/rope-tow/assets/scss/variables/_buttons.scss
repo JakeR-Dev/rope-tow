@@ -1,9 +1,9 @@
 :root {
   /* Buttons */
-  --button-radius: 30px;
-  --button-font-weight: var(--weight-bold);
-  --button-text-transform: none;
-  --button-font-size: 16px;
+  --button-radius: 10px;
+  --button-font-weight: var(--weight-semibold);
+  --button-text-transform: uppercase;
+  --button-font-size: 14px;
   --button-lg-font-size: calc(var(--button-font-size) + 2px);
   --button-sm-font-size: var(--button-font-size);
   --button-padding-x: 30px;

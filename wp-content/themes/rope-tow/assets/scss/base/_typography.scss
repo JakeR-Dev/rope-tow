@@ -53,9 +53,12 @@ em,
 
 ul, ol {
 	padding-left: var(--list-indent);
-	text-indent: .5rem;
-	li::marker {
-		color: var(--list-marker-color);
+	li {
+		padding-left: var(--list-item-indent);
+		&::marker {
+			font-weight: bold;
+			color: var(--list-marker-color);
+		}
 	}
 }
 
