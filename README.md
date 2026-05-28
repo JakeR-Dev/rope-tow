@@ -22,6 +22,56 @@ cd wp-content/themes/rope-tow
 npm install
 ```
 
+### **Rope Tow CLI (Local)**
+
+After `npm install`, run the block scaffolding CLI locally (no global link required):
+
+```bash
+npm exec -- rope-tow new block your-block-name
+```
+
+Example:
+
+```bash
+npm exec -- rope-tow new block feature-cards
+```
+
+This command will:
+
+- Create a new block folder in `wp-content/themes/rope-tow/blocks/`
+- Generate a block scaffold (block.json, jsx, php, scss, editor.scss)
+- Add the block import to `assets/admin/js/blocks/editor.js`
+- Add the block stylesheet include to `assets/scss/blocks/_all.scss`
+
+If you want a cleaner command than `npm exec -- ...` without global linking, add this shell function to your `~/.zshrc`:
+
+```bash
+rope-tow() {
+	local repo_root
+	repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+		echo "Not inside a git repository."
+		return 1
+	}
+
+	local theme_dir="$repo_root/wp-content/themes/rope-tow"
+	if [[ ! -d "$theme_dir" ]]; then
+		echo "Could not find rope-tow theme directory at: $theme_dir"
+		return 1
+	fi
+
+	(
+		cd "$theme_dir" || exit 1
+		npm exec -- rope-tow "$@"
+	)
+}
+```
+
+Then reload your shell and run:
+
+```bash
+rope-tow new block your-block-name
+```
+
 ## **Development**
 
 Start the Vite dev server with HMR (Hot Module Replacement):
@@ -44,10 +94,11 @@ Output goes to `wp-content/themes/rope-tow/dist/`. Ensure `VITE_DEV_SERVER` is *
 
 ## **Adding Blocks**
 
-- Create a new directory within the `rope-tow/blocks` folder alongside the other existing blocks, name it appropriately.
-	- Alternatively, you can clone an existing block's directory and rename the files to match your new block. Be sure to update all references to the duplicated block's name in the new files.
-- Add a reference to the new block in the `rope-tow/assets/admin/js/blocks/editor.js` file, under the "Custom gutenberg blocks" section.
-- Add a reference to the new block's stylesheet to `rope-tow/assets/scss/blocks/_all.scss`
+Use the CLI instead of manual steps:
+
+```bash
+npm exec -- rope-tow new block your-block-name
+```
 
 
 

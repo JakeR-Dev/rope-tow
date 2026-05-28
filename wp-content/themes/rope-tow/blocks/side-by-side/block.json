@@ -90,7 +90,8 @@
       "cta2Url": "#",
       "cta2Style": "secondary",
       "verticalAlignment": "center",
-      "imageBorderRadius": "0"
+      "imageBorderRadius": "0",
+      "imageSide": "right"
     }
   },
   "render": "file:./side-by-side.php"

@@ -4,3 +4,4 @@ import "../../../scss/base/_editor-shared.scss";
 import "../../../../blocks/hero/hero.jsx";
 import "../../../../blocks/content-grid/content-grid.jsx";
 import "../../../../blocks/side-by-side/side-by-side.jsx";
+import "../../../../blocks/rich-content/rich-content.jsx";

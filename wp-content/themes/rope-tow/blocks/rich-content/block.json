@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "rope-tow/rich-content",
+  "title": "Rich Content",
+  "category": "the-goods",
+  "description": "Rich content block with flexibility and style",
+  "supports": {
+    "html": false,
+    "align": ["full", "wide"]
+  },
+  "attributes": {
+    
+  },
+  "example": {
+    "attributes": {
+
+    }
+  },
+  "render": "file:./rich-content.php"
+}
