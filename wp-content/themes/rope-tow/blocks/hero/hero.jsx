@@ -116,7 +116,7 @@ if (!blocks || !blockEditor || !components || !element) {
                   {/* Title */}
                   <RichText
                     tagName={titleTag || 'h1'}
-                    className="rt-hero__title"
+                    className="rt-hero__title mb-3 mt-0"
                     value={title}
                     onFocus={() => setActiveTextField('title')}
                     onChange={(val) => setAttributes({ title: val })}
@@ -127,7 +127,7 @@ if (!blocks || !blockEditor || !components || !element) {
                   {/* Subtitle */}
                   <RichText
                     tagName={subtitleTag || 'p'}
-                    className="rt-hero__subtitle"
+                    className="rt-hero__subtitle mb-3"
                     value={subtitle}
                     onFocus={() => setActiveTextField('subtitle')}
                     onChange={(val) => setAttributes({ subtitle: val })}

@@ -34,6 +34,14 @@
       "type": "string",
       "default": "p"
     },
+    "sliderStyle": {
+      "type": "string",
+      "default": "single"
+    },
+    "items": {
+      "type": "array",
+      "default": []
+    },
     "cta1Label": {
 			"type": "string",
 			"default": "Learn More"
@@ -69,6 +77,19 @@
       "subtitleTag": "p",
       "backgroundColor": "color-gray-light",
       "textColor": "dark",
+      "sliderStyle": "single",
+      "items": [
+        {
+          "title": "Starter",
+          "description": "Great for testing and small campaigns.",
+          "backgroundColor": "color-white",
+          "textColor": "dark",
+          "linkLabel": "Learn more",
+          "linkUrl": "#",
+          "buttonStyle": "primary",
+          "image": ""
+        }
+      ],
       "cta1Label": "Get Started",
       "cta1Url": "#",
       "cta1Style": "primary",

@@ -67,6 +67,7 @@ if (!blocks || !blockEditor || !components || !element) {
         });
       };
 
+      // Update grid item
       const updateGridItem = (index, field, value) => {
         const nextItems = gridItems.map((item, itemIndex) => (
           itemIndex === index ? { ...item, [field]: value } : item
@@ -75,6 +76,7 @@ if (!blocks || !blockEditor || !components || !element) {
         setAttributes({ items: nextItems });
       };
 
+      // Remove grid item
       const removeGridItem = (index) => {
         setAttributes({
           items: gridItems.filter((_, itemIndex) => itemIndex !== index),
@@ -264,7 +266,7 @@ if (!blocks || !blockEditor || !components || !element) {
                   {/* Pretitle */}
                   <RichText
                     tagName='p'
-                    className={`${pretitleTag} rt-content-grid__pretitle mb-0`}
+                    className={`${pretitleTag} rt-content-grid__pretitle mb-2`}
                     value={pretitle}
                     onFocus={() => setActiveTextField('pretitle')}
                     onChange={(val) => setAttributes({ pretitle: val })}
@@ -275,7 +277,7 @@ if (!blocks || !blockEditor || !components || !element) {
                   {/* Title */}
                   <RichText
                     tagName={titleTag || 'h1'}
-                    className="rt-content-grid__title mb-3"
+                    className="rt-content-grid__title mb-3 mt-0"
                     value={title}
                     onFocus={() => setActiveTextField('title')}
                     onChange={(val) => setAttributes({ title: val })}
