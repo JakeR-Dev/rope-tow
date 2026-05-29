@@ -4,7 +4,7 @@
   "name": "rope-tow/side-by-side",
   "title": "Side-By-Side",
   "category": "the-goods",
-  "description": "Side-by-side content block with style and flair",
+  "description": "Side-by-side content block with style and flair.",
   "supports": {
     "html": false,
     "align": ["full", "wide"]

@@ -4,7 +4,7 @@
   "name": "rope-tow/rich-content",
   "title": "Rich Content",
   "category": "the-goods",
-  "description": "Rich content block with flexibility and style",
+  "description": "Rich content block with flexibility and style.",
   "supports": {
     "html": false,
     "align": ["full", "wide"]

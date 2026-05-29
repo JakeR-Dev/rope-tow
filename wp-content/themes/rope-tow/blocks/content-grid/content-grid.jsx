@@ -32,8 +32,8 @@ if (!blocks || !blockEditor || !components || !element) {
       // Track the current text field's tag
       const currentTag = (
         activeTextField === 'subtitle' ? (subtitleTag || 'p') :
-          activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
-            (titleTag || 'h1'));
+        activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
+        (titleTag || 'h1'));
 
       const setActiveFieldTag = (tag) => {
         if (activeTextField === 'subtitle') {

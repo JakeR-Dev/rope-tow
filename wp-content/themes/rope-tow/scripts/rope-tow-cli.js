@@ -87,11 +87,39 @@ function writeBlockFiles(themeRoot, slug, title) {
     "align": ["full", "wide"]
   },
   "attributes": {
-
+    "cta1Label": {
+			"type": "string",
+			"default": "Learn More"
+		},
+    "cta1Url": {
+			"type": "string",
+			"default": ""
+		},
+		"cta1Style": {
+			"type": "string",
+			"default": "primary"
+		},
+    "cta2Label": {
+			"type": "string",
+			"default": "Get Started"
+		},
+    "cta2Url": {
+			"type": "string",
+			"default": ""
+		},
+		"cta2Style": {
+			"type": "string",
+			"default": "secondary"
+		}
   },
   "example": {
     "attributes": {
-
+      "cta1Label": "Get Started",
+      "cta1Url": "#",
+      "cta1Style": "primary",
+      "cta2Label": "Contact Sales",
+      "cta2Url": "#",
+      "cta2Style": "secondary"
     }
   },
   "render": "file:./${slug}.php"
@@ -99,6 +127,7 @@ function writeBlockFiles(themeRoot, slug, title) {
 `;
 
   const jsx = `import "./editor.scss";
+import { buttonStyleOptions, backgroundColorOptions, textColorOptions } from "../../assets/admin/js/blocks/block-options";
 import { SpacingControls } from "../../assets/admin/js/blocks/spacingControls";
 import { BackgroundControls } from "../../assets/admin/js/blocks/backgroundControls";
 import { ButtonPairControls } from "../../assets/admin/js/blocks/buttonPair";
@@ -119,9 +148,10 @@ if (!blocks || !blockEditor || !components) {
         paddingTop, paddingBottom, marginTop, marginBottom,
         backgroundImage, backgroundColor, backgroundAttachment, textColor,
         // Block-specific attributes
-        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
+        cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style
       } = attributes;
 
+      // Define the block's props
       const blockProps = useBlockProps({
         className: "rt-${slug} rt-block section pt-" + paddingTop + " pb-" + paddingBottom + " mt-" + marginTop + " mb-" + marginBottom + " bg-" + backgroundColor + " text-" + textColor,
       });
@@ -129,8 +159,11 @@ if (!blocks || !blockEditor || !components) {
 
       return (
         <>
+          {/* Sidebar controls */}
           <InspectorControls>
+            {/* Styles */}
             <PanelBody title="Styles" initialOpen={false}>
+              {/* Padding and margin controls */}
               <SpacingControls
                 paddingTop={paddingTop}
                 paddingBottom={paddingBottom}
@@ -141,6 +174,7 @@ if (!blocks || !blockEditor || !components) {
 
               <hr />
 
+              {/* Background and text color controls */}
               <BackgroundControls
                 backgroundImage={backgroundImage}
                 backgroundAttachment={backgroundAttachment}
@@ -150,6 +184,7 @@ if (!blocks || !blockEditor || !components) {
               />
             </PanelBody>
 
+            {/* CTA button controls */}
             <PanelBody title="CTA Buttons" initialOpen={false}>
               <ButtonPairControls
                 cta1Label={cta1Label}
@@ -163,14 +198,18 @@ if (!blocks || !blockEditor || !components) {
             </PanelBody>
           </InspectorControls>
 
+          {/* Render the block content in the editor */}
           <div {...blockProps}>
+            {/* Background image */}
             {backgroundImage?.url && (
               <div className={"rt-block__bg " + bgImgClass} aria-hidden="true">
                 <img src={backgroundImage.url} alt="" className="rt-block__bg-img" />
               </div>
             )}
 
+            {/* Content area */}
             <div className="rt-block__content container">
+              {/* CTAs */}
               {(cta1Url || cta2Url) && (
                 <div className="rt-${slug}__ctas flex gap-3 mt-4">
                   {cta1Url && (
@@ -221,6 +260,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 ?>
 
 <div <?php echo $wrapper_attributes; ?>>
+  <!-- Background image -->
   <?php if ( $basics['background_image_id'] ) { ?>
     <div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
       <?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
@@ -231,7 +271,9 @@ $wrapper_attributes = get_block_wrapper_attributes( [
     </div>
   <?php } ?>
 
+  <!-- Content area -->
   <div class="rt-block__content container">
+    <!-- CTAs -->
     <?php if ( $ctas['cta1_url'] || $ctas['cta2_url'] ) { ?>
       <div class="rt-${slug}__ctas flex gap-3 mt-4">
         <?php if ( $ctas['cta1_url'] ) { ?>

@@ -4,7 +4,7 @@
   "name": "rope-tow/content-grid",
   "title": "Content Grid",
   "category": "the-goods",
-  "description": "Content Grid block with flexibility and style",
+  "description": "Content Grid block with flexibility and style.",
   "supports": {
     "html": false,
     "align": ["full", "wide"]

@@ -1,16 +1,20 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "rope-tow/hero",
-  "title": "Hero",
+  "name": "rope-tow/slider",
+  "title": "Slider",
   "category": "the-goods",
-  "description": "Hero block with style and pinache.",
+  "description": "Slider block that exudes subtle confidence.",
   "supports": {
     "html": false,
     "align": ["full", "wide"]
   },
   "attributes": {
     "title": {
+      "type": "string",
+      "default": ""
+    },
+    "pretitle": {
       "type": "string",
       "default": ""
     },
@@ -21,6 +25,10 @@
     "titleTag": {
       "type": "string",
       "default": "h1"
+    },
+    "pretitleTag": {
+      "type": "string",
+      "default": "h6"
     },
     "subtitleTag": {
       "type": "string",
@@ -53,19 +61,21 @@
   },
   "example": {
     "attributes": {
-      "title": "Welcome to Rope Tow",
-      "subtitle": "Your new favorite WordPress starter theme. Fast, modern, scalable, and accessible.",
-      "titleTag": "h1",
+      "title": "Browse our offerings",
+      "pretitle": "Samples",
+      "subtitle": "Pick a package and get started quickly.",
+      "titleTag": "h2",
+      "pretitleTag": "h6",
       "subtitleTag": "p",
+      "backgroundColor": "color-gray-light",
+      "textColor": "dark",
       "cta1Label": "Get Started",
       "cta1Url": "#",
       "cta1Style": "primary",
-      "cta2Label": "Learn More",
+      "cta2Label": "Contact Sales",
       "cta2Url": "#",
-      "cta2Style": "secondary",
-      "paddingTop": "medium",
-      "paddingBottom": "small"
+      "cta2Style": "secondary"
     }
   },
-  "render": "file:./hero.php"
+  "render": "file:./slider.php"
 }
