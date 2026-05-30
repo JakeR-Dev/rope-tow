@@ -33,8 +33,8 @@ if (!blocks || !blockEditor || !components || !element) {
       // Track the current text field's tag
       const currentTag = (
         activeTextField === 'subtitle' ? (subtitleTag || 'p') :
-          activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
-            (titleTag || 'h1'));
+        activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
+        (titleTag || 'h1'));
 
       const setActiveFieldTag = (tag) => {
         if (activeTextField === 'subtitle') {
@@ -47,9 +47,11 @@ if (!blocks || !blockEditor || !components || !element) {
         setAttributes({ titleTag: tag });
       };
 
+      // Init Embla slider
       const emblaNodeRef = useRef(null);
       const [emblaApi, setEmblaApi] = useState(null);
 
+      // Set Embla options
       useEffect(() => {
         if (!emblaNodeRef.current) {
           return;
@@ -69,6 +71,7 @@ if (!blocks || !blockEditor || !components || !element) {
         };
       }, []);
 
+      // If number of slider items changes, re-init slider
       useEffect(() => {
         if (emblaApi) {
           emblaApi.reInit();
@@ -89,30 +92,10 @@ if (!blocks || !blockEditor || !components || !element) {
         }
       }, [emblaApi]);
 
-      // Slider items repeater logic
+      // Gather slider items
       const sliderItems = Array.isArray(items) ? items : [];
-      const sliderPreviewItems = sliderItems.length > 0 ? sliderItems : [
-        {
-          title: 'Starter',
-          description: 'Great for testing and small campaigns.',
-          backgroundColor: 'white',
-          textColor: 'dark',
-          linkLabel: 'Learn more',
-          linkUrl: '#',
-          buttonStyle: 'primary',
-          image: '',
-        },
-        {
-          title: 'Growth',
-          description: 'A balanced option for consistent growth.',
-          backgroundColor: 'white',
-          textColor: 'dark',
-          linkLabel: 'See details',
-          linkUrl: '#',
-          buttonStyle: 'secondary',
-          image: '',
-        },
-      ];
+
+      // Add slider item with default values
       const addSliderItem = () => {
         setAttributes({
           items: [
@@ -363,26 +346,38 @@ if (!blocks || !blockEditor || !components || !element) {
               <div className="rt-slider__slider my-4">
                 <div className="rt-slider__embla" ref={emblaNodeRef}>
                   <div className="rt-slider__embla-container">
-                    {sliderPreviewItems.map((slide, index) => (
-                      <article className="rt-slider__embla-slide" key={`demo-slide-${index}`}>
-                        <div className={`rt-slider__embla-slide-card bg-${slide.backgroundColor || 'white'} text-${slide.textColor || 'dark'}`}>
-                          {slide.image?.url && (
-                            <img
-                              src={slide.image.url}
-                              alt=""
+                    {sliderItems.map((slide, index) => {
+                      const slideBgColor = slide.backgroundColor ? `bg-${slide.backgroundColor}` : 'bg-white';
+                      const slideTextColor = slide.textColor ? `text-${slide.textColor}` : 'text-dark';
+                      const slideImgUrl = slide.image?.url ?? null;
+                      const slideTitle = slide.title ?? null;
+                      const slideImgAlt = slideTitle ? `${slideTitle} image` : `slide ${index} image`;
+                      const slideDesc = slide.description ?? null;
+                      const slideLinkLabel = slide.linkLabel ?? null;
+                      const slideLinkUrl = slide.linkUrl ?? '#';
+                      const slideBtnStyle = slide.buttonStyle ?? 'primary';
+
+                      return (
+                        <article className="rt-slider__embla-slide" key={`demo-slide-${index}`}>
+                          <div className={`rt-slider__embla-slide-card ${slideBgColor} ${slideTextColor}`}>
+                            {slideImgUrl && (
+                              <img
+                              src={slideImgUrl}
+                              alt={slideImgAlt}
                               className="rt-slider__embla-slide-image"
                             />
                           )}
-                          <h3 className="rt-slider__embla-slide-title mb-2 mt-0">{slide.title}</h3>
-                          <p className="rt-slider__embla-slide-description mb-3">{slide.description}</p>
-                          {slide.linkLabel && (
-                            <a href={slide.linkUrl || '#'} className={`btn btn-${slide.buttonStyle || 'primary'}`}>
-                              {slide.linkLabel}
+                          <h3 className="rt-slider__embla-slide-title mb-2 mt-0">{slideTitle}</h3>
+                          <p className="rt-slider__embla-slide-description mb-3">{slideDesc}</p>
+                          {slideLinkLabel && (
+                            <a href={slideLinkUrl} className={`btn btn-${slideBtnStyle}`}>
+                              {slideLinkLabel}
                             </a>
                           )}
                         </div>
                       </article>
-                    ))}
+                      )
+                    })}
                   </div>
                 </div>
 

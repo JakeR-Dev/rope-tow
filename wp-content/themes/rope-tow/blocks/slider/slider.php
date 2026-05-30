@@ -64,27 +64,32 @@ $wrapper_attributes = get_block_wrapper_attributes( [
         <div class="rt-slider__embla">
           <div class="rt-slider__embla-container">
             <?php foreach ( $items as $index => $item ) {
-              $item_title = $item['title'] ?? '';
-              $item_description = $item['description'] ?? '';
+              $item_title = $item['title'] ?? null;
+              $item_description = $item['description'] ?? null;
               $item_bg_color = sanitize_html_class( $item['backgroundColor'] ?? 'white' );
               $item_text_color = sanitize_html_class( $item['textColor'] ?? 'dark' );
-              $item_link_label = $item['linkLabel'] ?? '';
-              $item_link_url = $item['linkUrl'] ?? '';
+              $item_link_label = $item['linkLabel'] ?? null;
+              $item_link_url = $item['linkUrl'] ?? '#';
               $item_button_style = sanitize_html_class( $item['buttonStyle'] ?? 'primary' );
+              $item_image = $item['image'];
               $item_image_id = 0;
               $item_image_url = '';
-              if ( !empty( $item['image'] ) && is_array( $item['image'] ) ) {
-                $item_image_id = absint( $item['image']['id'] ?? 0 );
-                $item_image_url = $item['image']['url'] ?? '';
+              if ( !empty( $item_image ) && is_array( $item_image ) ) {
+                $item_image_id = absint( $item_image['id'] ?? 0 );
+                $item_image_url = $item_image['url'] ?? '';
               }
             ?>
               <article class="rt-slider__embla-slide rt-slider__embla-slide--<?php echo esc_attr( $slider_style ); ?>" data-slide-index="<?php echo esc_attr( $index ); ?>">
                 <div class="rt-slider__embla-slide-card bg-<?php echo esc_attr( $item_bg_color ); ?> text-<?php echo esc_attr( $item_text_color ); ?>">
                   <!-- Image -->
-                  <?php if ( $item_image_id ) { ?>
-                    <?php echo wp_get_attachment_image( $item_image_id, 'large', false, array( 'class' => 'rt-slider__embla-slide-image', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
-                  <?php } elseif ( $item_image_url ) { ?>
-                    <img src="<?php echo esc_url( $item_image_url ); ?>" alt="" class="rt-slider__embla-slide-image" loading="lazy" decoding="async">
+                  <?php if ($item_image) { ?>
+                    <div class="rt-slider__embla-slide-image mb-3">
+                      <?php if ( $item_image_id ) { ?>
+                        <?php echo wp_get_attachment_image( $item_image_id, 'large', false, array( 'class' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+                      <?php } elseif ( $item_image_url ) { ?>
+                        <img src="<?php echo esc_url( $item_image_url ); ?>" alt="<?php echo ($item_title) ? $item_title . 'image' : 'slide ' . $index . ' image' ?>" class="" loading="lazy" decoding="async">
+                      <?php } ?>
+                    </div>
                   <?php } ?>
                   <!-- Title -->
                   <?php if ( $item_title ) { ?>

@@ -10,9 +10,11 @@
 // Import main SCSS file
 import "../scss/main.scss";
 import Navigation from "./utils/navigation";
+import Slider from "./utils/slider";
 
 // Init main JS
 document.addEventListener("DOMContentLoaded", () => {
   console.log("main.ts loaded");
   Navigation.init();
+  Slider.init();
 });

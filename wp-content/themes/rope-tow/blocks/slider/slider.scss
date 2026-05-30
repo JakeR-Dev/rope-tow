@@ -1,5 +1,40 @@
-// @use '../../assets/scss/base/shared' as *;
+@use '../../assets/scss/base/shared' as *;
 
-// .rt-slider {
-
-// }
+.rt-slider {
+	.rt-slider__embla {
+		overflow: hidden;
+	}
+	.rt-slider__embla-container {
+		display: flex;
+		margin-left: -1rem;
+	}
+	.rt-slider__embla-slide {
+		min-width: 0;
+		padding-left: 1rem;
+		flex: 0 0 100%;
+    &--double {
+      @include media(tablet) {
+        flex-basis: 50%;
+      }
+    }
+    &--triple {
+      @include media(tablet) {
+        flex-basis: 50%;
+      }
+      @include media(desktop) {
+        flex-basis: 33.3333%;
+      }
+    }
+    &-card {
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    &-image {
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+	}
+}

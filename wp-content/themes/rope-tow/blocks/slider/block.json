@@ -88,6 +88,26 @@
           "linkUrl": "#",
           "buttonStyle": "primary",
           "image": ""
+        },
+        {
+          "title": "Pro",
+          "description": "For growing businesses with increasing needs.",
+          "backgroundColor": "color-white",
+          "textColor": "dark",
+          "linkLabel": "Learn more",
+          "linkUrl": "#",
+          "buttonStyle": "primary",
+          "image": ""
+        },
+        {
+          "title": "Enterprise",
+          "description": "Custom solutions for large organizations.",
+          "backgroundColor": "color-white",
+          "textColor": "dark",
+          "linkLabel": "Learn more",
+          "linkUrl": "#",
+          "buttonStyle": "primary",
+          "image": ""
         }
       ],
       "cta1Label": "Get Started",
