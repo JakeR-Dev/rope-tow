@@ -82,8 +82,8 @@ $wrapper_attributes = get_block_wrapper_attributes( [
               <article class="rt-slider__embla-slide rt-slider__embla-slide--<?php echo esc_attr( $slider_style ); ?>" data-slide-index="<?php echo esc_attr( $index ); ?>">
                 <div class="rt-slider__embla-slide-card bg-<?php echo esc_attr( $item_bg_color ); ?> text-<?php echo esc_attr( $item_text_color ); ?>">
                   <!-- Image -->
-                  <?php if ($item_image) { ?>
-                    <div class="rt-slider__embla-slide-image mb-3">
+                  <?php if ( $item_image ) { ?>
+                    <div class="rt-slider__embla-slide-image">
                       <?php if ( $item_image_id ) { ?>
                         <?php echo wp_get_attachment_image( $item_image_id, 'large', false, array( 'class' => '', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
                       <?php } elseif ( $item_image_url ) { ?>
@@ -91,19 +91,23 @@ $wrapper_attributes = get_block_wrapper_attributes( [
                       <?php } ?>
                     </div>
                   <?php } ?>
-                  <!-- Title -->
-                  <?php if ( $item_title ) { ?>
-                    <h3 class="rt-slider__embla-slide-title mb-2 mt-0"><?php echo esc_html( $item_title ); ?></h3>
-                  <?php } ?>
-                  <!-- Description -->
-                  <?php if ( $item_description ) { ?>
-                    <p class="rt-slider__embla-slide-description mb-3"><?php echo esc_html( $item_description ); ?></p>
-                  <?php } ?>
-                  <!-- Button -->
-                  <?php if ( $item_link_label ) { ?>
-                    <a href="<?php echo esc_url( $item_link_url ? $item_link_url : '#' ); ?>" class="btn btn-<?php echo esc_attr( $item_button_style ); ?>">
-                      <?php echo esc_html( $item_link_label ); ?>
-                    </a>
+                  <?php if ( $item_title || $item_description || $item_link_label ) { ?>
+                    <div class="rt-slider__embla-slide-lower p-3 md:p-4">
+                      <!-- Title -->
+                      <?php if ( $item_title ) { ?>
+                        <h3 class="rt-slider__embla-slide-title mb-2 mt-0"><?php echo esc_html( $item_title ); ?></h3>
+                      <?php } ?>
+                      <!-- Description -->
+                      <?php if ( $item_description ) { ?>
+                        <p class="rt-slider__embla-slide-description mb-3"><?php echo esc_html( $item_description ); ?></p>
+                      <?php } ?>
+                      <!-- Button -->
+                      <?php if ( $item_link_label ) { ?>
+                        <a href="<?php echo esc_url( $item_link_url ? $item_link_url : '#' ); ?>" class="btn btn-<?php echo esc_attr( $item_button_style ); ?>">
+                          <?php echo esc_html( $item_link_label ); ?>
+                        </a>
+                      <?php } ?>
+                    </div>
                   <?php } ?>
                 </div>
               </article>
@@ -113,8 +117,8 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
         <!-- Slider arrows -->
         <div class="rt-slider__controls flex gap-2 mt-3 flex-center">
-          <button type="button" class="btn btn-secondary" data-rt-slider-prev aria-label="Previous slide">Prev</button>
-          <button type="button" class="btn btn-primary" data-rt-slider-next aria-label="Next slide">Next</button>
+          <button type="button" class="rt-slider__controls-prev" data-rt-slider-prev aria-label="Previous slide">Prev</button>
+          <button type="button" class="rt-slider__controls-next" data-rt-slider-next aria-label="Next slide">Next</button>
         </div>
       </div>
     <?php } ?>
