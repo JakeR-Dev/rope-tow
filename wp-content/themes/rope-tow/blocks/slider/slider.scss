@@ -1,13 +1,6 @@
 @use '../../assets/scss/base/shared' as *;
 
 .rt-slider {
-	&__embla {
-		overflow: hidden;
-	}
-	&__embla-container {
-		display: flex;
-		margin-left: -1rem;
-	}
 	&__embla-slide {
 		min-width: 0;
 		padding-left: 1rem;

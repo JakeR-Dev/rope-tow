@@ -117,8 +117,8 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
         <!-- Slider arrows -->
         <div class="rt-slider__controls flex gap-2 mt-3 flex-center">
-          <button type="button" class="rt-slider__controls-prev" data-rt-slider-prev aria-label="Previous slide">Prev</button>
-          <button type="button" class="rt-slider__controls-next" data-rt-slider-next aria-label="Next slide">Next</button>
+          <button type="button" class="rt-slider__controls-prev rt-slider__prev" data-rt-slider-prev aria-label="Previous slide">Prev</button>
+          <button type="button" class="rt-slider__controls-next rt-slider__next" data-rt-slider-next aria-label="Next slide">Next</button>
         </div>
       </div>
     <?php } ?>
