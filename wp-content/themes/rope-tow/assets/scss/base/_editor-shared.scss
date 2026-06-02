@@ -18,6 +18,7 @@
   @include meta.load-css('../blocks/all');
   @include meta.load-css('../elements/buttons');
   @include meta.load-css('../elements/images');
+  @include meta.load-css('../elements/sliders');
 }
 
 // Editor-specific overrides

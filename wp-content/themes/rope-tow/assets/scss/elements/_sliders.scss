@@ -21,7 +21,6 @@
     &[disabled] {
       opacity: 0.5;
       cursor: not-allowed;
-      pointer-events: none;
     }
     &::before,
     &::after {
@@ -51,18 +50,20 @@
       transform: rotate(45deg);
       transition: left .1s linear .05s;
     }
-    &:hover {
-      &::before {
-        width: 10px;
-      }
-      &:is(.rt-slider__controls-prev) {
-        &::after {
-          left: 13px;
+    &:not([disabled]) {
+      &:hover {
+        &::before {
+          width: 10px;
         }
-      }
-      &:is(.rt-slider__controls-next) {
-        &::after {
-          left: 15px;
+        &:is(.rt-slider__controls-prev) {
+          &::after {
+            left: 13px;
+          }
+        }
+        &:is(.rt-slider__controls-next) {
+          &::after {
+            left: 15px;
+          }
         }
       }
     }

@@ -308,6 +308,7 @@ if (!blocks || !blockEditor || !components || !element) {
               </div>
             )}
 
+            {/* Content area */}
             <div className="rt-block__content container">
               {/* Pretitle */}
               <RichText
@@ -343,50 +344,59 @@ if (!blocks || !blockEditor || !components || !element) {
               />
 
               {/* Slider */}
-              <div className="rt-slider__slider my-4">
-                <div className="rt-slider__embla" ref={emblaNodeRef}>
-                  <div className="rt-slider__embla-container">
-                    {sliderItems.map((slide, index) => {
-                      const slideBgColor = slide.backgroundColor ? `bg-${slide.backgroundColor}` : 'bg-white';
-                      const slideTextColor = slide.textColor ? `text-${slide.textColor}` : 'text-dark';
-                      const slideImgUrl = slide.image?.url ?? null;
-                      const slideTitle = slide.title ?? null;
-                      const slideImgAlt = slideTitle ? `${slideTitle} image` : `slide ${index} image`;
-                      const slideDesc = slide.description ?? null;
-                      const slideLinkLabel = slide.linkLabel ?? null;
-                      const slideLinkUrl = slide.linkUrl ?? '#';
-                      const slideBtnStyle = slide.buttonStyle ?? 'primary';
+              {sliderItems.length && (
+                <div className="rt-slider__slider my-4" data-rt-slider data-rt-slider-style={sliderStyle}>
+                  <div className="rt-slider__embla" ref={emblaNodeRef}>
+                    <div className="rt-slider__embla-container">
+                      {sliderItems.map((slide, index) => {
+                        const slideBgColor = slide.backgroundColor ? `bg-${slide.backgroundColor}` : 'bg-white';
+                        const slideTextColor = slide.textColor ? `text-${slide.textColor}` : 'text-dark';
+                        const slideImgUrl = slide.image?.url ?? null;
+                        const slideTitle = slide.title ?? null;
+                        const slideImgAlt = slideTitle ? `${slideTitle} image` : `slide ${index} image`;
+                        const slideDesc = slide.description ?? null;
+                        const slideLinkLabel = slide.linkLabel ?? null;
+                        const slideLinkUrl = slide.linkUrl ?? '#';
+                        const slideBtnStyle = slide.buttonStyle ?? 'primary';
 
-                      return (
-                        <article className="rt-slider__embla-slide" key={`demo-slide-${index}`}>
-                          <div className={`rt-slider__embla-slide-card ${slideBgColor} ${slideTextColor}`}>
-                            {slideImgUrl && (
-                              <img
-                              src={slideImgUrl}
-                              alt={slideImgAlt}
-                              className="rt-slider__embla-slide-image"
-                            />
-                          )}
-                          <h3 className="rt-slider__embla-slide-title mb-2 mt-0">{slideTitle}</h3>
-                          <p className="rt-slider__embla-slide-description mb-3">{slideDesc}</p>
-                          {slideLinkLabel && (
-                            <a href={slideLinkUrl} className={`btn btn-${slideBtnStyle}`}>
-                              {slideLinkLabel}
-                            </a>
-                          )}
-                        </div>
-                      </article>
-                      )
-                    })}
+                        return (
+                          <article className={`rt-slider__embla-slide rt-slider__embla-slide--${sliderStyle}`} key={`demo-slide-${index}`}>
+                            <div className={`rt-slider__embla-slide-card ${slideBgColor} ${slideTextColor}`}>
+                              {/* Image */}
+                              {slideImgUrl && (
+                                <div class="rt-slider__embla-slide-image">
+                                  <img
+                                  src={slideImgUrl}
+                                  alt={slideImgAlt}
+                                  />
+                                </div>
+                              )}
+                              <div class="rt-slider__embla-slide-lower p-3 md:p-4">
+                                {/* Title */}
+                                <h3 className="rt-slider__embla-slide-title mb-2 mt-0">{slideTitle}</h3>
+                                {/* Description */}
+                                <p className="rt-slider__embla-slide-description mb-3">{slideDesc}</p>
+                                {/* Button */}
+                                {slideLinkLabel && (
+                                  <a href={slideLinkUrl} className={`btn btn-${slideBtnStyle}`}>
+                                    {slideLinkLabel}
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                          </article>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Slider controls */}
+                  <div className="rt-slider__controls flex gap-2 mt-3 flex-center">
+                    <button type="button" className="rt-slider__controls-prev rt-slider__prev" onClick={scrollPrev}>Prev</button>
+                    <button type="button" className="rt-slider__controls-next rt-slider__next" onClick={scrollNext}>Next</button>
                   </div>
                 </div>
-
-                {/* Slider controls */}
-                <div className="rt-slider__controls flex gap-2 mt-3 flex-center">
-                  <button type="button" className="btn btn-secondary" onClick={scrollPrev}>Prev</button>
-                  <button type="button" className="btn btn-primary" onClick={scrollNext}>Next</button>
-                </div>
-              </div>
+              )}
 
               {/* CTAs */}
               {(cta1Url || cta2Url) && (
