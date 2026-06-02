@@ -15,24 +15,29 @@ $page_background = esc_url(get_theme_mod('rope_tow_404_background_image', rope_t
 ?>
 
 <main>
-	<section class="block relative pt-60 pb-40 error404-body rope-tow-text-<?= $text_style ?>" style="background-image:url(<?= $page_background ?>)">
+	<section class="rt-block error404-body section relative pt-large pb-large text-<?= $text_style ?>" style="background-image:url(<?= $page_background ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 text-center">
 					<!-- image -->
-					<?php if ($page_image) { ?>
+					<?php if ( $page_image ) { ?>
 						<img src="<?= $page_image ?>" alt="404 page image" class="inline-block mb-8" />
 					<?php } ?>
 					<!-- title -->
-					<h1 class="mb-8"><?= $page_title ?></h1>
+					<h1 class="mb-3"><?= $page_title ?></h1>
 					<!-- subtitle -->
-					<p class="lead mb-10"><?= $page_subtitle ?></p>
-					<!-- button -->
-					<a class="btn <?= $button_style ?>" href="<?= $button_url ?>"><?= $button_text ?></a>
-					<!-- second button -->
-					<?php if ($button2_text && $button2_url) { ?>
-						<a class="btn btn2 <?= $button2_style ?>" href="<?= $button2_url ?>"><?= $button2_text ?></a>
-					<?php } ?>
+					<p class="lead"><?= $page_subtitle ?></p>
+					<!-- buttons -->
+					<div class="flex flex-center gap-3 mt-4 md:mt-5">
+						<!-- primary button -->
+						<?php if ( $button_url ) { ?>
+							<a class="btn btn1 <?= $button_style ?>" href="<?= $button_url ?>"><?= $button_text ?></a>
+						<?php } ?>
+						<!-- secondary button -->
+						<?php if ( $button2_url ) { ?>
+							<a class="btn btn2 <?= $button2_style ?>" href="<?= $button2_url ?>"><?= $button2_text ?></a>
+						<?php } ?>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -11,10 +11,12 @@
 import "../scss/main.scss";
 import Navigation from "./utils/navigation";
 import Slider from "./utils/slider";
+import Parallax from "./utils/parallax";
 
 // Init main JS
 document.addEventListener("DOMContentLoaded", () => {
   console.log("main.ts loaded");
   Navigation.init();
   Slider.init();
+  Parallax.init();
 });

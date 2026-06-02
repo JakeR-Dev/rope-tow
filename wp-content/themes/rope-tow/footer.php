@@ -43,16 +43,18 @@
                 <p class="footer-cta-subtitle"><?= esc_html($footer_cta_subtitle); ?></p>
               <?php } ?>
             </div>
-            <div class="footer-cta-buttons">
-              <!-- primary button -->
-              <?php if ($footer_cta_button_url) { ?>
-                <a class="footer-cta-button <?= ($footer_cta_button_size) ? $footer_cta_button_size : 'btn'; ?> <?= $footer_cta_button_style ?>" href="<?= esc_url($footer_cta_button_url); ?>"><?= esc_html($footer_cta_button_title); ?></a>
-              <?php } ?>
-              <!-- secondary button -->
-              <?php if ($footer_cta_secondary_button_url) { ?>
-                <a class="footer-cta-secondary-button <?= ($footer_cta_secondary_button_size) ? $footer_cta_secondary_button_size : 'btn'; ?> <?= $footer_cta_secondary_button_style ?>" href="<?= esc_url($footer_cta_secondary_button_url); ?>"><?= esc_html($footer_cta_secondary_button_title); ?></a>
-              <?php } ?>
-            </div>
+            <?php if ($footer_cta_button_url || $footer_cta_secondary_button_url) { ?>
+              <div class="footer-cta-buttons flex flex-center gap-3">
+                <!-- primary button -->
+                <?php if ($footer_cta_button_url) { ?>
+                  <a class="footer-cta-button <?= ($footer_cta_button_size) ? $footer_cta_button_size : 'btn'; ?> <?= $footer_cta_button_style ?>" href="<?= esc_url($footer_cta_button_url); ?>"><?= esc_html($footer_cta_button_title); ?></a>
+                <?php } ?>
+                <!-- secondary button -->
+                <?php if ($footer_cta_secondary_button_url) { ?>
+                  <a class="footer-cta-secondary-button <?= ($footer_cta_secondary_button_size) ? $footer_cta_secondary_button_size : 'btn'; ?> <?= $footer_cta_secondary_button_style ?>" href="<?= esc_url($footer_cta_secondary_button_url); ?>"><?= esc_html($footer_cta_secondary_button_title); ?></a>
+                <?php } ?>
+              </div>
+            <?php } ?>
           </div>
         </div>
       </section>

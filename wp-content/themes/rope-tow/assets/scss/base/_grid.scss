@@ -17,15 +17,16 @@ $padding-sizes: (
   small: var(--section-padding-small),
   medium: var(--section-padding),
   large: var(--section-padding-large),
+  wicked: var(--section-padding-wicked),
 );
 $margin-sizes: (
   none: 0,
   small: var(--section-margin-small),
   medium: var(--section-margin-medium),
   large: var(--section-margin-large),
+  wicked: var(--section-margin-wicked),
 );
 
-section,
 .section {
   padding-block: var(--section-padding);
   @each $size, $value in $padding-sizes {

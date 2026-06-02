@@ -5,8 +5,8 @@ const RopeTowPreview404 = {
       value.bind(function(newVal) {
         const wrapper = document.querySelector('.error404-body');
         if (wrapper) {
-          wrapper.classList.remove('rope-tow-text-default', 'rope-tow-text-dark', 'rope-tow-text-light');
-          wrapper.classList.add(`rope-tow-text-${newVal}`);
+          wrapper.classList.remove('text-default', 'text-dark', 'text-light');
+          wrapper.classList.add(`text-${newVal}`);
         }
       });
     });
@@ -50,7 +50,7 @@ const RopeTowPreview404 = {
     // button text
     wp.customize('rope_tow_404_button_label', function(value) {
       value.bind(function(newVal) {
-        const btn = document.querySelector('.error404-body a.btn');
+        const btn = document.querySelector('.error404-body a.btn1');
         if (btn) btn.textContent = newVal;
       });
     });
@@ -58,7 +58,7 @@ const RopeTowPreview404 = {
     // button style
     wp.customize('rope_tow_404_button_style', function(value) {
       value.bind(function(newVal) {
-        const button = document.querySelector('.error404-body a.btn');
+        const button = document.querySelector('.error404-body a.btn1');
         const allClasses = [
           'btn-primary',
           'btn-primary-outline',
@@ -77,7 +77,7 @@ const RopeTowPreview404 = {
     // second button text
     wp.customize('rope_tow_404_button2_label', function(value) {
       value.bind(function(newVal) {
-        const btn2 = document.querySelector('.error404-body a.btn2, .rope-tow-404-button2');
+        const btn2 = document.querySelector('.error404-body a.btn2');
         if (btn2) btn2.textContent = newVal;
       });
     });
@@ -85,7 +85,7 @@ const RopeTowPreview404 = {
     // second button style
     wp.customize('rope_tow_404_button2_style', function(value) {
       value.bind(function(newVal) {
-        const btn = document.querySelector('.error404-body a.btn2');
+        const btn2 = document.querySelector('.error404-body a.btn2');
         const all = [
           'btn-primary',
           'btn-primary-outline',
@@ -94,9 +94,9 @@ const RopeTowPreview404 = {
           'btn-white',
           'btn-white-outline'
         ];
-        if (btn) {
-          btn.classList.remove(...all);
-          if (newVal) btn.classList.add(newVal);
+        if (btn2) {
+          btn2.classList.remove(...all);
+          if (newVal) btn2.classList.add(newVal);
         }
       });
     });

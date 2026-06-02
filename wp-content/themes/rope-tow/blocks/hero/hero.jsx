@@ -19,7 +19,8 @@ if (!blocks || !blockEditor || !components || !element) {
       const {
         // Global shared attributes
         paddingTop, paddingBottom, marginTop, marginBottom,
-        backgroundImage, backgroundColor, backgroundAttachment, textColor,
+        backgroundImage, backgroundColor, backgroundAttachment, backgroundOpacity,
+        textColor,
         // Block-specific attributes
         title, subtitle, titleTag, subtitleTag,
         cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
@@ -78,6 +79,7 @@ if (!blocks || !blockEditor || !components || !element) {
                 backgroundImage={backgroundImage}
                 backgroundAttachment={backgroundAttachment}
                 backgroundColor={backgroundColor}
+                backgroundOpacity={backgroundOpacity}
                 textColor={textColor}
                 setAttributes={setAttributes}
               />
@@ -101,7 +103,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
             {/* Background image */}
             {backgroundImage?.url && (
-              <div className={`rt-block__bg ${bgImgClass}`} aria-hidden="true">
+              <div className={`rt-block__bg ${bgImgClass}`} aria-hidden="true" style={{ opacity: backgroundOpacity / 100 }}>
                 <img
                   src={backgroundImage.url}
                   alt=""

@@ -5,6 +5,11 @@
 		inset: 0;
 		overflow: hidden;
 		z-index: 0;
+    &.bg-attachment-image-parallax {
+      img {
+        will-change: transform;
+      }
+    }
   }
   &__bg-img {
     width: 100%;

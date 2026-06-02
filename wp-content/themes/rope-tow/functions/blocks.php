@@ -36,7 +36,8 @@ function rope_tow_shared_block_attributes( $metadata ) {
 		'backgroundImage' 			=> [ 'type' => 'object', 'default' => (object)[] ],
     'textColor' 						=> [ 'type' => 'string', 'default' => 'light' ],
 		'backgroundColor' 			=> [ 'type' => 'string', 'default' => 'brand-primary' ],
-		'backgroundAttachment' 	=> [ 'type' => 'string', 'default' => 'scroll' ]
+		'backgroundAttachment' 	=> [ 'type' => 'string', 'default' => 'scroll' ],
+		'backgroundOpacity' 		=> [ 'type' => 'number', 'default' => 100 ],
 	];
 
 	// Merge: existing block.json values take priority so per-block overrides still work.
@@ -92,8 +93,9 @@ function rope_tow_block_basics_attributes( $attributes ) {
 		'background_image_id'      		=> rope_tow_block_background_image_id( $background_image ),
 		'background_color'         		=> $attributes['backgroundColor'] ?? 'brand-primary',
 		'background_attachment'    		=> $attributes['backgroundAttachment'] ?? 'scroll',
-		'background_attachment_class' => ( $attributes['backgroundAttachment'] ?? 'scroll' ) === 'fixed' ? 'bg-attachment-image-fixed' : '',
+		'background_attachment_class' => 'bg-attachment-image-' . ( $attributes['backgroundAttachment'] ?? 'scroll' ),
 		'text_color'               		=> $attributes['textColor'] ?? 'light',
+		'background_opacity'       		=> $attributes['backgroundOpacity'] ?? 100,
 	];
 }
 

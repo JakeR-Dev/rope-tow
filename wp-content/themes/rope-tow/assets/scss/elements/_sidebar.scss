@@ -1,0 +1,13 @@
+.rt-sidebar {
+  position: sticky;
+  top: 100px;
+  border-radius: var(--button-radius);
+  &__avatar {
+    display: block;
+    border-radius: 50%;
+  }
+  &__thumbnail {
+    border-radius: var(--button-radius);
+    overflow: hidden;
+  }
+}

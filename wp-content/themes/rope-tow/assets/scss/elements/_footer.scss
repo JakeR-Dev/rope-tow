@@ -40,16 +40,6 @@
 			background: var(--brand-primary);
 			opacity: 0.2;
 		}
-		.footer-cta-buttons {
-			display: flex;
-			gap: 20px;
-			flex-flow: row wrap;
-			justify-content: center;
-			align-items: center;
-			a.btn {
-				margin-left: 0;
-			}
-		}
 		// Split layout variant
 		&.layout-split {
 			.global-footer__cta-inner {

@@ -28,7 +28,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 <div <?php echo $wrapper_attributes; ?>>
 	<!-- Background image -->
 	<?php if ( $basics['background_image_id'] ) { ?>
-		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true">
+		<div class="rt-block__bg <?php echo esc_attr( $basics['background_attachment_class'] ); ?>" aria-hidden="true" style="<?php echo 'opacity: ' . esc_attr( $basics['background_opacity'] / 100 ) ?>">
 			<?php echo wp_get_attachment_image( $basics['background_image_id'], 'full', false, [
         'class'   => 'rt-block__bg-img',
         'loading' => 'eager',

@@ -81,8 +81,10 @@
   &-dark {
     color: var(--body-color);
   }
+  &-muted {
+    color: var(--color-gray);
+  }
 }
-
 
 // Screen reader only utility class
 .sr-only {
@@ -101,4 +103,30 @@
 .flex-center {
 	justify-content: center;
 	flex-wrap: wrap;
+}
+
+// Opacity modifier class
+.muted {
+  opacity: 0.5;
+}
+
+// Tag elements
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: .65rem;
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  border-radius: var(--button-radius);
+  background-color: var(--color-gray-light);
+  color: var(--body-color);
+  margin: 2px;
+  &-dark {
+    background-color: var(--body-color);
+    color: var(--color-white);
+  }
+  &-light {
+    background-color: var(--color-white);
+    color: var(--body-color);
+  }
 }

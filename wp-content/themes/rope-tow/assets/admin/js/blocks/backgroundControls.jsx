@@ -5,15 +5,17 @@ const SelectControl = components?.SelectControl;
 const MediaUpload = blockEditor?.MediaUpload;
 const MediaUploadCheck = blockEditor?.MediaUploadCheck;
 const Button = components?.Button;
+const RangeControl = components?.RangeControl;
 
 export function BackgroundControls({
   backgroundImage,
   backgroundAttachment,
   backgroundColor,
+  backgroundOpacity,
   textColor,
   setAttributes
 }) {
-  if (!SelectControl || !MediaUpload || !MediaUploadCheck || !Button) {
+  if (!SelectControl || !MediaUpload || !MediaUploadCheck || !Button || !RangeControl) {
     return null;
   }
 
@@ -68,6 +70,16 @@ export function BackgroundControls({
         onChange={(val) => setAttributes({ backgroundColor: val })}
       />
 
+      {/* Background opacity */}
+      <RangeControl
+        label="Background Opacity"
+        value={backgroundOpacity}
+        onChange={(val) => setAttributes({ backgroundOpacity: val })}
+        min={0}
+        max={100}
+        step={1}
+      />
+      
       <hr />
 
       {/* Text color */}

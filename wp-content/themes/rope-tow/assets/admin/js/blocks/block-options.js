@@ -13,6 +13,7 @@ export const spacingOptions = [
 	{ label: 'Small', value: 'small' },
 	{ label: 'Medium', value: 'medium' },
 	{ label: 'Large', value: 'large' },
+	{ label: 'Wicked', value: 'wicked' },
 ];
 
 export const backgroundColorOptions = [
@@ -30,6 +31,7 @@ export const backgroundColorOptions = [
 export const backgroundAttachmentOptions = [
 	{ label: 'Scroll', value: 'scroll' },
 	{ label: 'Fixed', value: 'fixed' },
+	{ label: 'Parallax', value: 'parallax' },
 ];
 
 export const textColorOptions = [
