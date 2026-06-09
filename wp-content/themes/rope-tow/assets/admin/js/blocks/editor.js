@@ -6,3 +6,4 @@ import "../../../../blocks/content-grid/content-grid.jsx";
 import "../../../../blocks/side-by-side/side-by-side.jsx";
 import "../../../../blocks/rich-content/rich-content.jsx";
 import "../../../../blocks/slider/slider.jsx";
+import "../../../../blocks/contact-form/contact-form.jsx";

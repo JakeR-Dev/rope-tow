@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "rope-tow/contact-form",
+  "title": "Contact Form",
+  "category": "the-goods",
+  "description": "Contact Form block with power and impact.",
+  "supports": {
+    "html": false,
+    "align": ["full", "wide"]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "pretitle": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h1"
+    },
+    "pretitleTag": {
+      "type": "string",
+      "default": "h6"
+    },
+    "subtitleTag": {
+      "type": "string",
+      "default": "p"
+    },
+    "cta1Label": {
+			"type": "string",
+			"default": "Learn More"
+		},
+    "cta1Url": {
+			"type": "string",
+			"default": ""
+		},
+		"cta1Style": {
+			"type": "string",
+			"default": "primary"
+		},
+    "cta2Label": {
+			"type": "string",
+			"default": "Get Started"
+		},
+    "cta2Url": {
+			"type": "string",
+			"default": ""
+		},
+		"cta2Style": {
+			"type": "string",
+			"default": "secondary"
+		},
+    "layout": {
+      "type": "string",
+      "default": "span-6"
+    }
+  },
+  "example": {
+    "attributes": {
+      "title": "Get in Touch",
+      "pretitle": "Contact Us",
+      "subtitle": "We're here to help. Fill out the form and we'll get back to you as soon as possible.",
+      "titleTag": "h2",
+      "pretitleTag": "h6",
+      "subtitleTag": "p",
+      "cta1Label": "Learn more",
+      "cta1Url": "#",
+      "cta1Style": "primary",
+      "layout": "span-6"
+    }
+  },
+  "render": "file:./contact-form.php"
+}
