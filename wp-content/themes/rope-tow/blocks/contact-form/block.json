@@ -61,6 +61,18 @@
     "layout": {
       "type": "string",
       "default": "span-6"
+    },
+    "formType": {
+      "type": "string",
+      "default": "embed"
+    },
+    "formEmbedCode": {
+      "type": "string",
+      "default": ""
+    },
+    "formShortcode": {
+      "type": "string",
+      "default": ""
     }
   },
   "example": {
@@ -74,7 +86,10 @@
       "cta1Label": "Learn more",
       "cta1Url": "#",
       "cta1Style": "primary",
-      "layout": "span-6"
+      "layout": "span-6",
+      "formType": "embed",
+      "formEmbedCode": "",
+      "formShortcode": ""
     }
   },
   "render": "file:./contact-form.php"

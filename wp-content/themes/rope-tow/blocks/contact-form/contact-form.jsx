@@ -23,7 +23,7 @@ if (!blocks || !blockEditor || !components || !element) {
         // Block-specific attributes
         title, pretitle, subtitle, titleTag, pretitleTag, subtitleTag,
         cta1Label, cta1Url, cta1Style, cta2Label, cta2Url, cta2Style,
-        layout
+        layout, formType, formEmbedCode, formShortcode
       } = attributes;
 
       // Typography options for title/subtitle in toolbar
@@ -32,9 +32,9 @@ if (!blocks || !blockEditor || !components || !element) {
       // Track the current text field's tag
       const currentTag = (
         activeTextField === 'subtitle' ? (subtitleTag || 'p') :
-        activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
-        (titleTag || 'h1'));
-      
+          activeTextField === 'pretitle' ? (pretitleTag || 'h6') :
+            (titleTag || 'h1'));
+
       const setActiveFieldTag = (tag) => {
         if (activeTextField === 'subtitle') {
           setAttributes({ subtitleTag: tag });
@@ -93,7 +93,7 @@ if (!blocks || !blockEditor || !components || !element) {
 
             {/* Contact Form */}
             <PanelBody title="Layout" initialOpen={false}>
-              {/* Layout controls */}
+              {/* Layout */}
               <SelectControl
                 label="Layout"
                 value={layout}
@@ -103,6 +103,35 @@ if (!blocks || !blockEditor || !components || !element) {
                 ]}
                 onChange={(val) => setAttributes({ layout: val })}
               />
+
+              <hr />
+
+              {/* Form type */}
+              <SelectControl
+                label="Form Type"
+                value={formType}
+                options={[
+                  { label: 'Embed', value: 'embed' },
+                  { label: 'Shortcode', value: 'shortcode' },
+                ]}
+                onChange={(val) => setAttributes({ formType: val })}
+              />
+
+              {formType === 'shortcode' ? (
+                // Form shortcode
+                <TextControl
+                  label="Form Shortcode"
+                  value={formShortcode}
+                  onChange={(val) => setAttributes({ formShortcode: val })}
+                />
+              ) : (
+                // Form embed code
+                <TextareaControl
+                  label="Form Embed Code"
+                  value={formEmbedCode}
+                  onChange={(val) => setAttributes({ formEmbedCode: val })}
+                />
+              )}
             </PanelBody>
 
             {/* CTA button controls */}
@@ -165,7 +194,7 @@ if (!blocks || !blockEditor || !components || !element) {
                     placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     allowedFormats={['core/bold', 'core/italic']}
                   />
-                  
+
                   {/* CTAs */}
                   {(cta1Url || cta2Url) && (
                     <div className="rt-contact-form__ctas flex gap-3 mt-4">

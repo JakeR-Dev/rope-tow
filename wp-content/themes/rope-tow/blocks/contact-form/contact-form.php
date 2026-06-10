@@ -17,6 +17,9 @@ $pretitle_tag = rope_tow_block_sanitize_tag( $attributes['pretitleTag'] ?? 'h6',
 $subtitle = $attributes['subtitle'] ?? '';
 $subtitle_tag = rope_tow_block_sanitize_tag( $attributes['subtitleTag'] ?? 'p', 'p' );
 $layout = $attributes['layout'] ?? 'span-6';
+$formType = $attributes['formType'] ?? 'embed';
+$formEmbedCode = $attributes['formEmbedCode'] ?? '';
+$formShortcode = $attributes['formShortcode'] ?? '';
 
 // Gather shared attributes using helper functions
 $ctas = rope_tow_block_cta_attributes( $attributes );
@@ -79,7 +82,11 @@ $wrapper_attributes = get_block_wrapper_attributes( [
 
       <!-- Form side -->
       <div class="rt-block__contact-side span-12 md:<?php echo ( $layout ); ?>">
-
+        <?php if ( $formType === 'shortcode' && $formShortcode ) { ?>
+          <?php echo do_shortcode( $formShortcode ); ?>
+        <?php } elseif ( $formType === 'embed' && $formEmbedCode ) { ?>
+          <?php echo $formEmbedCode; ?>
+        <?php } ?>
       </div>
     </div>
   </div>
