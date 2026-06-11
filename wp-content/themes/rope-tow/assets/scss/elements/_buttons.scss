@@ -15,6 +15,7 @@
 	padding: var(--button-padding-y) var(--button-padding-x);
 	text-transform: var(--button-text-transform);
 	text-decoration: none;
+	font-family: var(--font-family-body);
 	cursor: pointer;
 	&:last-of-type {
 		margin-bottom: 0;
